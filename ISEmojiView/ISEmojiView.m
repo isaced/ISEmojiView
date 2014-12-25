@@ -88,7 +88,7 @@ static const CGFloat EmojiFontSize = 32;
         self.pageControl.backgroundColor = [UIColor clearColor];
         self.pageControl.numberOfPages = numOfPage;
         CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:numOfPage];
-        self.pageControl.frame = CGRectMake(CGRectGetMidX(frame) - pageControlSize.width,
+        self.pageControl.frame = CGRectMake(CGRectGetMidX(frame) - (pageControlSize.width / 2),
                                             CGRectGetHeight(frame) - pageControlSize.height + 5,
                                             pageControlSize.width,
                                             pageControlSize.height);
