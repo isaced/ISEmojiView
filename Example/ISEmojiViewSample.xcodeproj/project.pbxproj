@@ -1,0 +1,443 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		B9C40C621A4BEAC3005EE8AD /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C611A4BEAC3005EE8AD /* main.m */; };
+		B9C40C651A4BEAC3005EE8AD /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C641A4BEAC3005EE8AD /* AppDelegate.m */; };
+		B9C40C681A4BEAC3005EE8AD /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C671A4BEAC3005EE8AD /* ViewController.m */; };
+		B9C40C6B1A4BEAC3005EE8AD /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C691A4BEAC3005EE8AD /* Main.storyboard */; };
+		B9C40C6D1A4BEAC3005EE8AD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C6C1A4BEAC3005EE8AD /* Images.xcassets */; };
+		B9C40C701A4BEAC3005EE8AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C6E1A4BEAC3005EE8AD /* LaunchScreen.xib */; };
+		B9C40C7C1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */; };
+		B9C40C891A4BEB7B005EE8AD /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		B9C40C761A4BEAC4005EE8AD /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = B9C40C541A4BEAC3005EE8AD /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = B9C40C5B1A4BEAC3005EE8AD;
+			remoteInfo = ISEmojiViewSample;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		B9C40C5C1A4BEAC3005EE8AD /* ISEmojiViewSample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ISEmojiViewSample.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C40C601A4BEAC3005EE8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C40C611A4BEAC3005EE8AD /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		B9C40C631A4BEAC3005EE8AD /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
+		B9C40C641A4BEAC3005EE8AD /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		B9C40C661A4BEAC3005EE8AD /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
+		B9C40C671A4BEAC3005EE8AD /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
+		B9C40C6A1A4BEAC3005EE8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		B9C40C6C1A4BEAC3005EE8AD /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
+		B9C40C6F1A4BEAC3005EE8AD /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/LaunchScreen.xib; sourceTree = "<group>"; };
+		B9C40C751A4BEAC4005EE8AD /* ISEmojiViewSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISEmojiViewSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		B9C40C7A1A4BEAC4005EE8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISEmojiViewSampleTests.m; sourceTree = "<group>"; };
+		B9C40C871A4BEB7B005EE8AD /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISEmojiView.h; path = ../../ISEmojiView/ISEmojiView.h; sourceTree = "<group>"; };
+		B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISEmojiView.m; path = ../../ISEmojiView/ISEmojiView.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		B9C40C591A4BEAC3005EE8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C40C721A4BEAC4005EE8AD /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		B9C40C531A4BEAC3005EE8AD = {
+			isa = PBXGroup;
+			children = (
+				B9C40C861A4BEB60005EE8AD /* ISEmojiView */,
+				B9C40C5E1A4BEAC3005EE8AD /* ISEmojiViewSample */,
+				B9C40C781A4BEAC4005EE8AD /* ISEmojiViewSampleTests */,
+				B9C40C5D1A4BEAC3005EE8AD /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		B9C40C5D1A4BEAC3005EE8AD /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C5C1A4BEAC3005EE8AD /* ISEmojiViewSample.app */,
+				B9C40C751A4BEAC4005EE8AD /* ISEmojiViewSampleTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		B9C40C5E1A4BEAC3005EE8AD /* ISEmojiViewSample */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C631A4BEAC3005EE8AD /* AppDelegate.h */,
+				B9C40C641A4BEAC3005EE8AD /* AppDelegate.m */,
+				B9C40C661A4BEAC3005EE8AD /* ViewController.h */,
+				B9C40C671A4BEAC3005EE8AD /* ViewController.m */,
+				B9C40C691A4BEAC3005EE8AD /* Main.storyboard */,
+				B9C40C6C1A4BEAC3005EE8AD /* Images.xcassets */,
+				B9C40C6E1A4BEAC3005EE8AD /* LaunchScreen.xib */,
+				B9C40C5F1A4BEAC3005EE8AD /* Supporting Files */,
+			);
+			path = ISEmojiViewSample;
+			sourceTree = "<group>";
+		};
+		B9C40C5F1A4BEAC3005EE8AD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C601A4BEAC3005EE8AD /* Info.plist */,
+				B9C40C611A4BEAC3005EE8AD /* main.m */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B9C40C781A4BEAC4005EE8AD /* ISEmojiViewSampleTests */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */,
+				B9C40C791A4BEAC4005EE8AD /* Supporting Files */,
+			);
+			path = ISEmojiViewSampleTests;
+			sourceTree = "<group>";
+		};
+		B9C40C791A4BEAC4005EE8AD /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C7A1A4BEAC4005EE8AD /* Info.plist */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		B9C40C861A4BEB60005EE8AD /* ISEmojiView */ = {
+			isa = PBXGroup;
+			children = (
+				B9C40C871A4BEB7B005EE8AD /* ISEmojiView.h */,
+				B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */,
+			);
+			path = ISEmojiView;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		B9C40C5B1A4BEAC3005EE8AD /* ISEmojiViewSample */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C40C7F1A4BEAC4005EE8AD /* Build configuration list for PBXNativeTarget "ISEmojiViewSample" */;
+			buildPhases = (
+				B9C40C581A4BEAC3005EE8AD /* Sources */,
+				B9C40C591A4BEAC3005EE8AD /* Frameworks */,
+				B9C40C5A1A4BEAC3005EE8AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = ISEmojiViewSample;
+			productName = ISEmojiViewSample;
+			productReference = B9C40C5C1A4BEAC3005EE8AD /* ISEmojiViewSample.app */;
+			productType = "com.apple.product-type.application";
+		};
+		B9C40C741A4BEAC4005EE8AD /* ISEmojiViewSampleTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = B9C40C821A4BEAC4005EE8AD /* Build configuration list for PBXNativeTarget "ISEmojiViewSampleTests" */;
+			buildPhases = (
+				B9C40C711A4BEAC4005EE8AD /* Sources */,
+				B9C40C721A4BEAC4005EE8AD /* Frameworks */,
+				B9C40C731A4BEAC4005EE8AD /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				B9C40C771A4BEAC4005EE8AD /* PBXTargetDependency */,
+			);
+			name = ISEmojiViewSampleTests;
+			productName = ISEmojiViewSampleTests;
+			productReference = B9C40C751A4BEAC4005EE8AD /* ISEmojiViewSampleTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		B9C40C541A4BEAC3005EE8AD /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0610;
+				ORGANIZATIONNAME = isaced;
+				TargetAttributes = {
+					B9C40C5B1A4BEAC3005EE8AD = {
+						CreatedOnToolsVersion = 6.1;
+					};
+					B9C40C741A4BEAC4005EE8AD = {
+						CreatedOnToolsVersion = 6.1;
+						TestTargetID = B9C40C5B1A4BEAC3005EE8AD;
+					};
+				};
+			};
+			buildConfigurationList = B9C40C571A4BEAC3005EE8AD /* Build configuration list for PBXProject "ISEmojiViewSample" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = B9C40C531A4BEAC3005EE8AD;
+			productRefGroup = B9C40C5D1A4BEAC3005EE8AD /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				B9C40C5B1A4BEAC3005EE8AD /* ISEmojiViewSample */,
+				B9C40C741A4BEAC4005EE8AD /* ISEmojiViewSampleTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		B9C40C5A1A4BEAC3005EE8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C40C6B1A4BEAC3005EE8AD /* Main.storyboard in Resources */,
+				B9C40C701A4BEAC3005EE8AD /* LaunchScreen.xib in Resources */,
+				B9C40C6D1A4BEAC3005EE8AD /* Images.xcassets in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C40C731A4BEAC4005EE8AD /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		B9C40C581A4BEAC3005EE8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C40C681A4BEAC3005EE8AD /* ViewController.m in Sources */,
+				B9C40C651A4BEAC3005EE8AD /* AppDelegate.m in Sources */,
+				B9C40C621A4BEAC3005EE8AD /* main.m in Sources */,
+				B9C40C891A4BEB7B005EE8AD /* ISEmojiView.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		B9C40C711A4BEAC4005EE8AD /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				B9C40C7C1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		B9C40C771A4BEAC4005EE8AD /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = B9C40C5B1A4BEAC3005EE8AD /* ISEmojiViewSample */;
+			targetProxy = B9C40C761A4BEAC4005EE8AD /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		B9C40C691A4BEAC3005EE8AD /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9C40C6A1A4BEAC3005EE8AD /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+		B9C40C6E1A4BEAC3005EE8AD /* LaunchScreen.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				B9C40C6F1A4BEAC3005EE8AD /* Base */,
+			);
+			name = LaunchScreen.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		B9C40C7D1A4BEAC4005EE8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		B9C40C7E1A4BEAC4005EE8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 8.1;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		B9C40C801A4BEAC4005EE8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ISEmojiViewSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		B9C40C811A4BEAC4005EE8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				INFOPLIST_FILE = ISEmojiViewSample/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		B9C40C831A4BEAC4005EE8AD /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ISEmojiViewSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISEmojiViewSample.app/ISEmojiViewSample";
+			};
+			name = Debug;
+		};
+		B9C40C841A4BEAC4005EE8AD /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(SDKROOT)/Developer/Library/Frameworks",
+					"$(inherited)",
+				);
+				INFOPLIST_FILE = ISEmojiViewSampleTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/ISEmojiViewSample.app/ISEmojiViewSample";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		B9C40C571A4BEAC3005EE8AD /* Build configuration list for PBXProject "ISEmojiViewSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C40C7D1A4BEAC4005EE8AD /* Debug */,
+				B9C40C7E1A4BEAC4005EE8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C40C7F1A4BEAC4005EE8AD /* Build configuration list for PBXNativeTarget "ISEmojiViewSample" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C40C801A4BEAC4005EE8AD /* Debug */,
+				B9C40C811A4BEAC4005EE8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		B9C40C821A4BEAC4005EE8AD /* Build configuration list for PBXNativeTarget "ISEmojiViewSampleTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				B9C40C831A4BEAC4005EE8AD /* Debug */,
+				B9C40C841A4BEAC4005EE8AD /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = B9C40C541A4BEAC3005EE8AD /* Project object */;
+}
