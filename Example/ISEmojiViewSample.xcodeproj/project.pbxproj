@@ -14,7 +14,7 @@
 		B9C40C6D1A4BEAC3005EE8AD /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C6C1A4BEAC3005EE8AD /* Images.xcassets */; };
 		B9C40C701A4BEAC3005EE8AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C6E1A4BEAC3005EE8AD /* LaunchScreen.xib */; };
 		B9C40C7C1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */; };
-		B9C40C891A4BEB7B005EE8AD /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */; };
+		B9C40C8D1A4BECD3005EE8AD /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -41,8 +41,8 @@
 		B9C40C751A4BEAC4005EE8AD /* ISEmojiViewSampleTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = ISEmojiViewSampleTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		B9C40C7A1A4BEAC4005EE8AD /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISEmojiViewSampleTests.m; sourceTree = "<group>"; };
-		B9C40C871A4BEB7B005EE8AD /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ISEmojiView.h; path = ../../ISEmojiView/ISEmojiView.h; sourceTree = "<group>"; };
-		B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ISEmojiView.m; path = ../../ISEmojiView/ISEmojiView.m; sourceTree = "<group>"; };
+		B9C40C8B1A4BECD3005EE8AD /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
+		B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -66,7 +66,7 @@
 		B9C40C531A4BEAC3005EE8AD = {
 			isa = PBXGroup;
 			children = (
-				B9C40C861A4BEB60005EE8AD /* ISEmojiView */,
+				B9C40C8A1A4BECD3005EE8AD /* ISEmojiView */,
 				B9C40C5E1A4BEAC3005EE8AD /* ISEmojiViewSample */,
 				B9C40C781A4BEAC4005EE8AD /* ISEmojiViewSampleTests */,
 				B9C40C5D1A4BEAC3005EE8AD /* Products */,
@@ -123,13 +123,14 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
-		B9C40C861A4BEB60005EE8AD /* ISEmojiView */ = {
+		B9C40C8A1A4BECD3005EE8AD /* ISEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				B9C40C871A4BEB7B005EE8AD /* ISEmojiView.h */,
-				B9C40C881A4BEB7B005EE8AD /* ISEmojiView.m */,
+				B9C40C8B1A4BECD3005EE8AD /* ISEmojiView.h */,
+				B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */,
 			);
-			path = ISEmojiView;
+			name = ISEmojiView;
+			path = ../ISEmojiView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -235,7 +236,7 @@
 				B9C40C681A4BEAC3005EE8AD /* ViewController.m in Sources */,
 				B9C40C651A4BEAC3005EE8AD /* AppDelegate.m in Sources */,
 				B9C40C621A4BEAC3005EE8AD /* main.m in Sources */,
-				B9C40C891A4BEB7B005EE8AD /* ISEmojiView.m in Sources */,
+				B9C40C8D1A4BECD3005EE8AD /* ISEmojiView.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
