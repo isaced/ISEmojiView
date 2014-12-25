@@ -8,7 +8,7 @@
 
 #import "ISEmojiView.h"
 
-static const CGFloat EmojiWidth = 50;
+static const CGFloat EmojiWidth = 53;
 static const CGFloat EmojiHeight = 50;
 static const CGFloat EmojiFontSize = 32;
 
@@ -16,6 +16,7 @@ static const CGFloat EmojiFontSize = 32;
 
 @property (nonatomic, strong) NSArray *emojis;
 @property (nonatomic, strong) UIScrollView *scrollView;
+@property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
 
@@ -77,8 +78,37 @@ static const CGFloat EmojiFontSize = 32;
             
             [self.scrollView addSubview:emojiButton];
         }
+        
+        // add PageControl
+        self.pageControl = [[UIPageControl alloc] init];
+        self.pageControl.hidesForSinglePage = YES;
+        self.pageControl.currentPage = 0;
+        self.pageControl.backgroundColor = [UIColor clearColor];
+        self.pageControl.numberOfPages = numOfPage;
+        CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:numOfPage];
+        self.pageControl.frame = CGRectMake(CGRectGetMidX(frame) - pageControlSize.width,
+                                            CGRectGetHeight(frame) - pageControlSize.height + 5,
+                                            pageControlSize.width,
+                                            pageControlSize.height);
+        [self.pageControl addTarget:self action:@selector(pageControlTouched:) forControlEvents:UIControlEventValueChanged];
+        [self addSubview:self.pageControl];
     }
     return self;
+}
+
+- (void)pageControlTouched:(UIPageControl *)sender {
+    CGRect bounds = self.scrollView.bounds;
+    bounds.origin.x = CGRectGetWidth(bounds) * sender.currentPage;
+    [self.scrollView scrollRectToVisible:bounds animated:YES];
+}
+
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat pageWidth = CGRectGetWidth(scrollView.frame);
+    NSInteger newPageNumber = floor((scrollView.contentOffset.x - pageWidth / 2) / pageWidth) + 1;
+    if (self.pageControl.currentPage == newPageNumber) {
+        return;
+    }
+    self.pageControl.currentPage = newPageNumber;
 }
 
 @end
