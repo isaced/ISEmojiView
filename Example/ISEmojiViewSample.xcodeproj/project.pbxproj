@@ -15,6 +15,7 @@
 		B9C40C701A4BEAC3005EE8AD /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C6E1A4BEAC3005EE8AD /* LaunchScreen.xib */; };
 		B9C40C7C1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */; };
 		B9C40C8D1A4BECD3005EE8AD /* ISEmojiView.m in Sources */ = {isa = PBXBuildFile; fileRef = B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */; };
+		B9C40C8F1A4BEEB8005EE8AD /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = B9C40C8E1A4BEEB8005EE8AD /* ISEmojiList.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +44,7 @@
 		B9C40C7B1A4BEAC4005EE8AD /* ISEmojiViewSampleTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ISEmojiViewSampleTests.m; sourceTree = "<group>"; };
 		B9C40C8B1A4BECD3005EE8AD /* ISEmojiView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ISEmojiView.m; sourceTree = "<group>"; };
+		B9C40C8E1A4BEEB8005EE8AD /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +130,7 @@
 			children = (
 				B9C40C8B1A4BECD3005EE8AD /* ISEmojiView.h */,
 				B9C40C8C1A4BECD3005EE8AD /* ISEmojiView.m */,
+				B9C40C8E1A4BEEB8005EE8AD /* ISEmojiList.plist */,
 			);
 			name = ISEmojiView;
 			path = ../ISEmojiView;
@@ -216,6 +219,7 @@
 				B9C40C6B1A4BEAC3005EE8AD /* Main.storyboard in Resources */,
 				B9C40C701A4BEAC3005EE8AD /* LaunchScreen.xib in Resources */,
 				B9C40C6D1A4BEAC3005EE8AD /* Images.xcassets in Resources */,
+				B9C40C8F1A4BEEB8005EE8AD /* ISEmojiList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
