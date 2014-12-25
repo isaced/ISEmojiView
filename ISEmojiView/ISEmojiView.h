@@ -8,6 +8,16 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol ISEmojiViewDelegate;
+
 @interface ISEmojiView : UIView
+
+@property (nonatomic, assign) id<ISEmojiViewDelegate> delegate;
+
+@end
+
+@protocol ISEmojiViewDelegate <NSObject>
+
+-(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji;
 
 @end

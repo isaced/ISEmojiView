@@ -55,10 +55,12 @@ static const CGFloat EmojiFontSize = 32;
             
             NSString *emoji = self.emojis[i];
             
+            // init Emoji Button
             UIButton *emojiButton = [UIButton buttonWithType:UIButtonTypeCustom];
             emojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];
             [emojiButton setTitle:emoji forState:UIControlStateNormal];
-
+            [emojiButton addTarget:self action:@selector(emojiButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            
             // Pagination
             if (i % (rowNum * colNum) == 0) {
                 page ++;    // Increase the number of pages
@@ -109,6 +111,12 @@ static const CGFloat EmojiFontSize = 32;
         return;
     }
     self.pageControl.currentPage = newPageNumber;
+}
+
+- (void)emojiButtonPressed:(UIButton *)button {
+    if ([self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
+        [self.delegate emojiView:self didSelectEmoji:button.titleLabel.text];
+    }
 }
 
 @end

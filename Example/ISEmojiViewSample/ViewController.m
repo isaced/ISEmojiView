@@ -9,7 +9,9 @@
 #import "ViewController.h"
 #import "ISEmojiView.h"
 
-@interface ViewController ()
+@interface ViewController ()<ISEmojiViewDelegate>
+
+@property (nonatomic, strong) UITextView *textView;
 
 @end
 
@@ -19,18 +21,23 @@
     [super viewDidLoad];
     
     // init TextView
-    UITextView *textView = [[UITextView alloc] initWithFrame:self.view.frame];
-    [self.view addSubview:textView];
+    self.textView = [[UITextView alloc] initWithFrame:self.view.frame];
+    [self.view addSubview:self.textView];
     
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
-    textView.inputView = emojiView;
+    emojiView.delegate = self;
+    self.textView.inputView = emojiView;
     
-    [textView becomeFirstResponder];
+    [self.textView becomeFirstResponder];
 }
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
+}
+
+-(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji{
+    self.textView.text = [self.textView.text stringByAppendingString:emoji];
 }
 
 @end
