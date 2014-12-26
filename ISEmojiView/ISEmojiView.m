@@ -114,6 +114,15 @@ static const CGFloat EmojiFontSize = 32;
 }
 
 - (void)emojiButtonPressed:(UIButton *)button {
+    
+    // Add a simple scale animation
+    CABasicAnimation *animation = [CABasicAnimation animationWithKeyPath:@"transform.scale"];
+    animation.byValue = @0.3;
+    animation.duration = 0.1;
+    animation.autoreverses = YES;
+    [button.layer addAnimation:animation forKey:nil];
+    
+    // Callback
     if ([self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
         [self.delegate emojiView:self didSelectEmoji:button.titleLabel.text];
     }
