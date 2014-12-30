@@ -19,5 +19,10 @@
 @protocol ISEmojiViewDelegate <NSObject>
 
 -(void)emojiView:(ISEmojiView *)emojiView didSelectEmoji:(NSString *)emoji;
+-(void)emojiView:(ISEmojiView *)emojiView didPressDeleteButton:(UIButton *)deletebutton;
+
+@end
+
+@interface ISDeleteButton : UIButton
 
 @end
