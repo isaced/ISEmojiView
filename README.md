@@ -30,7 +30,16 @@ add protocol `ISEmojiViewDelegate` and implementation `emojiView:didSelectEmoji:
     self.textView.text = [self.textView.text stringByAppendingString:emoji];
 }
 ```
+and `emojiView:didPressDeleteButton:` method:
 
+```
+-(void)emojiView:(ISEmojiView *)emojiView didPressDeleteButton:(UIButton *)deletebutton{
+    if (self.textView.text.length > 0) {
+        NSRange lastRange = [self.textView.text rangeOfComposedCharacterSequenceAtIndex:self.textView.text.length-1];
+        self.textView.text = [self.textView.text substringToIndex:lastRange.location];
+    }
+}
+```
 ##Author
 
 isaced@163.com
