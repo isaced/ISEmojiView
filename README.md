@@ -10,7 +10,7 @@ An easy to use Emoji keyboard for iOS.
 ### Cocoapods
 
 ```
-pod 'MBProgressHUD'
+pod 'ISEmojiView'
 ```
 
 ## Useage
