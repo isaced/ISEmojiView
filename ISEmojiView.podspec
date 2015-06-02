@@ -4,7 +4,7 @@ Pod::Spec.new do |s|
   s.summary      = "Emoji Keyboard for iOS."
 
   s.description  = <<-DESC
-                   Emoji Keyboard for iOS.
+                   An easy to use Emoji keyboard for iOS.
                    DESC
 
   s.homepage     = "https://github.com/isaced/ISEmojiView"
