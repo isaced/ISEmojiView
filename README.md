@@ -1,19 +1,21 @@
 ISEmojiView
 ===========
 
-Emoji Keyboard for iOS
+An easy to use Emoji keyboard for iOS.
 
 ![screenshot](https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg)
 
-##Useage
+## Install
 
-###import
+### Cocoapods
 
 ```
-#import "ISEmojiView.h"
+pod 'MBProgressHUD'
 ```
 
-###Init
+## Useage
+
+### Init
 ```
 // init ISEmojiView
 ISEmojiView *emojiView = [[ISEmojiView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
@@ -21,7 +23,7 @@ emojiView.delegate = self;
 self.textView.inputView = emojiView;
 ```
 
-###Response
+### Response
 
 add protocol `ISEmojiViewDelegate` and implementation `emojiView:didSelectEmoji:` method
 
@@ -40,9 +42,6 @@ and `emojiView:didPressDeleteButton:` method:
     }
 }
 ```
-##Author
-
-isaced@163.com
 
 ##License
 
