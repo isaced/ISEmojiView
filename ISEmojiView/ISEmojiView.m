@@ -3,7 +3,7 @@
 //  ISEmojiViewSample
 //
 //  Created by isaced on 14/12/25.
-//  Copyright (c) 2014年 isaced. All rights reserved.
+//  Copyright (c) 2014 Year isaced. All rights reserved.
 //
 
 #import "ISEmojiView.h"
@@ -162,6 +162,9 @@ static const CGFloat EmojiFontSize = 32;
 
 @implementation ISDeleteButton
 
+/**
+ *  Draw the delete key
+ */
 -(void)drawRect:(CGRect)rect{
 
     // Rectangle Drawing
