@@ -1,5 +1,7 @@
-ISEmojiView
+ISEmojiView [![CocoaPods](https://img.shields.io/cocoapods/v/ISEmojiView.svg?style=flat-square)](http://cocoadocs.org/docsets/ISEmojiView) [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat-square)](http://cocoadocs.org/docsets/ISEmojiView) [![GitHub license](https://img.shields.io/github/license/mashape/apistatus.svg?style=flat-square)](http://opensource.org/licenses/MIT)
 ===========
+
+
 
 An easy to use Emoji keyboard for iOS.
 
