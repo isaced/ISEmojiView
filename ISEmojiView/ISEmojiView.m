@@ -110,7 +110,8 @@ static const CGFloat EmojiFontSize = 32;
         [self.pageControl addTarget:self action:@selector(pageControlTouched:) forControlEvents:UIControlEventValueChanged];
         [self addSubview:self.pageControl];
         
-
+        // default allow animation
+        self.popAnimationEnable = YES;
     }
     return self;
 }
@@ -138,10 +139,36 @@ static const CGFloat EmojiFontSize = 32;
     animation.duration = 0.1;
     animation.autoreverses = YES;
     [button.layer addAnimation:animation forKey:nil];
-    
-    // Callback
-    if ([self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
-        [self.delegate emojiView:self didSelectEmoji:button.titleLabel.text];
+
+    if (self.popAnimationEnable) {
+        // Animation emojibutton
+        UIButton *animationEmojiButton = [UIButton buttonWithType:UIButtonTypeCustom];;
+        [animationEmojiButton setTitle: [button titleForState:UIControlStateNormal] forState:UIControlStateNormal];
+        animationEmojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];\
+        
+        // Conver frame from scrollview to self and add to self
+        animationEmojiButton.frame = [button.superview convertRect:button.frame toView:self];
+        [self addSubview:animationEmojiButton];
+        
+        // get animation traget position from input view
+        CGPoint newPoint = [self.inputView convertPoint:self.inputView.center toView:self];
+        [UIView animateWithDuration:0.3 animations:^{
+            animationEmojiButton.center = newPoint;
+            animationEmojiButton.alpha = 0;
+        } completion:^(BOOL finished) {
+            if (finished) {
+                // Callback
+                if ([self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
+                    [self.delegate emojiView:self didSelectEmoji:button.titleLabel.text];
+                }
+                [animationEmojiButton removeFromSuperview];
+            }
+        }];
+    }else{
+        // Callback
+        if ([self.delegate respondsToSelector:@selector(emojiView:didSelectEmoji:)]) {
+            [self.delegate emojiView:self didSelectEmoji:button.titleLabel.text];
+        }
     }
 }
 

@@ -30,6 +30,18 @@
  */
 @property (nonatomic, strong) UIPageControl *pageControl;
 
+/**
+ *  the input view
+ */
+@property (nonatomic, strong) UIView *inputView;
+
+/**
+ *  Are animation allowed (default:YES)
+ *
+ *  require set inputView (eg:TextField,TextView)
+ */
+@property (nonatomic, assign) BOOL popAnimationEnable;
+
 @end
 
 /**

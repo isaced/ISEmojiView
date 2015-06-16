@@ -27,6 +27,7 @@
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
     emojiView.delegate = self;
+    emojiView.inputView = self.textView;
     self.textView.inputView = emojiView;
     
     [self.textView becomeFirstResponder];
