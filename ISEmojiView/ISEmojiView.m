@@ -14,8 +14,19 @@ static const CGFloat EmojiFontSize = 32;
 
 @interface ISEmojiView()<UIScrollViewDelegate>
 
+/**
+ *  All emoji characters
+ */
 @property (nonatomic, strong) NSArray *emojis;
+
+/**
+ *  Emoji container used to store all the elements
+ */
 @property (nonatomic, strong) UIScrollView *scrollView;
+
+/**
+ *  UIPageControl for next page
+ */
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 @end
@@ -164,6 +175,8 @@ static const CGFloat EmojiFontSize = 32;
 
 /**
  *  Draw the delete key
+ *
+ *  @param rect Context Rect
  */
 -(void)drawRect:(CGRect)rect{
 
