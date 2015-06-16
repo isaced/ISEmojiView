@@ -20,6 +20,16 @@
  */
 @property (nonatomic, assign) id<ISEmojiViewDelegate> delegate;
 
+/**
+ *  Emoji container used to store all the elements
+ */
+@property (nonatomic, strong) UIScrollView *scrollView;
+
+/**
+ *  UIPageControl for next page
+ */
+@property (nonatomic, strong) UIPageControl *pageControl;
+
 @end
 
 /**

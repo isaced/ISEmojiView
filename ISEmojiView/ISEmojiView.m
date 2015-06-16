@@ -19,16 +19,6 @@ static const CGFloat EmojiFontSize = 32;
  */
 @property (nonatomic, strong) NSArray *emojis;
 
-/**
- *  Emoji container used to store all the elements
- */
-@property (nonatomic, strong) UIScrollView *scrollView;
-
-/**
- *  UIPageControl for next page
- */
-@property (nonatomic, strong) UIPageControl *pageControl;
-
 @end
 
 @implementation ISEmojiView
