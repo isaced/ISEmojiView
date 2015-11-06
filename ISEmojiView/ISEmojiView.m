@@ -112,6 +112,8 @@ static const CGFloat EmojiFontSize = 32;
         
         // default allow animation
         self.popAnimationEnable = YES;
+        
+        self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
     }
     return self;
 }
@@ -144,7 +146,7 @@ static const CGFloat EmojiFontSize = 32;
         // Animation emojibutton
         UIButton *animationEmojiButton = [UIButton buttonWithType:UIButtonTypeCustom];;
         [animationEmojiButton setTitle: [button titleForState:UIControlStateNormal] forState:UIControlStateNormal];
-        animationEmojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];\
+        animationEmojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];
         
         // Conver frame from scrollview to self and add to self
         animationEmojiButton.frame = [button.superview convertRect:button.frame toView:self];
