@@ -22,6 +22,7 @@
     
     // init TextView
     self.textView = [[UITextView alloc] initWithFrame:self.view.frame];
+    self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
     [self.view addSubview:self.textView];
     
     // init ISEmojiView
