@@ -9,7 +9,7 @@ An easy to use Emoji keyboard for iOS.
 
 ## Install
 
-### Cocoapods
+### CocoaPods
 
 ```
 pod 'ISEmojiView'
