@@ -11,19 +11,12 @@
 
 @interface ViewController ()<ISEmojiViewDelegate>
 
-@property (nonatomic, strong) UITextView *textView;
-
 @end
 
 @implementation ViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
-    // init TextView
-    self.textView = [[UITextView alloc] initWithFrame:self.view.frame];
-    self.textView.autoresizingMask = UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight;
-    [self.view addSubview:self.textView];
     
     // init ISEmojiView
     ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.textView delegate:self popAnimationEnable:YES];
