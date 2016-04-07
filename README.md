@@ -20,7 +20,7 @@ pod 'ISEmojiView'
 ### Init
 ```
 // init ISEmojiView
-ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:textView delegate:self popAnimationEnable:YES];
+ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:textView delegate:self];
 textView.inputView = emojiView;
 ```
 
@@ -44,6 +44,10 @@ and `emojiView:didPressDeleteButton:` method:
 }
 ```
 
-##License
+### Other
+
+ - `popAnimationEnable` to enable animation when tap a emoji
+
+## License
 
 MIT
