@@ -20,9 +20,8 @@ pod 'ISEmojiView'
 ### Init
 ```
 // init ISEmojiView
-ISEmojiView *emojiView = [[ISEmojiView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
-emojiView.delegate = self;
-self.textView.inputView = emojiView;
+ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:textView delegate:self popAnimationEnable:YES];
+textView.inputView = emojiView;
 ```
 
 ### Response

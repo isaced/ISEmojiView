@@ -35,12 +35,11 @@ static const CGFloat EmojiFontSize = 32;
     return self;
 }
 
--(instancetype)initWithTextField:(UIView *)textField delegate:(id<ISEmojiViewDelegate>)delegate popAnimationEnable:(BOOL)popAnimationEnable{
+-(instancetype)initWithTextField:(UIView *)textField delegate:(id<ISEmojiViewDelegate>)delegate {
     self = [super init];
     if (self) {        
         self.delegate = delegate;
         self.textField = textField;
-        self.popAnimationEnable = popAnimationEnable;
     }
     return self;
 }
@@ -140,7 +139,7 @@ static const CGFloat EmojiFontSize = 32;
     [self addSubview:self.pageControl];
     
     // default allow animation
-    self.popAnimationEnable = YES;
+    self.popAnimationEnable = NO;
     
     self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
 }

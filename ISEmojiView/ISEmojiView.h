@@ -36,7 +36,7 @@
 @property (nonatomic, strong) UIView *textField;
 
 /**
- *  Are animation allowed (default:YES)
+ *  Are animation allowed (default:NO)
  *
  *  require set textField to get point
  */
@@ -46,8 +46,7 @@
  *  init ISEmojiView
  */
 - (instancetype)initWithTextField:(UIView *)textField
-                         delegate:(id<ISEmojiViewDelegate>)delegate
-               popAnimationEnable:(BOOL)popAnimationEnable;
+                         delegate:(id<ISEmojiViewDelegate>)delegate;
 
 @end
 

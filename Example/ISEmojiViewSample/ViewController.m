@@ -19,7 +19,7 @@
     [super viewDidLoad];
     
     // init ISEmojiView
-    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.textView delegate:self popAnimationEnable:YES];
+    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.textView delegate:self];
     self.textView.inputView = emojiView;
 
     [self.textView becomeFirstResponder];
