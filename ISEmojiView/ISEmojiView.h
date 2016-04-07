@@ -31,14 +31,14 @@
 @property (nonatomic, strong) UIPageControl *pageControl;
 
 /**
- *  the input view
+ *  the textField view (eg:TextField,TextView)
  */
-@property (nonatomic, strong) UIView *inputView;
+@property (nonatomic, strong) UIView *textField;
 
 /**
  *  Are animation allowed (default:YES)
  *
- *  require set inputView (eg:TextField,TextView)
+ *  require set textField to get point
  */
 @property (nonatomic, assign) BOOL popAnimationEnable;
 

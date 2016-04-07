@@ -152,8 +152,8 @@ static const CGFloat EmojiFontSize = 32;
         animationEmojiButton.frame = [button.superview convertRect:button.frame toView:self];
         [self addSubview:animationEmojiButton];
         
-        // get animation traget position from input view
-        CGPoint newPoint = [self.inputView convertPoint:self.inputView.center toView:self];
+        // get animation traget position from textField view
+        CGPoint newPoint = [self.textField convertPoint:self.textField.center toView:self];
         [UIView animateWithDuration:0.3 animations:^{
             animationEmojiButton.center = newPoint;
             animationEmojiButton.alpha = 0;
