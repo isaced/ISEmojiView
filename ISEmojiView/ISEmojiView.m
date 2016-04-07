@@ -23,100 +23,129 @@ static const CGFloat EmojiFontSize = 32;
 
 @implementation ISEmojiView
 
--(instancetype)initWithFrame:(CGRect)frame{
+- (CGRect)defaultFrame {
+    return CGRectMake(0, 0, CGRectGetWidth([UIScreen mainScreen].bounds), 216);
+}
+
+- (instancetype)initWithFrame:(CGRect)frame{
     self = [super initWithFrame:frame];
     if (self) {
-        
-        // init emojis
-        NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"ISEmojiList" ofType:@"plist"];
-        self.emojis = [NSArray arrayWithContentsOfFile:plistPath];
-        
-        //
-        NSInteger rowNum = (CGRectGetHeight(frame) / EmojiHeight);
-        NSInteger colNum = (CGRectGetWidth(frame) / EmojiWidth);
-        NSInteger numOfPage = ceil((float)[self.emojis count] / (float)(rowNum * colNum));
-        
-        // init scrollview
-        self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
-        self.scrollView.pagingEnabled = YES;
-        self.scrollView.showsHorizontalScrollIndicator = NO;
-        self.scrollView.showsVerticalScrollIndicator = NO;
-        self.scrollView.delegate = self;
-        self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(frame) * numOfPage,
-                                                 CGRectGetHeight(frame));
-        [self addSubview:self.scrollView];
-        
-        // add emojis
-        
-        NSInteger row = 0;
-        NSInteger column = 0;
-        NSInteger page = 0;
-        
-        NSInteger emojiPointer = 0;
-        for (int i = 0; i < [self.emojis count] + numOfPage - 1; i++) {
-            
-            // Pagination
-            if (i % (rowNum * colNum) == 0) {
-                page ++;    // Increase the number of pages
-                row = 0;    // the number of lines is 0
-                column = 0; // the number of columns is 0
-            }else if (i % colNum == 0) {
-                // NewLine
-                row += 1;   // Increase the number of lines
-                column = 0; // The number of columns is 0
-            }
-            
-            CGRect currentRect = CGRectMake(((page-1) * frame.size.width) + (column * EmojiWidth),
-                                            row * EmojiHeight,
-                                            EmojiWidth,
-                                            EmojiHeight);
-            
-            if (row == (rowNum - 1) && column == (colNum - 1)) {
-                // last position of page, add delete button
-                
-                ISDeleteButton *deleteButton = [ISDeleteButton buttonWithType:UIButtonTypeCustom];
-                [deleteButton addTarget:self action:@selector(deleteButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                deleteButton.frame = currentRect;
-                deleteButton.tintColor = [UIColor blackColor];
-                [self.scrollView addSubview:deleteButton];
-                
-            }else{
-                NSString *emoji = self.emojis[emojiPointer++];
-                
-                // init Emoji Button
-                UIButton *emojiButton = [UIButton buttonWithType:UIButtonTypeCustom];
-                emojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];
-                [emojiButton setTitle:emoji forState:UIControlStateNormal];
-                [emojiButton addTarget:self action:@selector(emojiButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
-                
-                emojiButton.frame = currentRect;
-                [self.scrollView addSubview:emojiButton];
-            }
-            
-            column++;
-        }
-        
-        // add PageControl
-        self.pageControl = [[UIPageControl alloc] init];
-        self.pageControl.hidesForSinglePage = YES;
-        self.pageControl.currentPage = 0;
-        self.pageControl.backgroundColor = [UIColor clearColor];
-        self.pageControl.numberOfPages = numOfPage;
-        CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:numOfPage];
-        self.pageControl.frame = CGRectMake(CGRectGetMidX(frame) - (pageControlSize.width / 2),
-                                            CGRectGetHeight(frame) - pageControlSize.height + 5,
-                                            pageControlSize.width,
-                                            pageControlSize.height);
-        [self.pageControl addTarget:self action:@selector(pageControlTouched:) forControlEvents:UIControlEventValueChanged];
-        [self addSubview:self.pageControl];
-        
-        // default allow animation
-        self.popAnimationEnable = YES;
-        
-        self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+        [self initUIWithFrame:frame];
     }
     return self;
 }
+
+-(instancetype)initWithTextField:(UIView *)textField delegate:(id<ISEmojiViewDelegate>)delegate popAnimationEnable:(BOOL)popAnimationEnable{
+    self = [super init];
+    if (self) {        
+        self.delegate = delegate;
+        self.textField = textField;
+        self.popAnimationEnable = popAnimationEnable;
+    }
+    return self;
+}
+
+- (void)initUIWithFrame:(CGRect)frame {
+    if (CGRectEqualToRect(frame, CGRectZero)) {
+        frame = [self defaultFrame];
+    }
+    
+    self.frame = frame;
+    
+    // init emojis
+    NSString *plistPath = [[NSBundle mainBundle] pathForResource:@"ISEmojiList" ofType:@"plist"];
+    self.emojis = [NSArray arrayWithContentsOfFile:plistPath];
+    
+    //
+    NSInteger rowNum = (CGRectGetHeight(frame) / EmojiHeight);
+    NSInteger colNum = (CGRectGetWidth(frame) / EmojiWidth);
+    NSInteger numOfPage = ceil((float)[self.emojis count] / (float)(rowNum * colNum));
+    
+    if (rowNum == 0 && colNum == 0) {
+        return;
+    }
+    
+    // init scrollview
+    self.scrollView = [[UIScrollView alloc] initWithFrame:frame];
+    self.scrollView.pagingEnabled = YES;
+    self.scrollView.showsHorizontalScrollIndicator = NO;
+    self.scrollView.showsVerticalScrollIndicator = NO;
+    self.scrollView.delegate = self;
+    self.scrollView.contentSize = CGSizeMake(CGRectGetWidth(frame) * numOfPage,
+                                             CGRectGetHeight(frame));
+    [self addSubview:self.scrollView];
+    
+    // add emojis
+    
+    NSInteger row = 0;
+    NSInteger column = 0;
+    NSInteger page = 0;
+    
+    NSInteger emojiPointer = 0;
+    for (int i = 0; i < [self.emojis count] + numOfPage - 1; i++) {
+        
+        // Pagination
+        if (i % (rowNum * colNum) == 0) {
+            page ++;    // Increase the number of pages
+            row = 0;    // the number of lines is 0
+            column = 0; // the number of columns is 0
+        }else if (i % colNum == 0) {
+            // NewLine
+            row += 1;   // Increase the number of lines
+            column = 0; // The number of columns is 0
+        }
+        
+        CGRect currentRect = CGRectMake(((page-1) * frame.size.width) + (column * EmojiWidth),
+                                        row * EmojiHeight,
+                                        EmojiWidth,
+                                        EmojiHeight);
+        
+        if (row == (rowNum - 1) && column == (colNum - 1)) {
+            // last position of page, add delete button
+            
+            ISDeleteButton *deleteButton = [ISDeleteButton buttonWithType:UIButtonTypeCustom];
+            [deleteButton addTarget:self action:@selector(deleteButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            deleteButton.frame = currentRect;
+            deleteButton.tintColor = [UIColor blackColor];
+            [self.scrollView addSubview:deleteButton];
+            
+        }else{
+            NSString *emoji = self.emojis[emojiPointer++];
+            
+            // init Emoji Button
+            UIButton *emojiButton = [UIButton buttonWithType:UIButtonTypeCustom];
+            emojiButton.titleLabel.font = [UIFont fontWithName:@"Apple color emoji" size:EmojiFontSize];
+            [emojiButton setTitle:emoji forState:UIControlStateNormal];
+            [emojiButton addTarget:self action:@selector(emojiButtonPressed:) forControlEvents:UIControlEventTouchUpInside];
+            
+            emojiButton.frame = currentRect;
+            [self.scrollView addSubview:emojiButton];
+        }
+        
+        column++;
+    }
+    
+    // add PageControl
+    self.pageControl = [[UIPageControl alloc] init];
+    self.pageControl.hidesForSinglePage = YES;
+    self.pageControl.currentPage = 0;
+    self.pageControl.backgroundColor = [UIColor clearColor];
+    self.pageControl.numberOfPages = numOfPage;
+    CGSize pageControlSize = [self.pageControl sizeForNumberOfPages:numOfPage];
+    self.pageControl.frame = CGRectMake(CGRectGetMidX(frame) - (pageControlSize.width / 2),
+                                        CGRectGetHeight(frame) - pageControlSize.height + 5,
+                                        pageControlSize.width,
+                                        pageControlSize.height);
+    [self.pageControl addTarget:self action:@selector(pageControlTouched:) forControlEvents:UIControlEventValueChanged];
+    [self addSubview:self.pageControl];
+    
+    // default allow animation
+    self.popAnimationEnable = YES;
+    
+    self.scrollView.autoresizingMask = UIViewAutoresizingFlexibleLeftMargin | UIViewAutoresizingFlexibleRightMargin;
+}
+
+#pragma mark Action
 
 - (void)pageControlTouched:(UIPageControl *)sender {
     CGRect bounds = self.scrollView.bounds;

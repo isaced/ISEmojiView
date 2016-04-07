@@ -26,11 +26,9 @@
     [self.view addSubview:self.textView];
     
     // init ISEmojiView
-    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithFrame:CGRectMake(0, 0, self.view.frame.size.width, 216)];
-    emojiView.delegate = self;
-    emojiView.textField = self.textView;
+    ISEmojiView *emojiView = [[ISEmojiView alloc] initWithTextField:self.textView delegate:self popAnimationEnable:YES];
     self.textView.inputView = emojiView;
-    
+
     [self.textView becomeFirstResponder];
 }
 

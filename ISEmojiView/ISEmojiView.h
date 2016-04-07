@@ -42,6 +42,13 @@
  */
 @property (nonatomic, assign) BOOL popAnimationEnable;
 
+/**
+ *  init ISEmojiView
+ */
+- (instancetype)initWithTextField:(UIView *)textField
+                         delegate:(id<ISEmojiViewDelegate>)delegate
+               popAnimationEnable:(BOOL)popAnimationEnable;
+
 @end
 
 /**
