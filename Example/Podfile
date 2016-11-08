@@ -1,0 +1,5 @@
+use_frameworks!
+
+target 'ISEmojiViewExample' do
+  pod 'ISEmojiView', :path => '../'
+end
