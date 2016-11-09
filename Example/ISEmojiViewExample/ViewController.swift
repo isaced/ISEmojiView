@@ -7,8 +7,9 @@
 //
 
 import UIKit
+import ISEmojiView
 
-class ViewController: UIViewController {
+class ViewController: UIViewController, ISEmojiViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
     
@@ -16,8 +17,20 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         
         let emojiView = ISEmojiView()
+        emojiView.delegate = self
+        textView.inputView = emojiView
         textView.becomeFirstResponder()
     }
-
+    
+    //MARK: <ISEmojiViewDelegate>
+    func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String) {
+        textView.text = textView.text.appending(emoji)
+    }
+    
+    func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
+        if let currentText = textView.text {
+            textView.text = currentText.substring(to: currentText.index(before: currentText.endIndex))
+        }
+    }
 }
 
