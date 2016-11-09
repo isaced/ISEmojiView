@@ -1,6 +1,5 @@
 # ISEmojiView
 
-[![CI Status](http://img.shields.io/travis/isaced/ISEmojiView.svg?style=flat)](https://travis-ci.org/isaced/ISEmojiView)
 [![Version](https://img.shields.io/cocoapods/v/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)
 [![License](https://img.shields.io/cocoapods/l/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)
 [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)
@@ -11,18 +10,45 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Requirements
 
-## Installation
+- Swift3
+- iOS7+
 
-ISEmojiView is available through [CocoaPods](http://cocoapods.org). To install
-it, simply add the following line to your Podfile:
+## Useage
+
+### Cocoapods
 
 ```ruby
 pod "ISEmojiView"
 ```
 
-## Author
+### Import
 
-isaced, isaced@163.com
+```
+import ISEmojiView
+```
+
+### Initialization
+
+```
+let emojiView = ISEmojiView()
+emojiView.delegate = self
+textView.inputView = emojiView
+```
+### Delegate
+
+<ISEmojiViewDelegate>
+
+```
+func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String) {
+    textView.text = textView.text.appending(emoji)
+}
+    
+func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
+    if let currentText = textView.text {
+        textView.text = currentText.substring(to: currentText.index(before: currentText.endIndex))
+    }
+}
+```
 
 ## License
 
