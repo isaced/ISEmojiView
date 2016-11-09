@@ -17,8 +17,7 @@ fileprivate let defaultFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.wi
 
 public class ISEmojiView: UIView, UIScrollViewDelegate {
     
-    let EmojiWidth = CGFloat(53.0)
-    let EmojiHeight = CGFloat(50.0)
+    let EmojiSize = CGSize(width: 50, height: 50)
     let EmojiFontSize = CGFloat(32.0)
     
     var scrollView: UIScrollView = {
@@ -58,8 +57,8 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
     
     func setupUI() {
         
-        let rowNum: Int = Int(frame.height / EmojiHeight)
-        let colNum: Int = Int(frame.width / EmojiWidth)
+        let rowNum: Int = Int(frame.height / EmojiSize.height)
+        let colNum: Int = Int(frame.width / EmojiSize.width)
         let numOfPage: Int = Int(ceil(CGFloat(emojis.count) / CGFloat((rowNum * colNum))))
         
         guard rowNum != 0 && colNum != 0 else {
@@ -83,10 +82,10 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
                 column = 0      // The number of columns is 0
             }
             
-            let currentRect = CGRect(x: (CGFloat((page-1)) * frame.width) + (CGFloat(column) * EmojiWidth),
-                                     y: CGFloat(row) * EmojiHeight,
-                                     width: EmojiWidth,
-                                     height: EmojiHeight)
+            let currentRect = CGRect(x: (CGFloat((page-1)) * frame.width) + (CGFloat(column) * EmojiSize.width),
+                                     y: CGFloat(row) * EmojiSize.height,
+                                     width: EmojiSize.width,
+                                     height: EmojiSize.height)
             
             if (row == (rowNum - 1) && column == (colNum - 1)) {
                 // last position of page, add delete button
