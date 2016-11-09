@@ -5,7 +5,7 @@ ISEmojiView [![CocoaPods](https://img.shields.io/cocoapods/v/ISEmojiView.svg?sty
 
 An easy to use Emoji keyboard for iOS.
 
-![screenshot](https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg)
+![screenshot](https://raw.github.com/isaced/ISEmojiView/oc/screenshot.jpg)
 
 ## Install
 
