@@ -2,6 +2,8 @@
 
 An easy to use Emoji keyboard for iOS.
 
+Has been rewritten with swift, the old *Objective-C* version on branch [oc](https://github.com/isaced/ISEmojiView/tree/oc).
+
 ![screenshot](https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg)
 
 ## Example
@@ -11,7 +13,8 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 ## Requirements
 
 - Swift3
-- iOS7+
+- iOS8+
+- Xcode8
 
 ## Useage
 
