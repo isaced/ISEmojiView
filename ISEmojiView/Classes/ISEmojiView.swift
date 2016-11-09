@@ -8,26 +8,49 @@
 
 import Foundation
 
+/// emoji view action callback delegate
 public protocol ISEmojiViewDelegate: class {
+    
+    /// did press a emoji button
+    ///
+    /// - Parameters:
+    ///   - emojiView: the emoji view
+    ///   - emoji: a emoji
     func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String)
+    
+    
+    /// will delete last character in you input view
+    ///
+    /// - Parameter emojiView: the emoji view
     func emojiViewDidPressDeleteButton(emojiView: ISEmojiView)
 }
 
-fileprivate let defaultFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216.0)
+fileprivate let EmojiSize = CGSize(width: 35, height: 35)
+fileprivate let EmojiFontSize = CGFloat(32.0)
+fileprivate let collectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 35, right: 10)
+fileprivate let collectionMinimumLineSpacing = CGFloat(0)
+fileprivate let collectionMinimumInteritemSpacing = CGFloat(5.0)
 
-public class ISEmojiView: UIView, UIScrollViewDelegate {
-    
-    let EmojiSize = CGSize(width: 50, height: 50)
-    let EmojiFontSize = CGFloat(32.0)
-    
-    var scrollView: UIScrollView = {
-        let scroll = UIScrollView(frame: defaultFrame)
-        scroll.isPagingEnabled = true
-        scroll.showsHorizontalScrollIndicator = false
-        scroll.showsVerticalScrollIndicator = false
-        scroll.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
-        scroll.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
-        return scroll
+/// A emoji keyboard view
+public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
+
+    var defaultFrame: CGRect {
+        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 258)
+    }
+    var collectionView: UICollectionView = {
+        let layout = UICollectionViewFlowLayout()
+        layout.itemSize = EmojiSize
+        layout.scrollDirection = .horizontal
+        layout.minimumLineSpacing = collectionMinimumLineSpacing
+        layout.minimumInteritemSpacing = collectionMinimumInteritemSpacing
+        layout.sectionInset = collectionInset
+        let collection = UICollectionView(frame: .zero, collectionViewLayout: layout)
+        collection.showsHorizontalScrollIndicator = false
+        collection.showsVerticalScrollIndicator = false
+        collection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        collection.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
+        collection.register(ISEmojiCell.self, forCellWithReuseIdentifier: "cell")
+        return collection
     }()
     var pageControl: UIPageControl = {
         let pageContr = UIPageControl()
@@ -35,6 +58,13 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         pageContr.currentPage = 0
         pageContr.backgroundColor = .clear
         return pageContr
+    }()
+    var deleteButton: UIButton = {
+        let button = UIButton(type: .system)
+        let deleteButtonImage = UIImage(named: "icon_delete", in: ISEmojiView.thisBundle(), compatibleWith: nil)
+        button.setImage(deleteButtonImage, for: .normal)
+        button.tintColor = .lightGray
+        return button
     }()
     var emojis: [String] = {
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
@@ -47,7 +77,7 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
     public weak var delegate: ISEmojiViewDelegate?
     
     override init(frame: CGRect) {
-        super.init(frame: defaultFrame)
+        super.init(frame: frame)
         setupUI()
     }
     
@@ -55,82 +85,76 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         super.init(coder: aDecoder)
     }
     
+    public override func layoutSubviews() {
+        updateControlLayout()
+    }
+
     func setupUI() {
-        
-        let rowNum: Int = Int(frame.height / EmojiSize.height)
-        let colNum: Int = Int(frame.width / EmojiSize.width)
-        let numOfPage: Int = Int(ceil(CGFloat(emojis.count) / CGFloat((rowNum * colNum))))
-        
-        guard rowNum != 0 && colNum != 0 else {
-            return
-        }
-        
-        // Add emojis
-        var row: Int = 0
-        var column: Int = 0
-        var page: Int = 0
-        var emojiPointer: Int = 0
-        
-        for var i in 0..<emojis.count {
-            if i % Int(rowNum * colNum) == 0 {
-                page = page + 1 // Increase the number of pages
-                row = 0         // the number of lines is 0
-                column = 0      // the number of columns is 0
-            }else if i % colNum == 0 {
-                // NewLine
-                row = row + 1   // Increase the number of lines
-                column = 0      // The number of columns is 0
-            }
-            
-            let currentRect = CGRect(x: (CGFloat((page-1)) * frame.width) + (CGFloat(column) * EmojiSize.width),
-                                     y: CGFloat(row) * EmojiSize.height,
-                                     width: EmojiSize.width,
-                                     height: EmojiSize.height)
-            
-            if (row == (rowNum - 1) && column == (colNum - 1)) {
-                // last position of page, add delete button
-                let deleteButton = UIButton(type: .custom)
-                deleteButton.frame = currentRect
-                let deleteButtonImage = UIImage(named: "icon_delete", in: ISEmojiView.thisBundle(), compatibleWith: nil)
-                deleteButton.setImage(deleteButtonImage, for: .normal)
-                deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
-                deleteButton.tintColor = .lightGray
-                scrollView.addSubview(deleteButton)
-            }else{
-                let emoji = emojis[emojiPointer]
-                emojiPointer = emojiPointer + 1
-                
-                // init Emoji Button
-                
-                let emojiButton = UIButton(type: .custom)
-                emojiButton.frame = currentRect
-                emojiButton.tintColor = .black
-                emojiButton.titleLabel?.font = UIFont(name: "Apple color e  moji", size: EmojiFontSize)
-                emojiButton.setTitle(emoji, for: .normal)
-                emojiButton.addTarget(self, action: #selector(emojiButtonPressed), for: .touchUpInside)
-                scrollView.addSubview(emojiButton)
-            }
-            
-            column = column + 1
-        }
+        frame = defaultFrame
         
         // ScrollView
-        scrollView.delegate = self
-        scrollView.contentSize = CGSize(width: frame.width * CGFloat(numOfPage), height: frame.height)
-        self.addSubview(scrollView)
+        collectionView.frame = self.bounds
+        collectionView.dataSource = self
+        collectionView.delegate = self
+        addSubview(collectionView)
+        collectionView.reloadData()
         
         // PageControl
-        let pageControlSizes = pageControl.size(forNumberOfPages: numOfPage)
-        pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
-                                   y: frame.height-pageControlSizes.height + 5,
-                                   width: pageControlSizes.width, height:
-            pageControlSizes.height)
         pageControl.addTarget(self, action: #selector(pageControlTouched), for: .touchUpInside)
-        pageControl.numberOfPages = numOfPage
         pageControl.pageIndicatorTintColor = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
         pageControl.currentPageIndicatorTintColor = UIColor(red: 153/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
-        self.addSubview(pageControl)
+        pageControl.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
+        addSubview(pageControl)
+        
+        // DeleteButton
+        deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+        addSubview(deleteButton)
     }
+    
+    func updateControlLayout() {
+        frame = defaultFrame
+        
+        // update page control
+        let pageCount = Int(ceil(collectionView.contentSize.width / collectionView.bounds.width))
+        let pageControlSizes = pageControl.size(forNumberOfPages: pageCount)
+        pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
+                                        y: frame.height-pageControlSizes.height,
+                                        width: pageControlSizes.width,
+                                        height: pageControlSizes.height)
+        pageControl.numberOfPages = pageCount
+        
+        // update delete button
+        deleteButton.frame = CGRect(x: frame.width - 45, y: frame.height - 40, width: 40, height: 40)
+    }
+    
+    //MARK: <UICollectionView>
+    
+    public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        return emojis.count
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ISEmojiCell
+        cell.setEmoji(emojis[indexPath.row])
+        return cell
+    }
+    
+    public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        let emoji = emojis[indexPath.row]
+        self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
+    }
+    
+    //MARK: <UIScrollView>
+    
+    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        let pageWidth = scrollView.bounds.width
+        let newPageNumber = Int(floor((scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth) + 1)
+        if pageControl.currentPage != newPageNumber {
+            pageControl.currentPage = newPageNumber
+        }
+    }
+    
+    //MARK: Action
     
     func emojiButtonPressed(sender: UIButton) {
         if let emoji = sender.titleLabel?.text {
@@ -143,18 +167,12 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
     }
     
     func pageControlTouched(sender: UIPageControl) {
-        var bounds = scrollView.bounds
+        var bounds = collectionView.bounds
         bounds.origin.x = bounds.width * CGFloat(sender.currentPage)
-        scrollView.scrollRectToVisible(bounds, animated: true)
+        collectionView.scrollRectToVisible(bounds, animated: true)
     }
     
-    public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageWidth = scrollView.frame.width
-        let newPageNumber = Int(floor((scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth) + 1)
-        if pageControl.currentPage != newPageNumber {
-            pageControl.currentPage = newPageNumber
-        }
-    }
+    //MARK: Tools
     
     static func thisBundle() -> Bundle {
         let podBundle = Bundle(for: ISEmojiView.classForCoder())
@@ -174,5 +192,36 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
             return filePath
         }
         return nil
+    }
+}
+
+/// the emoji cell in the grid
+fileprivate class ISEmojiCell: UICollectionViewCell {
+    
+    var emojiLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Apple color e  moji", size: EmojiFontSize)
+        label.textAlignment = .center
+        label.autoresizingMask = [.flexibleWidth,.flexibleHeight]
+        return label
+    }()
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+        setupUI()
+    }
+    
+    func setupUI() {
+        emojiLabel.frame = bounds
+        self.addSubview(emojiLabel)
+    }
+    
+    func setEmoji(_ emoji: String) {
+        self.emojiLabel.text = emoji
     }
 }

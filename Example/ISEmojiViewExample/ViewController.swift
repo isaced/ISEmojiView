@@ -19,6 +19,11 @@ class ViewController: UIViewController, ISEmojiViewDelegate {
         let emojiView = ISEmojiView()
         emojiView.delegate = self
         textView.inputView = emojiView
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
         textView.becomeFirstResponder()
     }
     
