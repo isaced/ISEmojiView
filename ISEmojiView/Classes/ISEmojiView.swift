@@ -27,6 +27,7 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         scroll.showsHorizontalScrollIndicator = false
         scroll.showsVerticalScrollIndicator = false
         scroll.autoresizingMask = [.flexibleLeftMargin, .flexibleRightMargin]
+        scroll.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
         return scroll
     }()
     var pageControl: UIPageControl = {
@@ -37,19 +38,10 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         return pageContr
     }()
     var emojis: [String] = {
-        let podBundle = Bundle(for: ISEmojiView.classForCoder())
-        if let bundleURL = podBundle.url(forResource: "ISEmojiView", withExtension: "bundle") {
-            if let bundle = Bundle(url: bundleURL) {
-                if let plistPath = bundle.path(forResource: "ISEmojiList", ofType: "plist") {
-                    if let emojiList = NSArray(contentsOfFile: plistPath) as? [String] {
-                        return emojiList
-                    }
-                }
-            }else{
-                assertionFailure("Could not load the bundle")
+        if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
+            if let emojiList = NSArray(contentsOfFile: filePath) as? [String] {
+                return emojiList
             }
-        }else{
-            assertionFailure("Could not create a path to the bundle")
         }
         return []
     }()
@@ -98,12 +90,12 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
             
             if (row == (rowNum - 1) && column == (colNum - 1)) {
                 // last position of page, add delete button
-                let deleteButton = UIButton()
+                let deleteButton = UIButton(type: .custom)
                 deleteButton.frame = currentRect
-                deleteButton.tintColor = .black
-                deleteButton.setTitle("⬅︎", for: .normal) // ←
-                deleteButton.setTitleColor(.black, for: .normal)
+                let deleteButtonImage = UIImage(named: "icon_delete", in: ISEmojiView.thisBundle(), compatibleWith: nil)
+                deleteButton.setImage(deleteButtonImage, for: .normal)
                 deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+                deleteButton.tintColor = .lightGray
                 scrollView.addSubview(deleteButton)
             }else{
                 let emoji = emojis[emojiPointer]
@@ -111,10 +103,10 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
                 
                 // init Emoji Button
                 
-                let emojiButton = UIButton()
+                let emojiButton = UIButton(type: .custom)
                 emojiButton.frame = currentRect
                 emojiButton.tintColor = .black
-                emojiButton.titleLabel?.font = UIFont(name: "Apple color emoji", size: EmojiFontSize)
+                emojiButton.titleLabel?.font = UIFont(name: "Apple color e  moji", size: EmojiFontSize)
                 emojiButton.setTitle(emoji, for: .normal)
                 emojiButton.addTarget(self, action: #selector(emojiButtonPressed), for: .touchUpInside)
                 scrollView.addSubview(emojiButton)
@@ -136,6 +128,8 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
             pageControlSizes.height)
         pageControl.addTarget(self, action: #selector(pageControlTouched), for: .touchUpInside)
         pageControl.numberOfPages = numOfPage
+        pageControl.pageIndicatorTintColor = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
+        pageControl.currentPageIndicatorTintColor = UIColor(red: 153/255.0, green: 153/255.0, blue: 153/255.0, alpha: 1)
         self.addSubview(pageControl)
     }
     
@@ -163,4 +157,23 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         }
     }
     
+    static func thisBundle() -> Bundle {
+        let podBundle = Bundle(for: ISEmojiView.classForCoder())
+        if let bundleURL = podBundle.url(forResource: "ISEmojiView", withExtension: "bundle") {
+            if let bundle = Bundle(url: bundleURL) {
+                return bundle
+            }else{
+                assertionFailure("Could not load the bundle")
+            }
+        }else{
+            assertionFailure("Could not create a path to the bundle")
+        }
+        return Bundle()
+    }
+    static func pathOfResourceInBundle(filename:String, filetype: String) -> String? {
+        if let filePath = thisBundle().path(forResource: filename, ofType: filetype) {
+            return filePath
+        }
+        return nil
+    }
 }
