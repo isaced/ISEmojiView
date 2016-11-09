@@ -130,7 +130,7 @@ public class ISEmojiView: UIView, UIScrollViewDelegate {
         
         // PageControl
         let pageControlSizes = pageControl.size(forNumberOfPages: numOfPage)
-        pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width,
+        pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
                                    y: frame.height-pageControlSizes.height + 5,
                                    width: pageControlSizes.width, height:
             pageControlSizes.height)
