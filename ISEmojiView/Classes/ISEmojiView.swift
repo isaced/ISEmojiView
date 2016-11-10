@@ -25,17 +25,17 @@ public protocol ISEmojiViewDelegate: class {
     func emojiViewDidPressDeleteButton(emojiView: ISEmojiView)
 }
 
-fileprivate let EmojiSize = CGSize(width: 35, height: 35)
-fileprivate let EmojiFontSize = CGFloat(32.0)
+fileprivate let EmojiSize = CGSize(width: 38, height: 38)
+fileprivate let EmojiFontSize = CGFloat(35.0)
 fileprivate let collectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 35, right: 10)
 fileprivate let collectionMinimumLineSpacing = CGFloat(0)
-fileprivate let collectionMinimumInteritemSpacing = CGFloat(5.0)
+fileprivate let collectionMinimumInteritemSpacing = CGFloat(8.0)
 
 /// A emoji keyboard view
 public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var defaultFrame: CGRect {
-        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 258)
+        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216)
     }
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -66,9 +66,13 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         button.tintColor = .lightGray
         return button
     }()
-    var emojis: [String] = {
+    var emojis: [[String]] = {
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
-            if let emojiList = NSArray(contentsOfFile: filePath) as? [String] {
+            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[String]] {
+                var emojiList: [[String]] = []
+                for sectionName in ["People","Nature","Objects","Places","Symbols"] {
+                    emojiList.append(sections[sectionName]!)
+                }
                 return emojiList
             }
         }
@@ -128,19 +132,22 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     //MARK: <UICollectionView>
+    public func numberOfSections(in collectionView: UICollectionView) -> Int {
+        return 5
+    }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return emojis.count
+        return 50
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ISEmojiCell
-        cell.setEmoji(emojis[indexPath.row])
+        cell.setEmoji(emojis[indexPath.section][indexPath.row])
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emoji = emojis[indexPath.row]
+        let emoji = emojis[indexPath.section][indexPath.row]
         self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
     }
     
