@@ -35,6 +35,12 @@ fileprivate let ISMainBackgroundColor = UIColor(red: 249/255.0, green: 249/255.0
 /// A emoji keyboard view
 public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 
+    /// the delegate for callback
+    public weak var delegate: ISEmojiViewDelegate?
+    
+    /// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
+    public var isShowPopPreview = true
+    
     var defaultFrame: CGRect {
         return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 236)
     }
@@ -67,7 +73,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         button.tintColor = .lightGray
         return button
     }()
-    var emojis: [[String]] = {
+    private var emojis: [[String]] = {
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
             if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[String]] {
                 var emojiList: [[String]] = []
@@ -79,8 +85,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
         return []
     }()
-    fileprivate var emojiPopView = ISEmojiPopView()
-    public weak var delegate: ISEmojiViewDelegate?
+    fileprivate let emojiPopView = ISEmojiPopView()
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -95,7 +100,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         updateControlLayout()
     }
 
-    func setupUI() {
+    private func setupUI() {
         frame = defaultFrame
         
         // ScrollView
@@ -122,7 +127,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         addSubview(emojiPopView)
     }
     
-    func updateControlLayout() {
+    private func updateControlLayout() {
         frame = defaultFrame
         
         // update page control
@@ -139,7 +144,9 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     //MARK: LongPress
-    func emojiLongPressHandle(sender: UILongPressGestureRecognizer){
+    @objc private func emojiLongPressHandle(sender: UILongPressGestureRecognizer){
+        guard isShowPopPreview else { return }
+        
         let location = sender.location(in: collectionView)
         if longPressLocationInEdge(location) {
             if let indexPath = collectionView.indexPathForItem(at: location), let attr = collectionView.layoutAttributesForItem(at: indexPath) {
@@ -163,7 +170,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
     }
     
-    func longPressLocationInEdge(_ location: CGPoint) -> Bool {
+    private func longPressLocationInEdge(_ location: CGPoint) -> Bool {
         let edgeRect = UIEdgeInsetsInsetRect(collectionView.bounds, collectionInset)
         return edgeRect.contains(location)
     }
@@ -189,7 +196,6 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     //MARK: <UIScrollView>
-    
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
         if let firstVisibleCell = collectionView.visibleCells.first {
             if let indexpath = collectionView.indexPath(for: firstVisibleCell){
@@ -199,26 +205,24 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     //MARK: Action
-    
-    func emojiButtonPressed(sender: UIButton) {
+    private func emojiButtonPressed(sender: UIButton) {
         if let emoji = sender.titleLabel?.text {
             self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
         }
     }
     
-    func deleteButtonPressed(sender: UIButton) {
+    @objc private func deleteButtonPressed(sender: UIButton) {
         self.delegate?.emojiViewDidPressDeleteButton(emojiView: self)
     }
     
-    func pageControlTouched(sender: UIPageControl) {
+    @objc private func pageControlTouched(sender: UIPageControl) {
         var bounds = collectionView.bounds
         bounds.origin.x = bounds.width * CGFloat(sender.currentPage)
         collectionView.scrollRectToVisible(bounds, animated: true)
     }
     
     //MARK: Tools
-    
-    static func thisBundle() -> Bundle {
+    static private func thisBundle() -> Bundle {
         let podBundle = Bundle(for: ISEmojiView.classForCoder())
         if let bundleURL = podBundle.url(forResource: "ISEmojiView", withExtension: "bundle") {
             if let bundle = Bundle(url: bundleURL) {
@@ -231,7 +235,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
         return Bundle()
     }
-    static func pathOfResourceInBundle(filename:String, filetype: String) -> String? {
+    static private func pathOfResourceInBundle(filename:String, filetype: String) -> String? {
         if let filePath = thisBundle().path(forResource: filename, ofType: filetype) {
             return filePath
         }
