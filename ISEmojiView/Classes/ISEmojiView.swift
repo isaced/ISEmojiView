@@ -126,7 +126,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         frame = defaultFrame
         
         // update page control
-        let pageCount = Int(ceil(collectionView.contentSize.width / collectionView.bounds.width))
+        let pageCount = collectionView.numberOfSections
         let pageControlSizes = pageControl.size(forNumberOfPages: pageCount)
         pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
                                         y: frame.height-pageControlSizes.height,
@@ -191,10 +191,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     //MARK: <UIScrollView>
     
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
-        let pageWidth = scrollView.bounds.width
-        let newPageNumber = Int(floor((scrollView.contentOffset.x - pageWidth / 2.0) / pageWidth) + 1)
-        if pageControl.currentPage != newPageNumber {
-            pageControl.currentPage = newPageNumber
+        if let firstVisibleCell = collectionView.visibleCells.first {
+            if let indexpath = collectionView.indexPath(for: firstVisibleCell){
+                pageControl.currentPage = indexpath.section
+            }
         }
     }
     
