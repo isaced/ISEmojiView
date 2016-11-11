@@ -30,6 +30,7 @@ fileprivate let EmojiFontSize = CGFloat(30.0)
 fileprivate let collectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 38, right: 10)
 fileprivate let collectionMinimumLineSpacing = CGFloat(0)
 fileprivate let collectionMinimumInteritemSpacing = CGFloat(0)
+fileprivate let ISMainBackgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
 
 /// A emoji keyboard view
 public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
@@ -48,7 +49,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         collection.showsHorizontalScrollIndicator = false
         collection.showsVerticalScrollIndicator = false
         collection.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-        collection.backgroundColor = UIColor(red: 249/255.0, green: 249/255.0, blue: 249/255.0, alpha: 1)
+        collection.backgroundColor = ISMainBackgroundColor
         collection.register(ISEmojiCell.self, forCellWithReuseIdentifier: "cell")
         return collection
     }()
@@ -78,6 +79,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
         return []
     }()
+    fileprivate var emojiPopView = ISEmojiPopView()
     public weak var delegate: ISEmojiViewDelegate?
     
     override init(frame: CGRect) {
@@ -113,6 +115,11 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         // DeleteButton
         deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
         addSubview(deleteButton)
+        
+        // Long press to pop preview
+        let emojiLongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emojiLongPressHandle))
+        self.addGestureRecognizer(emojiLongPressGestureRecognizer)
+        addSubview(emojiPopView)
     }
     
     func updateControlLayout() {
@@ -131,13 +138,43 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         deleteButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40, width: 40, height: 40)
     }
     
+    //MARK: LongPress
+    func emojiLongPressHandle(sender: UILongPressGestureRecognizer){
+        let location = sender.location(in: collectionView)
+        if longPressLocationInEdge(location) {
+            if let indexPath = collectionView.indexPathForItem(at: location), let attr = collectionView.layoutAttributesForItem(at: indexPath) {
+                let emoji = emojis[indexPath.section][indexPath.row]
+                if sender.state == .ended {
+                    emojiPopView.dismiss()
+                    self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
+                }else{
+                    let cellRect = attr.frame
+                    let cellFrameInSuperView = collectionView.convert(cellRect, to: self)
+                    emojiPopView.setEmoji(emoji)
+                    let emojiPopLocaltion = CGPoint(x: cellFrameInSuperView.origin.x - ((topPartSize.width - bottomPartSize.width) / 2.0) + 5,
+                                                    y: cellFrameInSuperView.origin.y - topPartSize.height - 10)
+                    emojiPopView.move(location: emojiPopLocaltion, animation: sender.state != .began)
+                }
+            }else{
+                emojiPopView.dismiss()
+            }
+        }else{
+            emojiPopView.dismiss()
+        }
+    }
+    
+    func longPressLocationInEdge(_ location: CGPoint) -> Bool {
+        let edgeRect = UIEdgeInsetsInsetRect(collectionView.bounds, collectionInset)
+        return edgeRect.contains(location)
+    }
+    
     //MARK: <UICollectionView>
     public func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 5
+        return emojis.count
     }
     
     public func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        return 50
+        return emojis[section].count
     }
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -226,7 +263,91 @@ fileprivate class ISEmojiCell: UICollectionViewCell {
     func setupUI() {
         emojiLabel.frame = bounds
         self.addSubview(emojiLabel)
-//        backgroundColor = .red
+    }
+    
+    func setEmoji(_ emoji: String) {
+        self.emojiLabel.text = emoji
+    }
+}
+
+fileprivate let topPartSize = CGSize(width: EmojiSize.width * 1.3, height: EmojiSize.height * 1.6)
+fileprivate let bottomPartSize = CGSize(width: EmojiSize.width * 0.8, height: EmojiSize.height + 10)
+
+fileprivate class ISEmojiPopView: UIView {
+    var emojiLabel: UILabel = {
+        let label = UILabel()
+        label.font = UIFont(name: "Apple color emoji", size: EmojiFontSize)
+        label.textAlignment = .center
+        return label
+    }()
+    
+    let EmojiPopViewSize = CGSize(width: topPartSize.width, height: topPartSize.height + bottomPartSize.height)
+    let popBackgroundColor = UIColor.white
+    
+    init() {
+        super.init(frame: CGRect(x: 0, y: 0, width: EmojiPopViewSize.width, height: EmojiPopViewSize.height))
+        setupUI()
+    }
+    
+    required init?(coder aDecoder: NSCoder) {
+        super.init(coder: aDecoder)
+    }
+    
+    func setupUI() {
+        // path
+        var path = CGMutablePath()
+        path.addRoundedRect(in: CGRect(x: 0, y: 0, width: topPartSize.width, height: topPartSize.height),
+                            cornerWidth: 10,
+                            cornerHeight: 10)
+        path.addRoundedRect(in: CGRect(x: topPartSize.width / 2.0 - bottomPartSize.width / 2.0,
+                                       y: topPartSize.height - 10,
+                                       width: bottomPartSize.width,
+                                       height: bottomPartSize.height + 10),
+                            cornerWidth: 5,
+                            cornerHeight: 5)
+        
+        // border
+        let borderLayer = CAShapeLayer()
+        borderLayer.path = path
+        borderLayer.strokeColor = UIColor(white: 0.8, alpha: 1).cgColor //UIColor.red.cgColor
+        borderLayer.lineWidth = 1
+        self.layer.addSublayer(borderLayer)
+        
+        // mask
+        let maskLayer = CAShapeLayer()
+        maskLayer.path = path
+        
+        // content layer
+        let contentLayer = CALayer()
+        contentLayer.frame = bounds
+        contentLayer.backgroundColor = popBackgroundColor.cgColor
+        contentLayer.mask = maskLayer
+        
+        layer.addSublayer(contentLayer)
+        
+        // add label
+        emojiLabel.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topPartSize.height)
+        self.addSubview(emojiLabel)
+        
+        isUserInteractionEnabled = false
+        isHidden = true
+    }
+    
+    func move(location: CGPoint, animation: Bool = true) {
+        UIView.animate(withDuration: animation ? 0.08 : 0, animations: {
+            self.alpha = 1
+            self.frame = CGRect(x: location.x, y: location.y, width: self.frame.width, height: self.frame.height)
+        }, completion: { complate in
+            self.isHidden = false
+        })
+    }
+    
+    func dismiss() {
+        UIView.animate(withDuration: 0.08, animations: {
+            self.alpha = 0
+        }, completion: { complate in
+            self.isHidden = true
+        })
     }
     
     func setEmoji(_ emoji: String) {
