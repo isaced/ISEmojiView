@@ -299,7 +299,7 @@ fileprivate class ISEmojiPopView: UIView {
     
     func setupUI() {
         // path
-        var path = CGMutablePath()
+        let path = CGMutablePath()
         path.addRoundedRect(in: CGRect(x: 0, y: 0, width: topPartSize.width, height: topPartSize.height),
                             cornerWidth: 10,
                             cornerHeight: 10)
