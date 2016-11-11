@@ -25,17 +25,17 @@ public protocol ISEmojiViewDelegate: class {
     func emojiViewDidPressDeleteButton(emojiView: ISEmojiView)
 }
 
-fileprivate let EmojiSize = CGSize(width: 38, height: 38)
-fileprivate let EmojiFontSize = CGFloat(35.0)
-fileprivate let collectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 35, right: 10)
+fileprivate let EmojiSize = CGSize(width: 45, height: 35)
+fileprivate let EmojiFontSize = CGFloat(30.0)
+fileprivate let collectionInset = UIEdgeInsets(top: 10, left: 10, bottom: 38, right: 10)
 fileprivate let collectionMinimumLineSpacing = CGFloat(0)
-fileprivate let collectionMinimumInteritemSpacing = CGFloat(8.0)
+fileprivate let collectionMinimumInteritemSpacing = CGFloat(0)
 
 /// A emoji keyboard view
 public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
 
     var defaultFrame: CGRect {
-        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 216)
+        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 236)
     }
     var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -128,7 +128,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         pageControl.numberOfPages = pageCount
         
         // update delete button
-        deleteButton.frame = CGRect(x: frame.width - 45, y: frame.height - 40, width: 40, height: 40)
+        deleteButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40, width: 40, height: 40)
     }
     
     //MARK: <UICollectionView>
@@ -207,7 +207,7 @@ fileprivate class ISEmojiCell: UICollectionViewCell {
     
     var emojiLabel: UILabel = {
         let label = UILabel()
-        label.font = UIFont(name: "Apple color e  moji", size: EmojiFontSize)
+        label.font = UIFont(name: "Apple color emoji", size: EmojiFontSize)
         label.textAlignment = .center
         label.autoresizingMask = [.flexibleWidth,.flexibleHeight]
         return label
@@ -226,6 +226,7 @@ fileprivate class ISEmojiCell: UICollectionViewCell {
     func setupUI() {
         emojiLabel.frame = bounds
         self.addSubview(emojiLabel)
+//        backgroundColor = .red
     }
     
     func setEmoji(_ emoji: String) {
