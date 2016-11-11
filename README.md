@@ -18,7 +18,9 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ## Useage
 
-### Cocoapods
+### Installation
+
+#### Cocoapods
 
 ```ruby
 # Swift
@@ -26,6 +28,12 @@ pod 'ISEmojiView'
 
 # Objective-C
 pod 'ISEmojiView', '0.0.1'
+```
+
+#### Carthage
+
+```
+github "isaced/ISEmojiView"
 ```
 
 ### Import
