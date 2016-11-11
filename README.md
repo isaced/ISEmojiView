@@ -4,7 +4,7 @@ An easy to use Emoji keyboard for iOS.
 
 Has been rewritten with swift, the old *Objective-C* version on branch [oc](https://github.com/isaced/ISEmojiView/tree/oc).
 
-![screenshot](https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg)
+<img src="https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg" alt="screenshot" width="375" height="667">
 
 ## Example
 
@@ -55,6 +55,13 @@ func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
         textView.text = currentText.substring(to: currentText.index(before: currentText.endIndex))
     }
 }
+```
+
+### Customize
+
+```
+// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
+public var isShowPopPreview = true
 ```
 
 ## License
