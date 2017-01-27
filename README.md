@@ -55,13 +55,11 @@ textView.inputView = emojiView
 
 ```
 func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String) {
-    textView.text = textView.text.appending(emoji)
+    textView.insertText(emoji)
 }
     
 func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
-    if let currentText = textView.text {
-        textView.text = currentText.substring(to: currentText.index(before: currentText.endIndex))
-    }
+    textView.deleteBackward()
 }
 ```
 
