@@ -41,10 +41,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     /// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
     public var isShowPopPreview = true
     
-    var defaultFrame: CGRect {
+    private var defaultFrame: CGRect {
         return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 236)
     }
-    var collectionView: UICollectionView = {
+    public var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
         layout.itemSize = EmojiSize
         layout.scrollDirection = .horizontal
@@ -59,14 +59,14 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         collection.register(ISEmojiCell.self, forCellWithReuseIdentifier: "cell")
         return collection
     }()
-    var pageControl: UIPageControl = {
+    public var pageControl: UIPageControl = {
         let pageContr = UIPageControl()
         pageContr.hidesForSinglePage = true
         pageContr.currentPage = 0
         pageContr.backgroundColor = .clear
         return pageContr
     }()
-    var deleteButton: UIButton = {
+    public var deleteButton: UIButton = {
         let button = UIButton(type: .system)
         let deleteButtonImage = UIImage(named: "icon_delete", in: ISEmojiView.thisBundle(), compatibleWith: nil)
         button.setImage(deleteButtonImage, for: .normal)
@@ -237,6 +237,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
         return Bundle()
     }
+    
     static private func pathOfResourceInBundle(filename:String, filetype: String) -> String? {
         if let filePath = thisBundle().path(forResource: filename, ofType: filetype) {
             return filePath
