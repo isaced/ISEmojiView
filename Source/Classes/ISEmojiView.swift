@@ -73,19 +73,16 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         button.tintColor = .lightGray
         return button
     }()
-    private var emojis: [[String]] = {
-        if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
-            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[String]] {
-                var emojiList: [[String]] = []
-                for sectionName in ["People","Nature","Objects","Places","Symbols"] {
-                    emojiList.append(sections[sectionName]!)
-                }
-                return emojiList
-            }
-        }
-        return []
-    }()
+    
+    public var emojis: [[String]]!
+    
     fileprivate let emojiPopView = ISEmojiPopView()
+    
+    public init(emojis: [[String]]) {
+        self.init()
+        
+        self.emojis = emojis
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -102,6 +99,11 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
 
     private func setupUI() {
         frame = defaultFrame
+        
+        // Default emojis
+        if emojis == nil {
+            self.emojis = ISEmojiView.defaultEmojis()
+        }
         
         // ScrollView
         collectionView.frame = self.bounds
@@ -240,6 +242,19 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
             return filePath
         }
         return nil
+    }
+    
+    static private func defaultEmojis() -> [[String]] {
+        if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
+            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[String]] {
+                var emojiList: [[String]] = []
+                for sectionName in ["People","Nature","Objects","Places","Symbols"] {
+                    emojiList.append(sections[sectionName]!)
+                }
+                return emojiList
+            }
+        }
+        return []
     }
 }
 
