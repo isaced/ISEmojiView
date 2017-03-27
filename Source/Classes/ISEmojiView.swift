@@ -68,8 +68,7 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }()
     public var deleteButton: UIButton = {
         let button = UIButton(type: .system)
-        let deleteButtonImage = UIImage(named: "icon_delete", in: ISEmojiView.thisBundle(), compatibleWith: nil)
-        button.setImage(deleteButtonImage, for: .normal)
+        button.setTitle("⌫", for: .normal)
         button.tintColor = .lightGray
         return button
     }()

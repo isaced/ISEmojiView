@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		0B834BBC1DD5CE12003F5D79 /* ISEmojiView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B834BCB1DD5CE36003F5D79 /* icon_delete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0B834BC51DD5CE36003F5D79 /* icon_delete@2x.png */; };
 		0B834BCC1DD5CE36003F5D79 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */; };
 		0B834BCE1DD5CE36003F5D79 /* ISEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B834BC91DD5CE36003F5D79 /* ISEmojiView.swift */; };
 /* End PBXBuildFile section */
@@ -17,7 +16,6 @@
 		0B834BB71DD5CE12003F5D79 /* ISEmojiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISEmojiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		0B834BBB1DD5CE12003F5D79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B834BC51DD5CE36003F5D79 /* icon_delete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "icon_delete@2x.png"; sourceTree = "<group>"; };
 		0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
 		0B834BC91DD5CE36003F5D79 /* ISEmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISEmojiView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -71,7 +69,6 @@
 		0B834BC31DD5CE36003F5D79 /* Assets */ = {
 			isa = PBXGroup;
 			children = (
-				0B834BC51DD5CE36003F5D79 /* icon_delete@2x.png */,
 				0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */,
 			);
 			path = Assets;
@@ -153,7 +150,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B834BCB1DD5CE36003F5D79 /* icon_delete@2x.png in Resources */,
 				0B834BCC1DD5CE36003F5D79 /* ISEmojiList.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
