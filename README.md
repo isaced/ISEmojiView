@@ -51,27 +51,33 @@ emojiView.delegate = self
 textView.inputView = emojiView
 ```
 
-Custom emoji list, you can read emojis from file or other
-
-```Swift
-let emojiView = ISEmojiView(emojis: [[String]])
-```
-
 ### Delegate
 
-<ISEmojiViewDelegate>
+Implement `<ISEmojiViewDelegate>`
 
 ```Swift
+// callback when tap a emoji on keyboard
 func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String) {
     textView.insertText(emoji)
 }
-    
+
+// callback when tap delete button on keyboard
 func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
     textView.deleteBackward()
 }
 ```
 
 ### Customize
+
+#### custom emoji list
+
+You can load emojis from file or other, load them in initialization.
+
+```Swift
+let emojiView = ISEmojiView(emojis: [[String]])
+```
+
+#### pop animation
 
 ```Swift
 // long press to pop preview effect like iOS10 system emoji keyboard, Default is true
