@@ -84,6 +84,10 @@ let emojiView = ISEmojiView(emojis: [[String]])
 public var isShowPopPreview = true
 ```
 
+## Others
+
+If you are looking for a React Native solution, take a look at this [brendan-rius/react-native-emoji-keyboard](https://github.com/brendan-rius/react-native-emoji-keyboard)
+
 ## License
 
 MIT
