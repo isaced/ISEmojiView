@@ -129,8 +129,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     private func updateControlLayout() {
-        frame = defaultFrame
-        
+
+        frame.origin.x = defaultFrame.origin.x
+        frame.size = defaultFrame.size
+
         // update page control
         let pageCount = collectionView.numberOfSections
         let pageControlSizes = pageControl.size(forNumberOfPages: pageCount)
