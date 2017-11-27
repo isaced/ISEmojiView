@@ -17,6 +17,7 @@ class ViewController: UIViewController, ISEmojiViewDelegate {
         super.viewDidLoad()
         
         let emojiView = ISEmojiView()
+        emojiView.translatesAutoresizingMaskIntoConstraints = false
         emojiView.delegate = self
         textView.inputView = emojiView
     }

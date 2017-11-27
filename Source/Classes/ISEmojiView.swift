@@ -42,7 +42,19 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     public var isShowPopPreview = true
     
     private var defaultFrame: CGRect {
-        return CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 236)
+        var defaultFrame = CGRect(x: 0, y: 0, width: UIScreen.main.bounds.width, height: 236)
+        defaultFrame.size.height += safeAreaBottomInset
+        return defaultFrame
+    }
+    public override var intrinsicContentSize: CGSize {
+        return CGSize(width: UIViewNoIntrinsicMetric, height: defaultFrame.size.height)
+    }
+    var safeAreaBottomInset: CGFloat {
+        if #available(iOS 11.0, *) {
+            return safeAreaInsets.bottom
+        } else {
+            return 0
+        }
     }
     public var collectionView: UICollectionView = {
         let layout = UICollectionViewFlowLayout()
@@ -91,7 +103,25 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-    
+
+    @available(iOS 11.0, *)
+    public override func safeAreaInsetsDidChange() {
+        super.safeAreaInsetsDidChange()
+
+        if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
+
+            var sectionInset = collectionInset
+            sectionInset.bottom += safeAreaInsets.bottom
+
+            layout.sectionInset = sectionInset
+            layout.invalidateLayout()
+        }
+
+        setNeedsLayout()
+
+        invalidateIntrinsicContentSize()
+    }
+
     public override func layoutSubviews() {
         updateControlLayout()
     }
@@ -136,14 +166,20 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         // update page control
         let pageCount = collectionView.numberOfSections
         let pageControlSizes = pageControl.size(forNumberOfPages: pageCount)
-        pageControl.frame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
-                                        y: frame.height-pageControlSizes.height,
-                                        width: pageControlSizes.width,
-                                        height: pageControlSizes.height)
+
+        var pageControlFrame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
+                                      y: frame.height - pageControlSizes.height,
+                                      width: pageControlSizes.width,
+                                      height: pageControlSizes.height)
+
+        pageControlFrame.origin.y -= safeAreaBottomInset
+
+        pageControl.frame = pageControlFrame
+
         pageControl.numberOfPages = pageCount
         
         // update delete button
-        deleteButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40, width: 40, height: 40)
+        deleteButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40 - safeAreaBottomInset, width: 40, height: 40)
     }
     
     //MARK: LongPress
