@@ -97,11 +97,11 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         return button
     }()
     
-    public var emojis: [[String]]!
+    public var emojis: [[AnyObject]]!
     
     fileprivate let emojiPopView = ISEmojiPopView()
     
-    public init(emojis: [[String]]) {
+    public init(emojis: [[AnyObject]]) {
         self.init()
         
         self.emojis = emojis
@@ -140,6 +140,8 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     private func setupUI() {
         frame = defaultFrame
+        
+        emojiPopView.delegate = self
         
         // Default emojis
         if emojis == nil {
@@ -201,30 +203,40 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         doneButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40 - safeAreaBottomInset, width: 40, height: 40)
     }
     
+    func dismissPopView(_ usePopViewEmoji: Bool) {
+        emojiPopView.dismiss()
+        let currentEmoji = emojiPopView.currentEmoji
+        if currentEmoji != "" && usePopViewEmoji {
+            self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: currentEmoji)
+        }
+        emojiPopView.currentEmoji = ""
+    }
+    
     //MARK: LongPress
     @objc private func emojiLongPressHandle(sender: UILongPressGestureRecognizer){
         guard isShowPopPreview else { return }
         
         let location = sender.location(in: collectionView)
         if longPressLocationInEdge(location) {
-            if let indexPath = collectionView.indexPathForItem(at: location), let attr = collectionView.layoutAttributesForItem(at: indexPath) {
-                let emoji = emojis[indexPath.section][indexPath.row]
-                if sender.state == .ended {
-                    emojiPopView.dismiss()
-                    self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
-                }else{
+            if let indexPath = collectionView.indexPathForItem(at: location),
+                let attr = collectionView.layoutAttributesForItem(at: indexPath) {
+                var emojiArr: [String] = [""]
+                if let emojiString = emojis[indexPath.section][indexPath.row] as? String {
+                    emojiArr = [emojiString]
+                } else if let emojiArray = emojis[indexPath.section][indexPath.row] as? [String] {
+                    emojiArr = emojiArray
+                }
+                if sender.state != .ended {
                     let cellRect = attr.frame
                     let cellFrameInSuperView = collectionView.convert(cellRect, to: self)
-                    emojiPopView.setEmoji(emoji)
-                    let emojiPopLocaltion = CGPoint(x: cellFrameInSuperView.origin.x - ((topPartSize.width - bottomPartSize.width) / 2.0) + 5,
-                                                    y: cellFrameInSuperView.origin.y - topPartSize.height - 10)
-                    emojiPopView.move(location: emojiPopLocaltion, animation: sender.state != .began)
+                    emojiPopView.setEmojis(emojiArr)
+                    let emojiPopLocation = CGPoint(
+                        x: cellFrameInSuperView.origin.x - ((topPartSize.width - bottomPartSize.width) / 2.0) + 5,
+                        y: cellFrameInSuperView.origin.y - topPartSize.height - 10
+                    )
+                    emojiPopView.move(location: emojiPopLocation, animation: sender.state != .began)
                 }
-            }else{
-                emojiPopView.dismiss()
             }
-        }else{
-            emojiPopView.dismiss()
         }
     }
     
@@ -244,17 +256,31 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     public func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! ISEmojiCell
-        cell.setEmoji(emojis[indexPath.section][indexPath.row])
+        if let emojiString: String = emojis[indexPath.section][indexPath.row] as? String {
+            cell.setEmoji(emojiString)
+        } else if let emojiArr: [String] = emojis[indexPath.section][indexPath.row] as? [String],
+            let emojiString = emojiArr.first {
+            cell.setEmoji(emojiString)
+        }
         return cell
     }
     
     public func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        let emoji = emojis[indexPath.section][indexPath.row]
-        self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji)
+        if !emojiPopView.isHidden {
+            dismissPopView(false)
+        } else {
+            if let emojiString: String = emojis[indexPath.section][indexPath.row] as? String {
+                self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emojiString)
+            } else if let emojiArr: [String] = emojis[indexPath.section][indexPath.row] as? [String],
+                let emojiString = emojiArr.first {
+                self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emojiString)
+            }
+        }
     }
     
     //MARK: <UIScrollView>
     public func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        dismissPopView(false)
         if let firstVisibleCell = collectionView.visibleCells.first {
             if let indexpath = collectionView.indexPath(for: firstVisibleCell){
                 pageControl.currentPage = indexpath.section
@@ -305,10 +331,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         return nil
     }
     
-    static private func defaultEmojis() -> [[String]] {
+    static private func defaultEmojis() -> [[AnyObject]] {
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
-            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[String]] {
-                var emojiList: [[String]] = []
+            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[AnyObject]] {
+                var emojiList: [[AnyObject]] = []
                 for sectionName in ["People","Nature","Objects","Places","Symbols"] {
                     emojiList.append(sections[sectionName]!)
                 }
@@ -316,6 +342,12 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
             }
         }
         return []
+    }
+}
+
+extension ISEmojiView: ISEmojiPopViewDelegate {
+    fileprivate func emojiPopViewShouldDismiss(emojiPopView: ISEmojiPopView) {
+        dismissPopView(true)
     }
 }
 
@@ -353,43 +385,101 @@ fileprivate class ISEmojiCell: UICollectionViewCell {
 fileprivate let topPartSize = CGSize(width: EmojiSize.width * 1.3, height: EmojiSize.height * 1.6)
 fileprivate let bottomPartSize = CGSize(width: EmojiSize.width * 0.8, height: EmojiSize.height + 10)
 
+fileprivate protocol ISEmojiPopViewDelegate: class {
+    
+    /// called when the popView needs to dismiss itself
+    ///
+    func emojiPopViewShouldDismiss(emojiPopView: ISEmojiPopView)
+    
+}
+
 fileprivate class ISEmojiPopView: UIView {
-    var emojiLabel: UILabel = {
-        let label = UILabel()
-        label.font = UIFont(name: "Apple color emoji", size: EmojiFontSize)
-        label.textAlignment = .center
-        return label
-    }()
+    /// the delegate for callback
+    fileprivate weak var delegate: ISEmojiPopViewDelegate?
     
     let EmojiPopViewSize = CGSize(width: topPartSize.width, height: topPartSize.height + bottomPartSize.height)
     let popBackgroundColor = UIColor.white
     
+    var currentEmoji: String = ""
+    
+    var locationX: CGFloat = 0.0 // the x location in the main viewController
+    
+    var emojiArray: [String] = []
+    var emojiButtons: [UIButton] = []
+    var emojisView: UIView = UIView()
+    
+    var emojisX: CGFloat = 0.0
+    var emojisWidth: CGFloat = 0.0
+    
     init() {
         super.init(frame: CGRect(x: 0, y: 0, width: EmojiPopViewSize.width, height: EmojiPopViewSize.height))
-        setupUI()
     }
     
     required init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
     
+    func createEmojiButton(_ emoji: String) -> UIButton {
+        let btn = UIButton(type: .custom)
+        btn.titleLabel?.font = UIFont(name: "Apple color emoji", size: EmojiFontSize)
+        btn.setTitle(emoji, for: .normal)
+        btn.frame = CGRect(x: CGFloat(emojiButtons.count) * EmojiSize.width, y: 0, width: EmojiSize.width, height: EmojiSize.height)
+        btn.addTarget(self, action: #selector(selectEmojiType(_:)), for: .touchUpInside)
+        btn.isUserInteractionEnabled = true
+        return (btn)
+    }
+    
+    @objc func selectEmojiType(_ sender: UIButton) {
+        if let selectedEmoji = sender.titleLabel?.text {
+            currentEmoji = selectedEmoji
+            self.delegate?.emojiPopViewShouldDismiss(emojiPopView: self)
+        }
+    }
+    
     func setupUI() {
+        self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        
         // path
         let path = CGMutablePath()
-        path.addRoundedRect(in: CGRect(x: 0, y: 0, width: topPartSize.width, height: topPartSize.height),
-                            cornerWidth: 10,
-                            cornerHeight: 10)
-        path.addRoundedRect(in: CGRect(x: topPartSize.width / 2.0 - bottomPartSize.width / 2.0,
-                                       y: topPartSize.height - 10,
-                                       width: bottomPartSize.width,
-                                       height: bottomPartSize.height + 10),
-                            cornerWidth: 5,
-                            cornerHeight: 5)
+        
+        // adjust location of emoji bar if it is off the screen
+        emojisWidth = topPartSize.width + EmojiSize.width * CGFloat(emojiArray.count - 1)
+        emojisX = 0.0 // the x adjustment within the popView to account for the shift in location
+        let screenWidth = UIScreen.main.bounds.width
+        if emojisWidth + locationX > screenWidth {
+            emojisX = -CGFloat(emojisWidth + locationX - screenWidth + 8) // 8 for padding to border
+        }
+        // readjust in case someone is long-pressing right at the edge of the screen
+        if emojisX + emojisWidth < (topPartSize.width / 2.0 - bottomPartSize.width / 2.0) + bottomPartSize.width {
+            emojisX = emojisX + ((topPartSize.width / 2.0 - bottomPartSize.width / 2.0) + bottomPartSize.width) - (emojisX + emojisWidth)
+        }
+        
+        path.addRoundedRect(
+            in: CGRect(
+                x: emojisX,
+                y: 0.0,
+                width: emojisWidth,
+                height: topPartSize.height
+            ),
+            cornerWidth: 10,
+            cornerHeight: 10
+        )
+        path.addRoundedRect(
+            in: CGRect(
+                x: topPartSize.width / 2.0 - bottomPartSize.width / 2.0,
+                y: topPartSize.height - 10,
+                width: bottomPartSize.width,
+                height: bottomPartSize.height + 10
+            ),
+            cornerWidth: 5,
+            cornerHeight: 5
+        )
         
         // border
         let borderLayer = CAShapeLayer()
         borderLayer.path = path
-        borderLayer.strokeColor = UIColor(white: 0.8, alpha: 1).cgColor //UIColor.red.cgColor
+        borderLayer.strokeColor = UIColor(white: 0.8, alpha: 1).cgColor
+        borderLayer.fillColor = UIColor.white.cgColor
         borderLayer.lineWidth = 1
         self.layer.addSublayer(borderLayer)
         
@@ -405,15 +495,26 @@ fileprivate class ISEmojiPopView: UIView {
         
         layer.addSublayer(contentLayer)
         
-        // add label
-        emojiLabel.frame = CGRect(x: 0, y: 0, width: bounds.width, height: topPartSize.height)
-        self.addSubview(emojiLabel)
+        emojisView.removeFromSuperview()
+        emojisView = UIView(frame: CGRect(x: emojisX + 8, y: 10, width: CGFloat(emojiArray.count) * EmojiSize.width, height: EmojiSize.height))
         
-        isUserInteractionEnabled = false
+        // add buttons
+        emojiButtons = []
+        for emoji in emojiArray {
+            let button = createEmojiButton(emoji)
+            emojiButtons.append(button)
+            emojisView.addSubview(button)
+        }
+        
+        self.addSubview(emojisView)
+        
         isHidden = true
     }
     
     func move(location: CGPoint, animation: Bool = true) {
+        locationX = location.x
+        setupUI()
+        
         UIView.animate(withDuration: animation ? 0.08 : 0, animations: {
             self.alpha = 1
             self.frame = CGRect(x: location.x, y: location.y, width: self.frame.width, height: self.frame.height)
@@ -430,8 +531,22 @@ fileprivate class ISEmojiPopView: UIView {
         })
     }
     
-    func setEmoji(_ emoji: String) {
-        self.emojiLabel.text = emoji
+    override func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
+        if point.x >= emojisX &&
+            point.x <= emojisX + emojisWidth &&
+            point.y >= 0 &&
+            point.y <= topPartSize.height {
+            return true
+        }
+        
+        return false
     }
+    
+    func setEmojis(_ emojis: [String]) {
+        self.currentEmoji = emojis.first ?? ""
+        self.emojiArray = emojis
+    }
+    
 }
+
 
