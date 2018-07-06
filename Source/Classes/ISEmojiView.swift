@@ -23,6 +23,12 @@ public protocol ISEmojiViewDelegate: class {
     ///
     /// - Parameter emojiView: the emoji view
     func emojiViewDidPressDeleteButton(emojiView: ISEmojiView)
+    
+    
+    /// is finished typing
+    ///
+    /// - Parameter emojiView: the emoji view
+    func emojiViewDidPressDoneButton(emojiView: ISEmojiView)
 }
 
 fileprivate let EmojiSize = CGSize(width: 45, height: 35)
@@ -34,7 +40,7 @@ fileprivate let ISMainBackgroundColor = UIColor(red: 249/255.0, green: 249/255.0
 
 /// A emoji keyboard view
 public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDelegate {
-
+    
     /// the delegate for callback
     public weak var delegate: ISEmojiViewDelegate?
     
@@ -84,6 +90,12 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         button.tintColor = .lightGray
         return button
     }()
+    public var doneButton: UIButton = {
+        let button = UIButton(type: .system)
+        button.setTitle("⏎", for: .normal)
+        button.tintColor = .lightGray
+        return button
+    }()
     
     public var emojis: [[String]]!
     
@@ -103,29 +115,29 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
     }
-
+    
     @available(iOS 11.0, *)
     public override func safeAreaInsetsDidChange() {
         super.safeAreaInsetsDidChange()
-
+        
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
-
+            
             var sectionInset = collectionInset
             sectionInset.bottom += safeAreaInsets.bottom
-
+            
             layout.sectionInset = sectionInset
             layout.invalidateLayout()
         }
-
+        
         setNeedsLayout()
-
+        
         invalidateIntrinsicContentSize()
     }
-
+    
     public override func layoutSubviews() {
         updateControlLayout()
     }
-
+    
     private func setupUI() {
         frame = defaultFrame
         
@@ -141,6 +153,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         addSubview(collectionView)
         collectionView.reloadData()
         
+        // DeleteButton
+        deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
+        addSubview(deleteButton)
+        
         // PageControl
         pageControl.addTarget(self, action: #selector(pageControlTouched), for: .touchUpInside)
         pageControl.pageIndicatorTintColor = UIColor(red: 229/255.0, green: 229/255.0, blue: 229/255.0, alpha: 1)
@@ -148,9 +164,9 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         pageControl.autoresizingMask = [.flexibleTopMargin, .flexibleLeftMargin, .flexibleRightMargin]
         addSubview(pageControl)
         
-        // DeleteButton
-        deleteButton.addTarget(self, action: #selector(deleteButtonPressed), for: .touchUpInside)
-        addSubview(deleteButton)
+        // DoneButton
+        doneButton.addTarget(self, action: #selector(doneButtonPressed), for: .touchUpInside)
+        addSubview(doneButton)
         
         // Long press to pop preview
         let emojiLongPressGestureRecognizer = UILongPressGestureRecognizer(target: self, action: #selector(emojiLongPressHandle))
@@ -159,27 +175,30 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     private func updateControlLayout() {
-
+        
         frame.origin.x = defaultFrame.origin.x
         frame.size = defaultFrame.size
-
+        
+        // update delete button
+        deleteButton.frame = CGRect(x: 12, y: frame.height - 40 - safeAreaBottomInset, width: 40, height: 40)
+        
         // update page control
         let pageCount = collectionView.numberOfSections
         let pageControlSizes = pageControl.size(forNumberOfPages: pageCount)
-
+        
         var pageControlFrame = CGRect(x: frame.midX - pageControlSizes.width / 2.0,
                                       y: frame.height - pageControlSizes.height,
                                       width: pageControlSizes.width,
                                       height: pageControlSizes.height)
-
+        
         pageControlFrame.origin.y -= safeAreaBottomInset
-
+        
         pageControl.frame = pageControlFrame
-
+        
         pageControl.numberOfPages = pageCount
         
-        // update delete button
-        deleteButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40 - safeAreaBottomInset, width: 40, height: 40)
+        // update done button
+        doneButton.frame = CGRect(x: frame.width - 48, y: frame.height - 40 - safeAreaBottomInset, width: 40, height: 40)
     }
     
     //MARK: LongPress
@@ -252,6 +271,10 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     @objc private func deleteButtonPressed(sender: UIButton) {
         self.delegate?.emojiViewDidPressDeleteButton(emojiView: self)
+    }
+    
+    @objc private func doneButtonPressed(sender: UIButton) {
+        self.delegate?.emojiViewDidPressDoneButton(emojiView: self)
     }
     
     @objc private func pageControlTouched(sender: UIPageControl) {
@@ -411,3 +434,4 @@ fileprivate class ISEmojiPopView: UIView {
         self.emojiLabel.text = emoji
     }
 }
+
