@@ -1,5 +1,5 @@
 PODS:
-  - ISEmojiView (0.0.4)
+  - ISEmojiView (0.0.6)
 
 DEPENDENCIES:
   - ISEmojiView (from `../`)
@@ -9,8 +9,8 @@ EXTERNAL SOURCES:
     :path: "../"
 
 SPEC CHECKSUMS:
-  ISEmojiView: 0771acaccd1897c91b77810a3ca831db8614957b
+  ISEmojiView: 41417cd289acdbcaf69bce2e65ca8f1f3fe058c4
 
 PODFILE CHECKSUM: 87a1004beddffa4d5c3892af0de2a7eb26a2e5d3
 
-COCOAPODS: 1.2.1
+COCOAPODS: 1.5.3

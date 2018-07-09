@@ -37,5 +37,9 @@ class ViewController: UIViewController, ISEmojiViewDelegate {
     func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
         textView.deleteBackward()
     }
+    
+    func emojiViewDidPressDoneButton(emojiView: ISEmojiView) {
+        textView.resignFirstResponder()
+    }
 }
 
