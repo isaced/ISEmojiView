@@ -5,7 +5,7 @@ An easy to use Emoji keyboard for iOS.
 
 Has been rewritten with swift, the old *Objective-C* version on branch [oc](https://github.com/isaced/ISEmojiView/tree/oc).
 
-<img src="https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg" alt="screenshot" width="375" height="667">
+<img src="https://raw.github.com/isaced/ISEmojiView/master/screenshot.png" alt="screenshot" width="375" height="667">
 
 ## Example
 
