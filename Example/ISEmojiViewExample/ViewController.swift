@@ -9,37 +9,35 @@
 import UIKit
 import ISEmojiView
 
-class ViewController: UIViewController, ISEmojiViewDelegate {
-
-    @IBOutlet weak var textView: UITextView!
+class ViewController: UIViewController {
     
-    override func viewDidLoad() {
-        super.viewDidLoad()
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        let keyboardViewController = segue.destination as! EmojiKeyboardViewController
         
-        let emojiView = ISEmojiView()
-        emojiView.translatesAutoresizingMaskIntoConstraints = false
-        emojiView.delegate = self
-        textView.inputView = emojiView
+        switch segue.identifier {
+        case "EmojiKeyboardWithPageControl":
+            keyboardViewController.bottomType = .pageControl
+        case "EmojiKeyboardWithCategories":
+            keyboardViewController.bottomType = .categories
+        case "EmojiKeyboardWithPageControlAndCustomEmojis":
+            keyboardViewController.bottomType = .pageControl
+            keyboardViewController.emojis = [
+                EmojiCategory(
+                    category: Category.custom("My Title", "ic_customCategory"),
+                    emojis: [Emoji(emojis: ["😂"]), Emoji(emojis: ["🤣"])]
+                )
+            ]
+        case "EmojiKeyboardWithCategoriesAndCustomEmojis":
+            keyboardViewController.bottomType = .categories
+            keyboardViewController.emojis = [
+                EmojiCategory(
+                    category: Category.custom("My Title", "ic_customCategory"),
+                    emojis: [Emoji(emojis: ["😂"]), Emoji(emojis: ["🤣"])]
+                )
+            ]
+        default:
+            break
+        }
     }
     
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        
-        textView.becomeFirstResponder()
-    }
-    
-    //MARK: <ISEmojiViewDelegate>
-    
-    func emojiViewDidSelectEmoji(emojiView: ISEmojiView, emoji: String) {
-        textView.insertText(emoji)
-    }
-    
-    func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
-        textView.deleteBackward()
-    }
-    
-    func emojiViewDidPressDoneButton(emojiView: ISEmojiView) {
-        textView.resignFirstResponder()
-    }
 }
-

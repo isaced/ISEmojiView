@@ -12,6 +12,7 @@
 		0DEA0E5F1DD20B3B00B1B151 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E5D1DD20B3B00B1B151 /* Main.storyboard */; };
 		0DEA0E611DD20B3B00B1B151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E601DD20B3B00B1B151 /* Assets.xcassets */; };
 		0DEA0E641DD20B3B00B1B151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E621DD20B3B00B1B151 /* LaunchScreen.storyboard */; };
+		114829E9211483FC004B6425 /* EmojiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */; };
 		406F94F35242F87182F7ECD3 /* Pods_ISEmojiViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -24,6 +25,7 @@
 		0DEA0E631DD20B3B00B1B151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DEA0E651DD20B3B00B1B151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISEmojiViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardViewController.swift; sourceTree = "<group>"; };
 		1D00724B50C530DEF863196D /* Pods-ISEmojiViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 		495F7A3EAEDE9F8D1CE4806D /* Pods-ISEmojiViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -63,6 +65,7 @@
 			children = (
 				0DEA0E591DD20B3B00B1B151 /* AppDelegate.swift */,
 				0DEA0E5B1DD20B3B00B1B151 /* ViewController.swift */,
+				114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */,
 				0DEA0E5D1DD20B3B00B1B151 /* Main.storyboard */,
 				0DEA0E601DD20B3B00B1B151 /* Assets.xcassets */,
 				0DEA0E621DD20B3B00B1B151 /* LaunchScreen.storyboard */,
@@ -202,6 +205,7 @@
 			files = (
 				0B119E0F1DD2C1FD00674C10 /* ViewController.swift in Sources */,
 				0DEA0E5A1DD20B3B00B1B151 /* AppDelegate.swift in Sources */,
+				114829E9211483FC004B6425 /* EmojiKeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -329,7 +333,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -344,7 +348,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 3.0;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
