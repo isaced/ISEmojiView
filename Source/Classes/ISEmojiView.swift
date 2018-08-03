@@ -8,8 +8,6 @@
 
 import Foundation
 
-let emojiCategories =  ["Smileys", "People and Fantasy", "Clothing and Accessories", "Animals and Nature", "Food and Drink", "Activity and Sports", "Travel and Places", "Objects", "Symbols", "Flags"]
-
 /// emoji view action callback delegate
 public protocol ISEmojiViewDelegate: class {
     
@@ -335,10 +333,12 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     
     static private func defaultEmojis() -> [[AnyObject]] {
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
-            if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[AnyObject]] {
+            if let sections = NSArray(contentsOfFile: filePath) as? [[String: AnyObject]] {
                 var emojiList: [[AnyObject]] = []
-                for sectionName in emojiCategories {
-                    emojiList.append(sections[sectionName]!)
+                for section in sections {
+                    if let emojis = section["emojis"] as? [AnyObject] {
+                        emojiList.append(emojis)
+                    }
                 }
                 return emojiList
             }
