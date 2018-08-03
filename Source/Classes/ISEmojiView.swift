@@ -332,7 +332,11 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
     }
     
     static private func defaultEmojis() -> [[AnyObject]] {
-        if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
+        var emojiPListFileName = "ISEmojiList_iOS10";
+        if #available(iOS 11.0, *) {
+            emojiPListFileName = "ISEmojiList"
+        }
+        if let filePath = ISEmojiView.pathOfResourceInBundle(filename: emojiPListFileName, filetype: "plist") {
             if let sections = NSArray(contentsOfFile: filePath) as? [[String: AnyObject]] {
                 var emojiList: [[AnyObject]] = []
                 for section in sections {
