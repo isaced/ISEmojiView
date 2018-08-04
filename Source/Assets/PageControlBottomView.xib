@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="PageControlBottomView" customModule="ISEmojiView" customModuleProvider="target">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eOC-kz-e84">
+                    <rect key="frame" x="12" y="0.0" width="72" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="72" id="F7t-Dr-hnG"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="0.0" minY="0.0" maxX="50" maxY="0.0"/>
+                    <state key="normal" title="⌫">
+                        <color key="titleColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="deleteBackward" destination="iN0-l3-epB" eventType="touchUpInside" id="nuO-7H-GuB"/>
+                    </connections>
+                </button>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="VNK-Po-ZiY">
+                    <rect key="frame" x="296" y="0.0" width="67" height="44"/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="67" id="YRY-0M-KVd"/>
+                    </constraints>
+                    <inset key="contentEdgeInsets" minX="50" minY="0.0" maxX="0.0" maxY="0.0"/>
+                    <state key="normal" title="⏎">
+                        <color key="titleColor" white="0.66666666669999997" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    </state>
+                    <connections>
+                        <action selector="dismissKeyboard" destination="iN0-l3-epB" eventType="touchUpInside" id="31v-Uj-OZA"/>
+                    </connections>
+                </button>
+                <pageControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" hidesForSinglePage="YES" numberOfPages="3" translatesAutoresizingMaskIntoConstraints="NO" id="p4b-NF-Peo">
+                    <rect key="frame" x="84" y="0.0" width="212" height="44"/>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                    <color key="pageIndicatorTintColor" red="0.89803921568627454" green="0.89803921568627454" blue="0.89803921568627454" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="currentPageIndicatorTintColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                </pageControl>
+            </subviews>
+            <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="VNK-Po-ZiY" secondAttribute="trailing" constant="12" id="0Vt-Rn-5vy"/>
+                <constraint firstItem="p4b-NF-Peo" firstAttribute="leading" secondItem="eOC-kz-e84" secondAttribute="trailing" id="MFM-Ic-VSb"/>
+                <constraint firstItem="eOC-kz-e84" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="12" id="Q2l-hE-tfg"/>
+                <constraint firstItem="VNK-Po-ZiY" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="SZv-tT-hNz"/>
+                <constraint firstAttribute="bottom" secondItem="eOC-kz-e84" secondAttribute="bottom" id="XGj-uh-1Cl"/>
+                <constraint firstItem="p4b-NF-Peo" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="e3G-Xp-6B9"/>
+                <constraint firstAttribute="bottom" secondItem="p4b-NF-Peo" secondAttribute="bottom" id="kbD-Rk-CRW"/>
+                <constraint firstItem="eOC-kz-e84" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kvs-n8-EVy"/>
+                <constraint firstItem="VNK-Po-ZiY" firstAttribute="leading" secondItem="p4b-NF-Peo" secondAttribute="trailing" id="vcQ-Nr-VjK"/>
+                <constraint firstItem="VNK-Po-ZiY" firstAttribute="bottom" secondItem="iN0-l3-epB" secondAttribute="bottom" id="wsY-YB-6yW"/>
+            </constraints>
+            <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
+            <connections>
+                <outlet property="pageControl" destination="p4b-NF-Peo" id="JB7-Ef-Hxa"/>
+            </connections>
+        </view>
+    </objects>
+</document>
