@@ -8,16 +8,112 @@
 
 /* Begin PBXBuildFile section */
 		0B834BBC1DD5CE12003F5D79 /* ISEmojiView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		0B834BCC1DD5CE36003F5D79 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */; };
-		0B834BCE1DD5CE36003F5D79 /* ISEmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0B834BC91DD5CE36003F5D79 /* ISEmojiView.swift */; };
+		0D3A9A8B2115E36100279297 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4D2115E36100279297 /* EmojiCategory.swift */; };
+		0D3A9A8C2115E36100279297 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4E2115E36100279297 /* KeyboardSettings.swift */; };
+		0D3A9A8D2115E36100279297 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4F2115E36100279297 /* Category.swift */; };
+		0D3A9A8E2115E36100279297 /* Emoji.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A502115E36100279297 /* Emoji.swift */; };
+		0D3A9A8F2115E36100279297 /* Bundle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A522115E36100279297 /* Bundle.swift */; };
+		0D3A9A902115E36100279297 /* EmojiCollectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A552115E36100279297 /* EmojiCollectionView.swift */; };
+		0D3A9A912115E36100279297 /* EmojiCollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A562115E36100279297 /* EmojiCollectionCell.swift */; };
+		0D3A9A922115E36100279297 /* EmojiPopView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A582115E36100279297 /* EmojiPopView.swift */; };
+		0D3A9A932115E36100279297 /* PageControlBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A5B2115E36100279297 /* PageControlBottomView.swift */; };
+		0D3A9A942115E36100279297 /* CategoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A5D2115E36100279297 /* CategoryCell.swift */; };
+		0D3A9A952115E36100279297 /* CategoriesBottomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A5E2115E36100279297 /* CategoriesBottomView.swift */; };
+		0D3A9A962115E36100279297 /* EmojiView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A602115E36100279297 /* EmojiView.swift */; };
+		0D3A9A972115E36100279297 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A622115E36100279297 /* Constants.swift */; };
+		0D3A9A982115E36100279297 /* RecentEmojisManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A632115E36100279297 /* RecentEmojisManager.swift */; };
+		0D3A9A992115E36100279297 /* EmojiLoader.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A642115E36100279297 /* EmojiLoader.swift */; };
+		0D3A9A9A2115E36100279297 /* PageControlBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A672115E36100279297 /* PageControlBottomView.xib */; };
+		0D3A9A9B2115E36100279297 /* EmojiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A682115E36100279297 /* EmojiCollectionView.xib */; };
+		0D3A9A9C2115E36100279297 /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A692115E36100279297 /* CategoriesBottomView.xib */; };
+		0D3A9A9D2115E36200279297 /* ic_emojiDelete@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A6B2115E36100279297 /* ic_emojiDelete@3x.png */; };
+		0D3A9A9E2115E36200279297 /* ic_flags.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A6C2115E36100279297 /* ic_flags.png */; };
+		0D3A9A9F2115E36200279297 /* ic_activity.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A6D2115E36100279297 /* ic_activity.png */; };
+		0D3A9AA02115E36200279297 /* ic_travel_places.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A6E2115E36100279297 /* ic_travel_places.png */; };
+		0D3A9AA12115E36200279297 /* ic_emojiDelete@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A6F2115E36100279297 /* ic_emojiDelete@2x.png */; };
+		0D3A9AA22115E36200279297 /* ic_objects.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A702115E36100279297 /* ic_objects.png */; };
+		0D3A9AA32115E36200279297 /* ic_food_drink@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A712115E36100279297 /* ic_food_drink@2x.png */; };
+		0D3A9AA42115E36200279297 /* ic_objects@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A722115E36100279297 /* ic_objects@2x.png */; };
+		0D3A9AA52115E36200279297 /* ic_smileys_people.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A732115E36100279297 /* ic_smileys_people.png */; };
+		0D3A9AA62115E36200279297 /* ic_animals_nature.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A742115E36100279297 /* ic_animals_nature.png */; };
+		0D3A9AA72115E36200279297 /* ic_recents.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A752115E36100279297 /* ic_recents.png */; };
+		0D3A9AA82115E36200279297 /* ic_objects@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A762115E36100279297 /* ic_objects@3x.png */; };
+		0D3A9AA92115E36200279297 /* ic_emojiDelete.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A772115E36100279297 /* ic_emojiDelete.png */; };
+		0D3A9AAA2115E36200279297 /* ic_food_drink.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A782115E36100279297 /* ic_food_drink.png */; };
+		0D3A9AAB2115E36200279297 /* ic_food_drink@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A792115E36100279297 /* ic_food_drink@3x.png */; };
+		0D3A9AAC2115E36200279297 /* ic_smileys_people@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7A2115E36100279297 /* ic_smileys_people@3x.png */; };
+		0D3A9AAD2115E36200279297 /* ic_symbols@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7B2115E36100279297 /* ic_symbols@3x.png */; };
+		0D3A9AAE2115E36200279297 /* ic_symbols.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7C2115E36100279297 /* ic_symbols.png */; };
+		0D3A9AAF2115E36200279297 /* ic_flags@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7D2115E36100279297 /* ic_flags@2x.png */; };
+		0D3A9AB02115E36200279297 /* ic_recents@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7E2115E36100279297 /* ic_recents@3x.png */; };
+		0D3A9AB12115E36200279297 /* ic_recents@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A7F2115E36100279297 /* ic_recents@2x.png */; };
+		0D3A9AB22115E36200279297 /* ic_flags@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A802115E36100279297 /* ic_flags@3x.png */; };
+		0D3A9AB32115E36200279297 /* ic_symbols@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A812115E36100279297 /* ic_symbols@2x.png */; };
+		0D3A9AB42115E36200279297 /* ic_smileys_people@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A822115E36100279297 /* ic_smileys_people@2x.png */; };
+		0D3A9AB52115E36200279297 /* ic_activity@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A832115E36100279297 /* ic_activity@2x.png */; };
+		0D3A9AB62115E36200279297 /* ic_travel_places@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A842115E36100279297 /* ic_travel_places@3x.png */; };
+		0D3A9AB72115E36200279297 /* ic_animals_nature@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A852115E36100279297 /* ic_animals_nature@2x.png */; };
+		0D3A9AB82115E36200279297 /* ic_animals_nature@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A862115E36100279297 /* ic_animals_nature@3x.png */; };
+		0D3A9AB92115E36200279297 /* ic_travel_places@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A872115E36100279297 /* ic_travel_places@2x.png */; };
+		0D3A9ABA2115E36200279297 /* ic_activity@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A882115E36100279297 /* ic_activity@3x.png */; };
+		0D3A9ABB2115E36200279297 /* ISEmojiList.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A892115E36100279297 /* ISEmojiList.plist */; };
+		0D3A9ABC2115E36200279297 /* ISEmojiList_iOS10.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0D3A9A8A2115E36100279297 /* ISEmojiList_iOS10.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		0B834BB71DD5CE12003F5D79 /* ISEmojiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISEmojiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		0B834BBB1DD5CE12003F5D79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
-		0B834BC91DD5CE36003F5D79 /* ISEmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ISEmojiView.swift; sourceTree = "<group>"; };
+		0D3A9A4D2115E36100279297 /* EmojiCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCategory.swift; sourceTree = "<group>"; };
+		0D3A9A4E2115E36100279297 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
+		0D3A9A4F2115E36100279297 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
+		0D3A9A502115E36100279297 /* Emoji.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Emoji.swift; sourceTree = "<group>"; };
+		0D3A9A522115E36100279297 /* Bundle.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Bundle.swift; sourceTree = "<group>"; };
+		0D3A9A552115E36100279297 /* EmojiCollectionView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollectionView.swift; sourceTree = "<group>"; };
+		0D3A9A562115E36100279297 /* EmojiCollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCollectionCell.swift; sourceTree = "<group>"; };
+		0D3A9A582115E36100279297 /* EmojiPopView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiPopView.swift; sourceTree = "<group>"; };
+		0D3A9A5B2115E36100279297 /* PageControlBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageControlBottomView.swift; sourceTree = "<group>"; };
+		0D3A9A5D2115E36100279297 /* CategoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoryCell.swift; sourceTree = "<group>"; };
+		0D3A9A5E2115E36100279297 /* CategoriesBottomView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CategoriesBottomView.swift; sourceTree = "<group>"; };
+		0D3A9A602115E36100279297 /* EmojiView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiView.swift; sourceTree = "<group>"; };
+		0D3A9A622115E36100279297 /* Constants.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		0D3A9A632115E36100279297 /* RecentEmojisManager.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RecentEmojisManager.swift; sourceTree = "<group>"; };
+		0D3A9A642115E36100279297 /* EmojiLoader.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiLoader.swift; sourceTree = "<group>"; };
+		0D3A9A672115E36100279297 /* PageControlBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControlBottomView.xib; sourceTree = "<group>"; };
+		0D3A9A682115E36100279297 /* EmojiCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiCollectionView.xib; sourceTree = "<group>"; };
+		0D3A9A692115E36100279297 /* CategoriesBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesBottomView.xib; sourceTree = "<group>"; };
+		0D3A9A6B2115E36100279297 /* ic_emojiDelete@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_emojiDelete@3x.png"; sourceTree = "<group>"; };
+		0D3A9A6C2115E36100279297 /* ic_flags.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_flags.png; sourceTree = "<group>"; };
+		0D3A9A6D2115E36100279297 /* ic_activity.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_activity.png; sourceTree = "<group>"; };
+		0D3A9A6E2115E36100279297 /* ic_travel_places.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_travel_places.png; sourceTree = "<group>"; };
+		0D3A9A6F2115E36100279297 /* ic_emojiDelete@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_emojiDelete@2x.png"; sourceTree = "<group>"; };
+		0D3A9A702115E36100279297 /* ic_objects.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_objects.png; sourceTree = "<group>"; };
+		0D3A9A712115E36100279297 /* ic_food_drink@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_food_drink@2x.png"; sourceTree = "<group>"; };
+		0D3A9A722115E36100279297 /* ic_objects@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_objects@2x.png"; sourceTree = "<group>"; };
+		0D3A9A732115E36100279297 /* ic_smileys_people.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_smileys_people.png; sourceTree = "<group>"; };
+		0D3A9A742115E36100279297 /* ic_animals_nature.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_animals_nature.png; sourceTree = "<group>"; };
+		0D3A9A752115E36100279297 /* ic_recents.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_recents.png; sourceTree = "<group>"; };
+		0D3A9A762115E36100279297 /* ic_objects@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_objects@3x.png"; sourceTree = "<group>"; };
+		0D3A9A772115E36100279297 /* ic_emojiDelete.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_emojiDelete.png; sourceTree = "<group>"; };
+		0D3A9A782115E36100279297 /* ic_food_drink.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_food_drink.png; sourceTree = "<group>"; };
+		0D3A9A792115E36100279297 /* ic_food_drink@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_food_drink@3x.png"; sourceTree = "<group>"; };
+		0D3A9A7A2115E36100279297 /* ic_smileys_people@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_smileys_people@3x.png"; sourceTree = "<group>"; };
+		0D3A9A7B2115E36100279297 /* ic_symbols@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_symbols@3x.png"; sourceTree = "<group>"; };
+		0D3A9A7C2115E36100279297 /* ic_symbols.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = ic_symbols.png; sourceTree = "<group>"; };
+		0D3A9A7D2115E36100279297 /* ic_flags@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_flags@2x.png"; sourceTree = "<group>"; };
+		0D3A9A7E2115E36100279297 /* ic_recents@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_recents@3x.png"; sourceTree = "<group>"; };
+		0D3A9A7F2115E36100279297 /* ic_recents@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_recents@2x.png"; sourceTree = "<group>"; };
+		0D3A9A802115E36100279297 /* ic_flags@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_flags@3x.png"; sourceTree = "<group>"; };
+		0D3A9A812115E36100279297 /* ic_symbols@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_symbols@2x.png"; sourceTree = "<group>"; };
+		0D3A9A822115E36100279297 /* ic_smileys_people@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_smileys_people@2x.png"; sourceTree = "<group>"; };
+		0D3A9A832115E36100279297 /* ic_activity@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_activity@2x.png"; sourceTree = "<group>"; };
+		0D3A9A842115E36100279297 /* ic_travel_places@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_travel_places@3x.png"; sourceTree = "<group>"; };
+		0D3A9A852115E36100279297 /* ic_animals_nature@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_animals_nature@2x.png"; sourceTree = "<group>"; };
+		0D3A9A862115E36100279297 /* ic_animals_nature@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_animals_nature@3x.png"; sourceTree = "<group>"; };
+		0D3A9A872115E36100279297 /* ic_travel_places@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_travel_places@2x.png"; sourceTree = "<group>"; };
+		0D3A9A882115E36100279297 /* ic_activity@3x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "ic_activity@3x.png"; sourceTree = "<group>"; };
+		0D3A9A892115E36100279297 /* ISEmojiList.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList.plist; sourceTree = "<group>"; };
+		0D3A9A8A2115E36100279297 /* ISEmojiList_iOS10.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList_iOS10.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -50,36 +146,180 @@
 		0B834BB91DD5CE12003F5D79 /* ISEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				0B834BC21DD5CE36003F5D79 /* Source */,
+				0D3A9A4A2115E36100279297 /* Source */,
 				0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */,
 				0B834BBB1DD5CE12003F5D79 /* Info.plist */,
 			);
 			path = ISEmojiView;
 			sourceTree = "<group>";
 		};
-		0B834BC21DD5CE36003F5D79 /* Source */ = {
+		0D3A9A4A2115E36100279297 /* Source */ = {
 			isa = PBXGroup;
 			children = (
-				0B834BC31DD5CE36003F5D79 /* Assets */,
-				0B834BC71DD5CE36003F5D79 /* Classes */,
+				0D3A9A4B2115E36100279297 /* Classes */,
+				0D3A9A652115E36100279297 /* Assets */,
 			);
 			path = Source;
 			sourceTree = SOURCE_ROOT;
 		};
-		0B834BC31DD5CE36003F5D79 /* Assets */ = {
+		0D3A9A4B2115E36100279297 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				0B834BC61DD5CE36003F5D79 /* ISEmojiList.plist */,
+				0D3A9A4C2115E36100279297 /* Models */,
+				0D3A9A512115E36100279297 /* Extensions */,
+				0D3A9A532115E36100279297 /* Views */,
+				0D3A9A612115E36100279297 /* Helpers */,
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		0D3A9A4C2115E36100279297 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A4D2115E36100279297 /* EmojiCategory.swift */,
+				0D3A9A4E2115E36100279297 /* KeyboardSettings.swift */,
+				0D3A9A4F2115E36100279297 /* Category.swift */,
+				0D3A9A502115E36100279297 /* Emoji.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		0D3A9A512115E36100279297 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A522115E36100279297 /* Bundle.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		0D3A9A532115E36100279297 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A542115E36100279297 /* EmojiCollectionView */,
+				0D3A9A572115E36100279297 /* EmojiPopView */,
+				0D3A9A592115E36100279297 /* BottomViews */,
+				0D3A9A5F2115E36100279297 /* EmojiView */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		0D3A9A542115E36100279297 /* EmojiCollectionView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A552115E36100279297 /* EmojiCollectionView.swift */,
+				0D3A9A562115E36100279297 /* EmojiCollectionCell.swift */,
+			);
+			path = EmojiCollectionView;
+			sourceTree = "<group>";
+		};
+		0D3A9A572115E36100279297 /* EmojiPopView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A582115E36100279297 /* EmojiPopView.swift */,
+			);
+			path = EmojiPopView;
+			sourceTree = "<group>";
+		};
+		0D3A9A592115E36100279297 /* BottomViews */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A5A2115E36100279297 /* PageControlBottomView */,
+				0D3A9A5C2115E36100279297 /* CategoriesBottomView */,
+			);
+			path = BottomViews;
+			sourceTree = "<group>";
+		};
+		0D3A9A5A2115E36100279297 /* PageControlBottomView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A5B2115E36100279297 /* PageControlBottomView.swift */,
+			);
+			path = PageControlBottomView;
+			sourceTree = "<group>";
+		};
+		0D3A9A5C2115E36100279297 /* CategoriesBottomView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A5D2115E36100279297 /* CategoryCell.swift */,
+				0D3A9A5E2115E36100279297 /* CategoriesBottomView.swift */,
+			);
+			path = CategoriesBottomView;
+			sourceTree = "<group>";
+		};
+		0D3A9A5F2115E36100279297 /* EmojiView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A602115E36100279297 /* EmojiView.swift */,
+			);
+			path = EmojiView;
+			sourceTree = "<group>";
+		};
+		0D3A9A612115E36100279297 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A622115E36100279297 /* Constants.swift */,
+				0D3A9A632115E36100279297 /* RecentEmojisManager.swift */,
+				0D3A9A642115E36100279297 /* EmojiLoader.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		0D3A9A652115E36100279297 /* Assets */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A662115E36100279297 /* Xibs */,
+				0D3A9A6A2115E36100279297 /* Images */,
+				0D3A9A892115E36100279297 /* ISEmojiList.plist */,
+				0D3A9A8A2115E36100279297 /* ISEmojiList_iOS10.plist */,
 			);
 			path = Assets;
 			sourceTree = "<group>";
 		};
-		0B834BC71DD5CE36003F5D79 /* Classes */ = {
+		0D3A9A662115E36100279297 /* Xibs */ = {
 			isa = PBXGroup;
 			children = (
-				0B834BC91DD5CE36003F5D79 /* ISEmojiView.swift */,
+				0D3A9A672115E36100279297 /* PageControlBottomView.xib */,
+				0D3A9A682115E36100279297 /* EmojiCollectionView.xib */,
+				0D3A9A692115E36100279297 /* CategoriesBottomView.xib */,
 			);
-			path = Classes;
+			path = Xibs;
+			sourceTree = "<group>";
+		};
+		0D3A9A6A2115E36100279297 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A6B2115E36100279297 /* ic_emojiDelete@3x.png */,
+				0D3A9A6C2115E36100279297 /* ic_flags.png */,
+				0D3A9A6D2115E36100279297 /* ic_activity.png */,
+				0D3A9A6E2115E36100279297 /* ic_travel_places.png */,
+				0D3A9A6F2115E36100279297 /* ic_emojiDelete@2x.png */,
+				0D3A9A702115E36100279297 /* ic_objects.png */,
+				0D3A9A712115E36100279297 /* ic_food_drink@2x.png */,
+				0D3A9A722115E36100279297 /* ic_objects@2x.png */,
+				0D3A9A732115E36100279297 /* ic_smileys_people.png */,
+				0D3A9A742115E36100279297 /* ic_animals_nature.png */,
+				0D3A9A752115E36100279297 /* ic_recents.png */,
+				0D3A9A762115E36100279297 /* ic_objects@3x.png */,
+				0D3A9A772115E36100279297 /* ic_emojiDelete.png */,
+				0D3A9A782115E36100279297 /* ic_food_drink.png */,
+				0D3A9A792115E36100279297 /* ic_food_drink@3x.png */,
+				0D3A9A7A2115E36100279297 /* ic_smileys_people@3x.png */,
+				0D3A9A7B2115E36100279297 /* ic_symbols@3x.png */,
+				0D3A9A7C2115E36100279297 /* ic_symbols.png */,
+				0D3A9A7D2115E36100279297 /* ic_flags@2x.png */,
+				0D3A9A7E2115E36100279297 /* ic_recents@3x.png */,
+				0D3A9A7F2115E36100279297 /* ic_recents@2x.png */,
+				0D3A9A802115E36100279297 /* ic_flags@3x.png */,
+				0D3A9A812115E36100279297 /* ic_symbols@2x.png */,
+				0D3A9A822115E36100279297 /* ic_smileys_people@2x.png */,
+				0D3A9A832115E36100279297 /* ic_activity@2x.png */,
+				0D3A9A842115E36100279297 /* ic_travel_places@3x.png */,
+				0D3A9A852115E36100279297 /* ic_animals_nature@2x.png */,
+				0D3A9A862115E36100279297 /* ic_animals_nature@3x.png */,
+				0D3A9A872115E36100279297 /* ic_travel_places@2x.png */,
+				0D3A9A882115E36100279297 /* ic_activity@3x.png */,
+			);
+			path = Images;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -150,7 +390,41 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B834BCC1DD5CE36003F5D79 /* ISEmojiList.plist in Resources */,
+				0D3A9AAB2115E36200279297 /* ic_food_drink@3x.png in Resources */,
+				0D3A9ABB2115E36200279297 /* ISEmojiList.plist in Resources */,
+				0D3A9AA72115E36200279297 /* ic_recents.png in Resources */,
+				0D3A9AA22115E36200279297 /* ic_objects.png in Resources */,
+				0D3A9AA62115E36200279297 /* ic_animals_nature.png in Resources */,
+				0D3A9AB92115E36200279297 /* ic_travel_places@2x.png in Resources */,
+				0D3A9AAF2115E36200279297 /* ic_flags@2x.png in Resources */,
+				0D3A9AA52115E36200279297 /* ic_smileys_people.png in Resources */,
+				0D3A9AB22115E36200279297 /* ic_flags@3x.png in Resources */,
+				0D3A9AB52115E36200279297 /* ic_activity@2x.png in Resources */,
+				0D3A9AB82115E36200279297 /* ic_animals_nature@3x.png in Resources */,
+				0D3A9ABC2115E36200279297 /* ISEmojiList_iOS10.plist in Resources */,
+				0D3A9AA02115E36200279297 /* ic_travel_places.png in Resources */,
+				0D3A9AB32115E36200279297 /* ic_symbols@2x.png in Resources */,
+				0D3A9A9A2115E36100279297 /* PageControlBottomView.xib in Resources */,
+				0D3A9AAA2115E36200279297 /* ic_food_drink.png in Resources */,
+				0D3A9A9D2115E36200279297 /* ic_emojiDelete@3x.png in Resources */,
+				0D3A9AA92115E36200279297 /* ic_emojiDelete.png in Resources */,
+				0D3A9A9F2115E36200279297 /* ic_activity.png in Resources */,
+				0D3A9AB42115E36200279297 /* ic_smileys_people@2x.png in Resources */,
+				0D3A9AA12115E36200279297 /* ic_emojiDelete@2x.png in Resources */,
+				0D3A9AB12115E36200279297 /* ic_recents@2x.png in Resources */,
+				0D3A9AAC2115E36200279297 /* ic_smileys_people@3x.png in Resources */,
+				0D3A9A9E2115E36200279297 /* ic_flags.png in Resources */,
+				0D3A9ABA2115E36200279297 /* ic_activity@3x.png in Resources */,
+				0D3A9A9C2115E36100279297 /* CategoriesBottomView.xib in Resources */,
+				0D3A9A9B2115E36100279297 /* EmojiCollectionView.xib in Resources */,
+				0D3A9AB62115E36200279297 /* ic_travel_places@3x.png in Resources */,
+				0D3A9AB72115E36200279297 /* ic_animals_nature@2x.png in Resources */,
+				0D3A9AB02115E36200279297 /* ic_recents@3x.png in Resources */,
+				0D3A9AA82115E36200279297 /* ic_objects@3x.png in Resources */,
+				0D3A9AA42115E36200279297 /* ic_objects@2x.png in Resources */,
+				0D3A9AA32115E36200279297 /* ic_food_drink@2x.png in Resources */,
+				0D3A9AAD2115E36200279297 /* ic_symbols@3x.png in Resources */,
+				0D3A9AAE2115E36200279297 /* ic_symbols.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -161,7 +435,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				0B834BCE1DD5CE36003F5D79 /* ISEmojiView.swift in Sources */,
+				0D3A9A8B2115E36100279297 /* EmojiCategory.swift in Sources */,
+				0D3A9A8C2115E36100279297 /* KeyboardSettings.swift in Sources */,
+				0D3A9A912115E36100279297 /* EmojiCollectionCell.swift in Sources */,
+				0D3A9A982115E36100279297 /* RecentEmojisManager.swift in Sources */,
+				0D3A9A922115E36100279297 /* EmojiPopView.swift in Sources */,
+				0D3A9A932115E36100279297 /* PageControlBottomView.swift in Sources */,
+				0D3A9A962115E36100279297 /* EmojiView.swift in Sources */,
+				0D3A9A8E2115E36100279297 /* Emoji.swift in Sources */,
+				0D3A9A972115E36100279297 /* Constants.swift in Sources */,
+				0D3A9A902115E36100279297 /* EmojiCollectionView.swift in Sources */,
+				0D3A9A8F2115E36100279297 /* Bundle.swift in Sources */,
+				0D3A9A8D2115E36100279297 /* Category.swift in Sources */,
+				0D3A9A992115E36100279297 /* EmojiLoader.swift in Sources */,
+				0D3A9A942115E36100279297 /* CategoryCell.swift in Sources */,
+				0D3A9A952115E36100279297 /* CategoriesBottomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
