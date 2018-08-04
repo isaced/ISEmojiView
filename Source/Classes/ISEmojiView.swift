@@ -332,13 +332,26 @@ public class ISEmojiView: UIView, UICollectionViewDataSource, UICollectionViewDe
         }
         return nil
     }
+  
+    static private func isInitialEmojiUnicodeCompliant(emojiObject: AnyObject) -> Bool {
+      if let emojis = emojiObject as? [String],
+        let emoji = emojis.first?.first {
+        return emoji.unicodeAvailable()
+      } else if let emoji = (emojiObject as? String)?.first {
+        return emoji.unicodeAvailable()
+      }
+      return false
+    }
     
     static private func defaultEmojis() -> [[AnyObject]] {
+      
         if let filePath = ISEmojiView.pathOfResourceInBundle(filename: "ISEmojiList", filetype: "plist") {
             if let sections = NSDictionary(contentsOfFile: filePath) as? [String:[AnyObject]] {
                 var emojiList: [[AnyObject]] = []
                 for sectionName in emojiCategories {
-                    emojiList.append(sections[sectionName]!)
+                    if let section = sections[sectionName] {
+                        emojiList.append(section.filter { isInitialEmojiUnicodeCompliant(emojiObject: $0) })
+                    }
                 }
                 return emojiList
             }
