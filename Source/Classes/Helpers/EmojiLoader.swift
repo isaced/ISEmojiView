@@ -17,7 +17,10 @@ final public class EmojiLoader {
     }
     
     static func emojiCategories() -> [EmojiCategory] {
-        guard let filePath = Bundle.podBundle.path(forResource: "ISEmojiList", ofType: "plist") else {
+        var emojiPListFileName = "ISEmojiList_iOS10";
+        if #available(iOS 11.0, *) { emojiPListFileName = "ISEmojiList" }
+        
+        guard let filePath = Bundle.podBundle.path(forResource: emojiPListFileName, ofType: "plist") else {
             return []
         }
         

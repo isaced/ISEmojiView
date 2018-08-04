@@ -3,7 +3,7 @@
 <plist version="1.0">
 <array>
 	<dict>
-		<key>name</key>
+		<key>title</key>
 		<string>People</string>
 		<key>emojis</key>
 		<array>
@@ -198,7 +198,7 @@
 		</array>
 	</dict>
 	<dict>
-		<key>name</key>
+		<key>title</key>
 		<string>Nature</string>
 		<key>emojis</key>
 		<array>
@@ -321,7 +321,7 @@
 		</array>
 	</dict>
 	<dict>
-		<key>name</key>
+		<key>title</key>
 		<string>Objects</string>
 		<key>emojis</key>
 		<array>
@@ -558,7 +558,7 @@
 		</array>
 	</dict>
 	<dict>
-		<key>name</key>
+		<key>title</key>
 		<string>Places</string>
 		<key>emojis</key>
 		<array>
@@ -665,7 +665,7 @@
 		</array>
 	</dict>
 	<dict>
-		<key>name</key>
+		<key>title</key>
 		<string>Symbols</string>
 		<key>emojis</key>
 		<array>
