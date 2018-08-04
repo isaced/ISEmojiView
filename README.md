@@ -84,17 +84,14 @@ func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
 ### Customize
 
 #### KeyboardSettings
+
 This is a class to desribe keyboard settings. Available properties:
 
-`bottomType` - type of bottom view. Available variants: `.pageControl`, `.categories`. See `BottomType` enum. Default `.pageControl`.
-
-`customEmojis` - array of custom emojis. To describe emojis you have to use `EmojiCategory` class.
-
-`isShowPopPreview` - long press to pop preview effect like iOS10 system emoji keyboard. Default is true.
-
-`countOfRecentsEmojis` - the max number of recent emojis, if set 0, nothing will be shown. Default is 50.
-
-`needToShowAbcButton` - need to show change keyboard button. This button is located in `Categories` bottom view.
+- `bottomType` - type of bottom view. Available variants: `.pageControl`, `.categories`. See `BottomType` enum. Default `.pageControl`.
+- `customEmojis` - array of custom emojis. To describe emojis you have to use `EmojiCategory` class.
+- `isShowPopPreview` - long press to pop preview effect like iOS10 system emoji keyboard. Default is true.
+- `countOfRecentsEmojis` - the max number of recent emojis, if set 0, nothing will be shown. Default is 50.
+- `needToShowAbcButton` - need to show change keyboard button. This button is located in `Categories` bottom view.
 
 
 ## Others
