@@ -12,7 +12,9 @@ import ISEmojiView
 class ViewController: UIViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let keyboardViewController = segue.destination as! EmojiKeyboardViewController
+        guard let keyboardViewController = segue.destination as? EmojiKeyboardViewController else {
+            return
+        }
         
         switch segue.identifier {
         case "EmojiKeyboardWithPageControl":

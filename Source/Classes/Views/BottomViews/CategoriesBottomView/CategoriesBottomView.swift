@@ -22,14 +22,30 @@ final internal class CategoriesBottomView: UIView {
     // MARK: - Internal variables
     
     internal weak var delegate: CategoriesBottomViewDelegate?
+    internal var needToShowAbcButton: Bool? {
+        didSet {
+            guard let showAbcButton = needToShowAbcButton else {
+                return
+            }
+            
+            changeKeyboardButton.isHidden = !showAbcButton
+            collectionViewToSuperViewLeadingConstraint.priority = showAbcButton ? .defaultHigh : .defaultLow
+        }
+    }
     
-    // MARK: - Private variables
-    
-    private var categories: [Category]!
+    internal var categories: [Category]! {
+        didSet {
+            collectionView.reloadData()
+            
+            if let selectedItems = collectionView.indexPathsForSelectedItems, selectedItems.isEmpty {
+                selectFirstCell()
+            }
+        }
+    }
     
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var changeKeyboardButtonView: UIView!
+    @IBOutlet private weak var changeKeyboardButton: UIButton!
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
@@ -41,7 +57,7 @@ final internal class CategoriesBottomView: UIView {
     
     // MARK: - Init functions
     
-    static internal func loadFromNib(with categories: [Category], needToShowChangeKeyboardButton: Bool) -> CategoriesBottomView {
+    static internal func loadFromNib(with categories: [Category], needToShowAbcButton: Bool) -> CategoriesBottomView {
         let nibName = String(describing: CategoriesBottomView.self)
         
         guard let nib = Bundle.podBundle.loadNibNamed(nibName, owner: nil, options: nil) as? [CategoriesBottomView] else {
@@ -53,14 +69,13 @@ final internal class CategoriesBottomView: UIView {
         }
         
         bottomView.categories = categories
+        bottomView.changeKeyboardButton.isHidden = !needToShowAbcButton
         
-        let indexPath = IndexPath(item: 0, section: 0)
-        bottomView.collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
-        bottomView.changeKeyboardButtonView.isHidden = !needToShowChangeKeyboardButton
-        
-        if needToShowChangeKeyboardButton {
+        if needToShowAbcButton {
             bottomView.collectionViewToSuperViewLeadingConstraint.priority = .defaultHigh
         }
+        
+        bottomView.selectFirstCell()
         
         return bottomView
     }
@@ -134,6 +149,17 @@ extension CategoriesBottomView: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         delegate?.categoriesBottomViewDidSelecteCategory(categories[indexPath.item], bottomView: self)
+    }
+    
+}
+
+// MARK: - Private functions
+
+extension CategoriesBottomView {
+ 
+    private func selectFirstCell() {
+        let indexPath = IndexPath(item: 0, section: 0)
+        collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
     }
     
 }

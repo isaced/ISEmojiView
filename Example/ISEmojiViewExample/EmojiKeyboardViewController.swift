@@ -60,4 +60,3 @@ class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
     }
     
 }
-

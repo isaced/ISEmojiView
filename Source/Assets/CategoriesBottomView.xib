@@ -15,34 +15,19 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="cMA-8S-4yL">
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="knY-pK-n7O">
                     <rect key="frame" x="13" y="0.0" width="32" height="44"/>
-                    <subviews>
-                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="ic_abc.png" translatesAutoresizingMaskIntoConstraints="NO" id="nLV-yX-f9d">
-                            <rect key="frame" x="0.0" y="0.0" width="32" height="44"/>
-                        </imageView>
-                        <button opaque="NO" contentMode="scaleAspectFit" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tm6-JS-PsU">
-                            <rect key="frame" x="0.0" y="0.0" width="32" height="44"/>
-                            <constraints>
-                                <constraint firstAttribute="width" constant="32" id="1c2-re-CvP"/>
-                            </constraints>
-                            <connections>
-                                <action selector="changeKeyboard" destination="f88-xx-Pa0" eventType="touchUpInside" id="vax-T3-1LK"/>
-                            </connections>
-                        </button>
-                    </subviews>
-                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                    <constraints>
-                        <constraint firstAttribute="bottom" secondItem="tm6-JS-PsU" secondAttribute="bottom" id="IbD-Ug-gx5"/>
-                        <constraint firstItem="nLV-yX-f9d" firstAttribute="bottom" secondItem="tm6-JS-PsU" secondAttribute="bottom" id="NQA-vn-Seg"/>
-                        <constraint firstItem="nLV-yX-f9d" firstAttribute="top" secondItem="tm6-JS-PsU" secondAttribute="top" id="Z6f-BP-zpc"/>
-                        <constraint firstItem="nLV-yX-f9d" firstAttribute="leading" secondItem="tm6-JS-PsU" secondAttribute="leading" id="ZMd-s0-LgW"/>
-                        <constraint firstAttribute="trailing" secondItem="tm6-JS-PsU" secondAttribute="trailing" id="Zrs-4b-KcZ"/>
-                        <constraint firstItem="nLV-yX-f9d" firstAttribute="trailing" secondItem="tm6-JS-PsU" secondAttribute="trailing" id="deS-O7-TOm"/>
-                        <constraint firstItem="tm6-JS-PsU" firstAttribute="leading" secondItem="cMA-8S-4yL" secondAttribute="leading" id="r37-TR-TR3"/>
-                        <constraint firstItem="tm6-JS-PsU" firstAttribute="top" secondItem="cMA-8S-4yL" secondAttribute="top" id="uSU-n5-57X"/>
-                    </constraints>
-                </view>
+                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <state key="normal" title="ABC">
+                        <color key="titleColor" red="0.30980392156862746" green="0.33333333333333331" blue="0.36470588235294116" alpha="1" colorSpace="calibratedRGB"/>
+                    </state>
+                    <state key="highlighted">
+                        <color key="titleColor" red="0.30980392156862746" green="0.33333333333333331" blue="0.36470588235294116" alpha="0.50441459760273977" colorSpace="calibratedRGB"/>
+                    </state>
+                    <connections>
+                        <action selector="changeKeyboard" destination="f88-xx-Pa0" eventType="touchUpInside" id="LU0-6K-Pbu"/>
+                    </connections>
+                </button>
                 <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="none" translatesAutoresizingMaskIntoConstraints="NO" id="Ymf-rC-qWc">
                     <rect key="frame" x="13" y="0.0" width="311" height="44"/>
                     <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -69,21 +54,21 @@
             </subviews>
             <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
             <constraints>
-                <constraint firstItem="cMA-8S-4yL" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" constant="13" id="0tE-IF-N0t"/>
                 <constraint firstItem="Tf8-um-STV" firstAttribute="leading" secondItem="Ymf-rC-qWc" secondAttribute="trailing" id="Ake-Tw-r7d"/>
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="top" secondItem="f88-xx-Pa0" secondAttribute="top" id="BMW-Iv-zjx"/>
+                <constraint firstItem="knY-pK-n7O" firstAttribute="top" secondItem="f88-xx-Pa0" secondAttribute="top" id="EM8-cJ-hcX"/>
                 <constraint firstAttribute="trailing" secondItem="Tf8-um-STV" secondAttribute="trailing" constant="11" id="FhW-qU-1Dg"/>
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" priority="250" constant="50" id="JuT-Ya-x8H"/>
-                <constraint firstItem="cMA-8S-4yL" firstAttribute="top" secondItem="f88-xx-Pa0" secondAttribute="top" id="MTy-8U-9GL"/>
                 <constraint firstItem="Tf8-um-STV" firstAttribute="top" secondItem="f88-xx-Pa0" secondAttribute="top" id="OzH-al-zxn"/>
-                <constraint firstAttribute="bottom" secondItem="cMA-8S-4yL" secondAttribute="bottom" id="Yeh-Df-vCL"/>
+                <constraint firstItem="knY-pK-n7O" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" constant="13" id="Z7K-AQ-tSq"/>
+                <constraint firstAttribute="bottom" secondItem="knY-pK-n7O" secondAttribute="bottom" id="h6r-BB-4dd"/>
                 <constraint firstAttribute="bottom" secondItem="Tf8-um-STV" secondAttribute="bottom" id="ly6-Ns-TaA"/>
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="bottom" secondItem="f88-xx-Pa0" secondAttribute="bottom" id="y1m-Q6-ecl"/>
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" priority="500" constant="13" id="yIR-0a-GcS"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
-                <outlet property="changeKeyboardButtonView" destination="cMA-8S-4yL" id="wUG-uj-iXM"/>
+                <outlet property="changeKeyboardButton" destination="knY-pK-n7O" id="mWZ-mL-hfS"/>
                 <outlet property="collectionView" destination="Ymf-rC-qWc" id="yKv-xM-c7E"/>
                 <outlet property="collectionViewToSuperViewLeadingConstraint" destination="JuT-Ya-x8H" id="6Tp-mK-lpt"/>
             </connections>
@@ -91,7 +76,6 @@
         </view>
     </objects>
     <resources>
-        <image name="ic_abc.png" width="57" height="23"/>
         <image name="ic_emojiDelete.png" width="24" height="18"/>
     </resources>
 </document>

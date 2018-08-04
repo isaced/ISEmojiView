@@ -21,43 +21,53 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-2n-VfQ">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JWM-2n-VfQ">
                                 <rect key="frame" x="20" y="84" width="335" height="30"/>
                                 <state key="normal" title="Keyboard with page control"/>
                                 <connections>
                                     <segue destination="DOa-b9-xgR" kind="show" identifier="EmojiKeyboardWithPageControl" id="Chf-js-rGU"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-wd-tlW">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="D5o-wd-tlW">
                                 <rect key="frame" x="20" y="134" width="335" height="30"/>
                                 <state key="normal" title="Keyboard with categories"/>
                                 <connections>
                                     <segue destination="DOa-b9-xgR" kind="show" identifier="EmojiKeyboardWithCategories" id="LyH-wu-cmJ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hke-GR-4DA">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Hke-GR-4DA">
                                 <rect key="frame" x="20" y="184" width="335" height="30"/>
                                 <state key="normal" title="Page control and Custom emojis"/>
                                 <connections>
                                     <segue destination="DOa-b9-xgR" kind="show" identifier="EmojiKeyboardWithPageControlAndCustomEmojis" id="Bl6-HP-AmZ"/>
                                 </connections>
                             </button>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="leading" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmC-gp-oiq">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="QmC-gp-oiq">
                                 <rect key="frame" x="20" y="234" width="335" height="30"/>
                                 <state key="normal" title="Categories and Custom emojis"/>
                                 <connections>
                                     <segue destination="DOa-b9-xgR" kind="show" identifier="EmojiKeyboardWithCategoriesAndCustomEmojis" id="udZ-Wo-xhx"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="NIN-DW-rOo">
+                                <rect key="frame" x="20" y="284" width="335" height="30"/>
+                                <state key="normal" title="Load keyboard from storyboard"/>
+                                <connections>
+                                    <segue destination="CCy-fv-LPR" kind="show" id="XXp-qS-7Pq"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
+                            <constraint firstAttribute="trailing" secondItem="NIN-DW-rOo" secondAttribute="trailing" constant="20" id="0IU-u5-60p"/>
                             <constraint firstAttribute="trailing" secondItem="QmC-gp-oiq" secondAttribute="trailing" constant="20" id="27E-k9-zz0"/>
                             <constraint firstAttribute="trailing" secondItem="JWM-2n-VfQ" secondAttribute="trailing" constant="20" id="6Ry-LR-9PF"/>
                             <constraint firstItem="D5o-wd-tlW" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="Oph-0O-3sE"/>
+                            <constraint firstItem="NIN-DW-rOo" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="TvP-jE-2PV"/>
                             <constraint firstAttribute="trailing" secondItem="D5o-wd-tlW" secondAttribute="trailing" constant="20" id="WRZ-nP-yly"/>
                             <constraint firstItem="JWM-2n-VfQ" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="ah8-iv-sAf"/>
                             <constraint firstItem="Hke-GR-4DA" firstAttribute="top" secondItem="D5o-wd-tlW" secondAttribute="bottom" constant="20" id="byc-xw-aGc"/>
+                            <constraint firstItem="NIN-DW-rOo" firstAttribute="top" secondItem="QmC-gp-oiq" secondAttribute="bottom" constant="20" id="eZe-8A-5T4"/>
                             <constraint firstAttribute="trailing" secondItem="Hke-GR-4DA" secondAttribute="trailing" constant="20" id="gip-9g-kIH"/>
                             <constraint firstItem="QmC-gp-oiq" firstAttribute="top" secondItem="Hke-GR-4DA" secondAttribute="bottom" constant="20" id="nHB-PC-HOI"/>
                             <constraint firstItem="QmC-gp-oiq" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="20" id="rfi-7g-jdD"/>
@@ -107,6 +117,65 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="J8d-Xx-mku" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1766" y="-546"/>
+        </scene>
+        <!--ISEmojiView-->
+        <scene sceneID="oLc-6o-b5O">
+            <objects>
+                <viewController id="CCy-fv-LPR" customClass="EmojiKeyboardFromStoryboard" customModule="ISEmojiViewExample" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="SNY-TZ-T6s"/>
+                        <viewControllerLayoutGuide type="bottom" id="V5f-rg-hoA"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="BIz-WT-jLQ">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" editable="NO" text="Hello ISEmojiView!" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="qTJ-IH-zIO">
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="431"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            </textView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ceU-w5-Iki" customClass="EmojiView" customModule="ISEmojiView">
+                                <rect key="frame" x="0.0" y="431" width="375" height="236"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="236" id="N4y-Tf-d0M"/>
+                                </constraints>
+                                <userDefinedRuntimeAttributes>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="isShowPopPreview" value="NO"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="_bottomType">
+                                        <integer key="value" value="1"/>
+                                    </userDefinedRuntimeAttribute>
+                                    <userDefinedRuntimeAttribute type="boolean" keyPath="needToShowAbcButton" value="YES"/>
+                                    <userDefinedRuntimeAttribute type="number" keyPath="countOfRecentsEmojis">
+                                        <integer key="value" value="0"/>
+                                    </userDefinedRuntimeAttribute>
+                                </userDefinedRuntimeAttributes>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="qTJ-IH-zIO" secondAttribute="trailing" id="2Xw-0N-CJR"/>
+                            <constraint firstItem="ceU-w5-Iki" firstAttribute="leading" secondItem="BIz-WT-jLQ" secondAttribute="leading" id="C4N-n3-PgA"/>
+                            <constraint firstItem="qTJ-IH-zIO" firstAttribute="top" secondItem="BIz-WT-jLQ" secondAttribute="top" id="JLa-6S-Tqk"/>
+                            <constraint firstItem="V5f-rg-hoA" firstAttribute="top" secondItem="ceU-w5-Iki" secondAttribute="bottom" id="O9p-hI-RjC"/>
+                            <constraint firstItem="qTJ-IH-zIO" firstAttribute="leading" secondItem="BIz-WT-jLQ" secondAttribute="leading" id="S3E-qm-QD0"/>
+                            <constraint firstAttribute="trailing" secondItem="ceU-w5-Iki" secondAttribute="trailing" id="gKY-Qd-m0Z"/>
+                            <constraint firstItem="ceU-w5-Iki" firstAttribute="leading" secondItem="BIz-WT-jLQ" secondAttribute="leading" id="k8B-bJ-UFJ"/>
+                            <constraint firstAttribute="trailing" secondItem="ceU-w5-Iki" secondAttribute="trailing" id="orW-yi-CHv"/>
+                            <constraint firstItem="ceU-w5-Iki" firstAttribute="top" secondItem="qTJ-IH-zIO" secondAttribute="bottom" id="u8y-VN-1rK"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="ISEmojiView" id="Hv8-6g-jnz"/>
+                    <connections>
+                        <outlet property="emojiView" destination="ceU-w5-Iki" id="1RB-RI-xe5"/>
+                        <outlet property="textView" destination="qTJ-IH-zIO" id="8ig-sd-5r9"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="7MH-3u-6vY" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1765.5999999999999" y="153.37331334332833"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="C1R-XL-8fK">

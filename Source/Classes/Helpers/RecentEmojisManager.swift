@@ -20,6 +20,10 @@ final internal class RecentEmojisManager {
     // MARK: - Public functions
     
     internal func add(emoji: Emoji, selectedEmoji: String) -> Bool {
+        guard maxCountOfCenetEmojis > 0 else {
+            return false
+        }
+        
         var emojis = recentEmojis()
         
         if emojis.contains(where: { $0.selectedEmoji == selectedEmoji }) {

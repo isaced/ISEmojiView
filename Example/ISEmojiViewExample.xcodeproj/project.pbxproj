@@ -12,6 +12,7 @@
 		0DEA0E5F1DD20B3B00B1B151 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E5D1DD20B3B00B1B151 /* Main.storyboard */; };
 		0DEA0E611DD20B3B00B1B151 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E601DD20B3B00B1B151 /* Assets.xcassets */; };
 		0DEA0E641DD20B3B00B1B151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E621DD20B3B00B1B151 /* LaunchScreen.storyboard */; };
+		1142DD302115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142DD2F2115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift */; };
 		114829E9211483FC004B6425 /* EmojiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */; };
 		406F94F35242F87182F7ECD3 /* Pods_ISEmojiViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */; };
 /* End PBXBuildFile section */
@@ -25,6 +26,7 @@
 		0DEA0E631DD20B3B00B1B151 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		0DEA0E651DD20B3B00B1B151 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISEmojiViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		1142DD2F2115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardFromStoryboard.swift; sourceTree = "<group>"; };
 		114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardViewController.swift; sourceTree = "<group>"; };
 		1D00724B50C530DEF863196D /* Pods-ISEmojiViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.debug.xcconfig"; sourceTree = "<group>"; };
 		495F7A3EAEDE9F8D1CE4806D /* Pods-ISEmojiViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.release.xcconfig"; sourceTree = "<group>"; };
@@ -66,6 +68,7 @@
 				0DEA0E591DD20B3B00B1B151 /* AppDelegate.swift */,
 				0DEA0E5B1DD20B3B00B1B151 /* ViewController.swift */,
 				114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */,
+				1142DD2F2115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift */,
 				0DEA0E5D1DD20B3B00B1B151 /* Main.storyboard */,
 				0DEA0E601DD20B3B00B1B151 /* Assets.xcassets */,
 				0DEA0E621DD20B3B00B1B151 /* LaunchScreen.storyboard */,
@@ -120,7 +123,7 @@
 			isa = PBXProject;
 			attributes = {
 				LastSwiftUpdateCheck = 0810;
-				LastUpgradeCheck = 0810;
+				LastUpgradeCheck = 0940;
 				TargetAttributes = {
 					0DEA0E551DD20B3B00B1B151 = {
 						CreatedOnToolsVersion = 8.1;
@@ -205,6 +208,7 @@
 			files = (
 				0B119E0F1DD2C1FD00674C10 /* ViewController.swift in Sources */,
 				0DEA0E5A1DD20B3B00B1B151 /* AppDelegate.swift in Sources */,
+				1142DD302115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift in Sources */,
 				114829E9211483FC004B6425 /* EmojiKeyboardViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -240,15 +244,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -289,15 +302,24 @@
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_ENABLE_MODULES = YES;
 				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BLOCK_CAPTURE_AUTORELEASING = YES;
 				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_COMMA = YES;
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DEPRECATED_OBJC_IMPLEMENTATIONS = YES;
 				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
 				CLANG_WARN_DOCUMENTATION_COMMENTS = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_NON_LITERAL_NULL_CONVERSION = YES;
+				CLANG_WARN_OBJC_IMPLICIT_RETAIN_SELF = YES;
+				CLANG_WARN_OBJC_LITERAL_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_RANGE_LOOP_ANALYSIS = YES;
+				CLANG_WARN_STRICT_PROTOTYPES = YES;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;

@@ -11,20 +11,21 @@ final public class KeyboardSettings {
     
     // MARK: - Public variables
     
-    /// type of bottom view
-    public var bottomType: BottomType!
+    /// Type of bottom view. Default is `.pageControl`.
+    public var bottomType: BottomType! = .pageControl
     
-    /// array with custom emojis
+    /// Array with custom emojis
     public var customEmojis: [EmojiCategory]?
     
-    /// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
+    /// Long press to pop preview effect like iOS10 system emoji keyboard. Default is true.
     public var isShowPopPreview: Bool = true
     
-    /// the max number of recent emojis
-    /// if set 0, nothing will be shown
-    public var countOfRecentsEmojis: Int = 50
+    /// The max number of recent emojis, if set 0, nothing will be shown. Default is 50.
+    public var countOfRecentsEmojis: Int = MaxCountOfRecentsEmojis
     
-    /// need to show change keyboard button
+    /// Need to show change keyboard button
+    /// This button is located in `Categories` bottom view.
+    /// Default is false.
     public var needToShowAbcButton: Bool = false
     
     // MARK: - Init functions

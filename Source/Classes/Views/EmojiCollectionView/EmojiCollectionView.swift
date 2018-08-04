@@ -38,12 +38,16 @@ internal class EmojiCollectionView: UIView {
     /// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
     internal var isShowPopPreview = true
     
+    internal var emojis: [EmojiCategory]! {
+        didSet {
+            collectionView.reloadData()
+        }
+    }
+    
     // MARK: - Private variables
     
     private var scrollViewWillBeginDragging = false
     private var scrollViewWillBeginDecelerating = false
-    
-    private var emojis: [EmojiCategory]!
     
     private lazy var emojiPopView: EmojiPopView = {
         let emojiPopView = EmojiPopView()

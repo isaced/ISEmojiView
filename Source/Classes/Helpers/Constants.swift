@@ -15,3 +15,5 @@ internal let BottomPartSize = CGSize(width: EmojiSize.width * 0.8, height: Emoji
 internal let EmojiPopViewSize = CGSize(width: TopPartSize.width, height: TopPartSize.height + BottomPartSize.height)
 internal let CollectionMinimumLineSpacing = CGFloat(0)
 internal let CollectionMinimumInteritemSpacing = CGFloat(0)
+
+public let MaxCountOfRecentsEmojis: Int = 50

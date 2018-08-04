@@ -20,19 +20,11 @@ public protocol EmojiViewDelegate: class {
     
 }
 
-extension EmojiViewDelegate {
+public extension EmojiViewDelegate {
     
-    func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView) {
-        
-    }
-    
-    func emojiViewDidPressDeleteBackwardButton(_ emojiView: EmojiView) {
-        
-    }
-    
-    func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
-        
-    }
+    func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView) {}
+    func emojiViewDidPressDeleteBackwardButton(_ emojiView: EmojiView) {}
+    func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {}
     
 }
 
@@ -40,7 +32,7 @@ final public class EmojiView: UIView {
     
     // MARK: - IBInspectable variables
     
-    @IBInspectable var _bottomType: Int = BottomType.pageControl.rawValue {
+    @IBInspectable private var _bottomType: Int = BottomType.pageControl.rawValue {
         didSet {
             guard let type = BottomType(rawValue: _bottomType) else {
                 fatalError()
@@ -48,6 +40,35 @@ final public class EmojiView: UIView {
             
             bottomType = type
             setupBottomView()
+        }
+    }
+    
+    @IBInspectable private var isShowPopPreview: Bool = true {
+        didSet {
+            emojiCollectionView?.isShowPopPreview = isShowPopPreview
+        }
+    }
+    
+    @IBInspectable private var countOfRecentsEmojis: Int = MaxCountOfRecentsEmojis {
+        didSet {
+            RecentEmojisManager.sharedInstance.maxCountOfCenetEmojis = countOfRecentsEmojis
+            
+            if countOfRecentsEmojis > 0 {
+                if !emojis.contains(where: { $0.category == .recents }) {
+                    emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
+                }
+            } else if let index = emojis.index(where: { $0.category == .recents }) {
+                emojis.remove(at: index)
+            }
+            
+            emojiCollectionView?.emojis = emojis
+            categoriesBottomView?.categories = emojis.map { $0.category }
+        }
+    }
+    
+    @IBInspectable private var needToShowAbcButton: Bool = false {
+        didSet {
+            categoriesBottomView?.needToShowAbcButton = needToShowAbcButton
         }
     }
     
@@ -65,14 +86,18 @@ final public class EmojiView: UIView {
     
     private var bottomType: BottomType!
     private var emojis: [EmojiCategory]!
-    private var keyboardSettings: KeyboardSettings!
+    private var keyboardSettings: KeyboardSettings?
     
     // MARK: - Init functions
     
     public override init(frame: CGRect) {
         super.init(frame: frame)
         
-        self.emojis = EmojiLoader.emojiCategories()
+        emojis = EmojiLoader.emojiCategories()
+        
+        if countOfRecentsEmojis > 0 {
+            emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
+        }
         
         setupView()
         setupSubviews()
@@ -84,15 +109,10 @@ final public class EmojiView: UIView {
         self.keyboardSettings = keyboardSettings
         
         bottomType = keyboardSettings.bottomType
-        
-        if let emojis = keyboardSettings.customEmojis {
-            self.emojis = emojis
-        } else {
-            self.emojis = EmojiLoader.emojiCategories()
-        }
+        emojis = keyboardSettings.customEmojis ?? EmojiLoader.emojiCategories()
         
         if keyboardSettings.countOfRecentsEmojis > 0 {
-            self.emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
+            emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
         }
         
         RecentEmojisManager.sharedInstance.maxCountOfCenetEmojis = keyboardSettings.countOfRecentsEmojis
@@ -106,6 +126,10 @@ final public class EmojiView: UIView {
         
         bottomType = BottomType(rawValue: _bottomType)
         emojis = EmojiLoader.emojiCategories()
+        
+        if countOfRecentsEmojis > 0 {
+            emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
+        }
         
         setupSubviews()
     }
@@ -202,7 +226,7 @@ extension EmojiView {
     
     private func setupEmojiCollectionView() {
         let emojiCollectionView = EmojiCollectionView.loadFromNib(emojis: emojis)
-        emojiCollectionView.isShowPopPreview = keyboardSettings.isShowPopPreview
+        emojiCollectionView.isShowPopPreview = keyboardSettings?.isShowPopPreview ?? isShowPopPreview
         emojiCollectionView.delegate = self
         emojiCollectionView.translatesAutoresizingMaskIntoConstraints = false
         addSubview(emojiCollectionView)
@@ -235,9 +259,10 @@ extension EmojiView {
             
             _bottomView = bottomView
         } else if bottomType == .categories {
+            let needToShowAbcButton = keyboardSettings?.needToShowAbcButton ?? self.needToShowAbcButton
             let bottomView = CategoriesBottomView.loadFromNib(
                 with: categories,
-                needToShowChangeKeyboardButton: keyboardSettings.needToShowAbcButton
+                needToShowAbcButton: needToShowAbcButton
             )
             bottomView.delegate = self
             self.categoriesBottomView = bottomView
