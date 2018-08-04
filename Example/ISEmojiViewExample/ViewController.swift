@@ -9,7 +9,7 @@
 import UIKit
 import ISEmojiView
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let keyboardViewController = segue.destination as? EmojiKeyboardViewController else {
