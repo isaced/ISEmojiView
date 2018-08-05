@@ -7,6 +7,14 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 
 <img src="https://github.com/isaced/ISEmojiView/blob/master/screenshot1.png" width="375" height="667"> <img src="https://github.com/isaced/ISEmojiView/blob/master/screenshot2.png" width="375" height="667">
 
+## Features
+
+- Written in Swift
+- Custom emojis
+- Multiple skin tone support (🏻🏼🏽🏾🏿)
+- Categories bottom bar (like iOS system emoji Keyboard)
+- Recently used emoji
+
 ## Example
 
 To run the example project, clone the repo, and run `pod install` from the Example directory first.
@@ -15,7 +23,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 - Swift4
 - iOS8+
-- Xcode8
+- Xcode9
 
 ## Useage
 
