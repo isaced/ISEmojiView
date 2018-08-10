@@ -46,6 +46,13 @@ final internal class CategoriesBottomView: UIView {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var changeKeyboardButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton! {
+        didSet {
+            if let imagePath = Bundle.podBundle.path(forResource: "ic_emojiDelete", ofType: "png", inDirectory: "Images") {
+                deleteButton.setImage(UIImage(contentsOfFile: imagePath), for: .normal)
+            }
+        }
+    }
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
@@ -103,6 +110,14 @@ final internal class CategoriesBottomView: UIView {
     
     internal func updateCurrentCategory(_ category: Category) {
         guard let item = categories.index(where: { $0 == category }) else {
+            return
+        }
+        
+        guard let selectedItem = collectionView.indexPathsForSelectedItems?.first?.item else {
+            return
+        }
+        
+        guard selectedItem != item else {
             return
         }
         

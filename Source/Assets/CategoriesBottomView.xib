@@ -71,6 +71,7 @@
                 <outlet property="changeKeyboardButton" destination="knY-pK-n7O" id="mWZ-mL-hfS"/>
                 <outlet property="collectionView" destination="Ymf-rC-qWc" id="yKv-xM-c7E"/>
                 <outlet property="collectionViewToSuperViewLeadingConstraint" destination="JuT-Ya-x8H" id="6Tp-mK-lpt"/>
+                <outlet property="deleteButton" destination="Tf8-um-STV" id="9VY-aM-FWJ"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </view>
