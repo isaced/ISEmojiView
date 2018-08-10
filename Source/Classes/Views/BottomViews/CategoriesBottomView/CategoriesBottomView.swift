@@ -113,6 +113,14 @@ final internal class CategoriesBottomView: UIView {
             return
         }
         
+        guard let selectedItem = collectionView.indexPathsForSelectedItems?.first?.item else {
+            return
+        }
+        
+        guard selectedItem != item else {
+            return
+        }
+        
         (0..<categories.count).forEach {
             let indexPath = IndexPath(item: $0, section: 0)
             collectionView.deselectItem(at: indexPath, animated: false)
