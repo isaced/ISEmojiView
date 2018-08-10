@@ -8,6 +8,8 @@
 import Foundation
 
 private let HighlightedBackgroundViewSize = CGFloat(30)
+private let ImageActiveTintColor = UIColor(red: 95/255, green: 94/255, blue: 95/255, alpha: 1)
+private let ImageNonActiveTintColor = UIColor(red: 161/255, green: 165/255, blue: 172/255, alpha: 1)
 
 internal class CategoryCell: UICollectionViewCell {
     
@@ -20,9 +22,10 @@ internal class CategoryCell: UICollectionViewCell {
         return view
     }()
     
-    private var emojiImageView: UIImageView = {
+    private lazy var emojiImageView: UIImageView = {
         let emojiImageView = UIImageView()
         emojiImageView.contentMode = .center
+        emojiImageView.tintColor = ImageNonActiveTintColor
         return emojiImageView
     }()
     
@@ -41,12 +44,14 @@ internal class CategoryCell: UICollectionViewCell {
     override var isHighlighted: Bool {
         didSet {
             highlightedBackgroundView.isHidden = !isHighlighted
+            emojiImageView.tintColor = isHighlighted ? ImageActiveTintColor : ImageNonActiveTintColor
         }
     }
     
     override var isSelected: Bool {
         didSet {
             highlightedBackgroundView.isHidden = !isSelected
+            emojiImageView.tintColor = isSelected ? ImageActiveTintColor : ImageNonActiveTintColor
         }
     }
     
@@ -67,11 +72,15 @@ internal class CategoryCell: UICollectionViewCell {
     // MARK: - Internal functions
     
     internal func setEmojiCategory(_ category: Category) {
+        let image: UIImage?
+        
         if let imagePath = Bundle.podBundle.path(forResource: category.iconName, ofType: "png", inDirectory: "Images") {
-            emojiImageView.image = UIImage(contentsOfFile: imagePath)
+            image = UIImage(contentsOfFile: imagePath)
         } else {
-            emojiImageView.image = UIImage(named: category.iconName)
+            image = UIImage(named: category.iconName)
         }
+        
+        emojiImageView.image = image?.withRenderingMode(.alwaysTemplate)
     }
     
     // MARK: - Private functions

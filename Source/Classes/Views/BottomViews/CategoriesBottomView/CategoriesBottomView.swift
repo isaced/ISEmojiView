@@ -46,6 +46,13 @@ final internal class CategoriesBottomView: UIView {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var changeKeyboardButton: UIButton!
+    @IBOutlet private weak var deleteButton: UIButton! {
+        didSet {
+            if let imagePath = Bundle.podBundle.path(forResource: "ic_emojiDelete", ofType: "png", inDirectory: "Images") {
+                deleteButton.setImage(UIImage(contentsOfFile: imagePath), for: .normal)
+            }
+        }
+    }
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
