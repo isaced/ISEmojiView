@@ -79,7 +79,7 @@ func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView) {
 }
     
 // callback when tap delete button on keyboard
-func emojiViewDidPressDeleteButton(emojiView: ISEmojiView) {
+func emojiViewDidPressDeleteBackwardButton(_ emojiView: ISEmojiView) {
     textView.deleteBackward()
 }
 
