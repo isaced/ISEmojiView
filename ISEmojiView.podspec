@@ -8,17 +8,17 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ISEmojiView'
-  s.version          = '0.1.0'
+  s.version          = '0.1.1'
   s.summary          = 'Emoji Keyboard for iOS.'
   s.description      = <<-DESC
 An easy to use Emoji keyboard for iOS.
                        DESC
 
   s.homepage         = 'https://github.com/isaced/ISEmojiView'
-  s.screenshots     = 'https://raw.github.com/isaced/ISEmojiView/master/screenshot.jpg'
+  s.screenshots     = 'https://github.com/isaced/ISEmojiView/raw/master/screenshot1.png'
   s.license          = { :type => 'MIT', :file => 'LICENSE' }
   s.author           = { 'isaced' => 'isaced@163.com' }
-  s.source           = { :git => 'https://github.com/isaced/ISEmojiView.git', :tag => '0.1.0' }
+  s.source           = { :git => 'https://github.com/isaced/ISEmojiView.git', :tag => '0.1.1' }
 
   s.ios.deployment_target = '8.0'
 
