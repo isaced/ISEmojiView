@@ -148,7 +148,7 @@ final public class EmojiView: UIView {
     }
     
     override public func point(inside point: CGPoint, with event: UIEvent?) -> Bool {
-        guard point.y < 0 else {
+        if point.y > 0 || !(emojiCollectionView?.popPreviewShowing() ?? false) {
             return super.point(inside: point, with: event)
         }
         

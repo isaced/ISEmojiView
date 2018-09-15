@@ -68,6 +68,13 @@ internal class EmojiCollectionView: UIView {
     internal override var intrinsicContentSize: CGSize {
         return CGSize(width: UIViewNoIntrinsicMetric, height: frame.size.height)
     }
+
+    
+    // MARK: - Public
+    
+    public func popPreviewShowing() -> Bool {
+        return !self.emojiPopView.isHidden;
+    }
     
     // MARK: - Init functions
     
