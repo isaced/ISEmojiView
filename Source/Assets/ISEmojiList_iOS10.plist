@@ -4,7 +4,7 @@
 <array>
 	<dict>
 		<key>title</key>
-		<string>People</string>
+		<string>Smileys &amp; People</string>
 		<key>emojis</key>
 		<array>
 			<string>😄</string>
@@ -199,7 +199,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Nature</string>
+		<string>Animals &amp; Nature</string>
 		<key>emojis</key>
 		<array>
 			<string>🐶</string>
@@ -559,7 +559,7 @@
 	</dict>
 	<dict>
 		<key>title</key>
-		<string>Places</string>
+		<string>Travel &amp; Places</string>
 		<key>emojis</key>
 		<array>
 			<string>🏠</string>
