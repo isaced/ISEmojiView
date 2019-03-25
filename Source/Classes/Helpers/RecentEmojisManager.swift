@@ -20,22 +20,21 @@ final internal class RecentEmojisManager {
     // MARK: - Public functions
     
     internal func add(emoji: Emoji, selectedEmoji: String) -> Bool {
-        guard maxCountOfCenetEmojis > 0 else {
-            return false
-        }
-        
         var emojis = recentEmojis()
         
-        if emojis.contains(where: { $0.selectedEmoji == selectedEmoji }) {
-            return false
-        }
-        
-        if emojis.count >= maxCountOfCenetEmojis {
-            emojis.removeLast()
-        }
-        
         emoji.selectedEmoji = selectedEmoji
+        
+        let hasEmoji = emojis.firstIndex(of: emoji)// 'contains' is slow
+        
+        if let index = hasEmoji {
+            emojis.remove(at: index)
+        }// now recent emoji will always appear as first
+        
         emojis.insert(emoji, at: 0)
+        
+        if emojis.count > maxCountOfCenetEmojis {
+            emojis.removeLast(emojis.count-maxCountOfCenetEmojis)
+        }
         
         if let data = try? JSONEncoder().encode(emojis) {
             UserDefaults.standard.set(data, forKey: RecentEmojisKey)
