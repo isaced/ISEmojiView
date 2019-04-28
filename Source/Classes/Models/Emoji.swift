@@ -43,3 +43,8 @@ public class Emoji: Codable {
     
 }
 
+extension Emoji:Equatable {
+    public static func == (lhs: Emoji, rhs: Emoji) -> Bool {
+        return lhs.selectedEmoji == rhs.selectedEmoji
+    }
+}
