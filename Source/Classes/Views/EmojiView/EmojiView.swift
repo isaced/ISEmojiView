@@ -57,7 +57,7 @@ final public class EmojiView: UIView {
                 if !emojis.contains(where: { $0.category == .recents }) {
                     emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
                 }
-            } else if let index = emojis.index(where: { $0.category == .recents }) {
+            } else if let index = emojis.firstIndex(where: { $0.category == .recents }) {
                 emojis.remove(at: index)
             }
             
@@ -170,7 +170,7 @@ extension EmojiView: EmojiCollectionViewDelegate {
     }
     
     func emojiViewDidChangeCategory(_ category: Category, emojiView: EmojiCollectionView) {
-        if let section = emojis.index(where: { $0.category == category }) {
+        if let section = emojis.firstIndex(where: { $0.category == category }) {
             pageControlBottomView?.updatePageControlPage(section)
         }
         
