@@ -11,6 +11,9 @@ final public class KeyboardSettings {
     
     // MARK: - Public variables
     
+    /// false if you want update recent emoji every popup.
+    public var updateRecentEmojiImmediately:Bool = true
+    
     /// Type of bottom view. Default is `.pageControl`.
     public var bottomType: BottomType! = .pageControl
     
