@@ -113,12 +113,12 @@ internal class EmojiCollectionView: UIView {
     }
     
     internal func scrollToCategory(_ category: Category) {
-        guard var section = emojis.index(where: { $0.category == category }) else {
+        guard var section = emojis.firstIndex(where: { $0.category == category }) else {
             return
         }
         
         if category == .recents && emojis[section].emojis.isEmpty {
-            section = emojis.index(where: { $0.category == Category.smileysAndPeople })!
+            section = emojis.firstIndex(where: { $0.category == Category.smileysAndPeople })!
         }
         
         let indexPath = IndexPath(item: 0, section: section)
