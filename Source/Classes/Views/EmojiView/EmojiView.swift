@@ -162,7 +162,7 @@ final public class EmojiView: UIView {
 extension EmojiView: EmojiCollectionViewDelegate {
     
     func emojiViewDidSelectEmoji(emojiView: EmojiCollectionView, emoji: Emoji, selectedEmoji: String) {
-        if RecentEmojisManager.sharedInstance.add(emoji: emoji, selectedEmoji: selectedEmoji) {
+        if RecentEmojisManager.sharedInstance.add(emoji: emoji, selectedEmoji: selectedEmoji),(keyboardSettings?.updateRecentEmojiImmediately) ?? true  {
             emojiCollectionView?.updateRecentsEmojis(RecentEmojisManager.sharedInstance.recentEmojis())
         }
         
