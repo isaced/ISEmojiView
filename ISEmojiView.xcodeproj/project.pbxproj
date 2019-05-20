@@ -58,6 +58,7 @@
 		0D7B3266227544EF0040F427 /* PageControlBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7B3263227544EF0040F427 /* PageControlBottomView.xib */; };
 		0D7B3267227544EF0040F427 /* EmojiCollectionView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7B3264227544EF0040F427 /* EmojiCollectionView.xib */; };
 		0D7B3268227544EF0040F427 /* CategoriesBottomView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 0D7B3265227544EF0040F427 /* CategoriesBottomView.xib */; };
+		E9094FBF229297EE00634195 /* ISEmojiList_iOS11.plist in Resources */ = {isa = PBXBuildFile; fileRef = E9094FBE229297EE00634195 /* ISEmojiList_iOS11.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -114,6 +115,7 @@
 		0D7B3263227544EF0040F427 /* PageControlBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = PageControlBottomView.xib; sourceTree = "<group>"; };
 		0D7B3264227544EF0040F427 /* EmojiCollectionView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = EmojiCollectionView.xib; sourceTree = "<group>"; };
 		0D7B3265227544EF0040F427 /* CategoriesBottomView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CategoriesBottomView.xib; sourceTree = "<group>"; };
+		E9094FBE229297EE00634195 /* ISEmojiList_iOS11.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = ISEmojiList_iOS11.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -270,6 +272,7 @@
 				0D7B3262227544EF0040F427 /* Views */,
 				0D3A9A6A2115E36100279297 /* Images */,
 				0D3A9A892115E36100279297 /* ISEmojiList.plist */,
+				E9094FBE229297EE00634195 /* ISEmojiList_iOS11.plist */,
 				0D3A9A8A2115E36100279297 /* ISEmojiList_iOS10.plist */,
 			);
 			path = Assets;
@@ -416,6 +419,7 @@
 				0D7B3268227544EF0040F427 /* CategoriesBottomView.xib in Resources */,
 				0D3A9AAC2115E36200279297 /* ic_smileys_people@3x.png in Resources */,
 				0D3A9A9E2115E36200279297 /* ic_flags.png in Resources */,
+				E9094FBF229297EE00634195 /* ISEmojiList_iOS11.plist in Resources */,
 				0D3A9ABA2115E36200279297 /* ic_activity@3x.png in Resources */,
 				0D3A9AB62115E36200279297 /* ic_travel_places@3x.png in Resources */,
 				0D3A9AB72115E36200279297 /* ic_animals_nature@2x.png in Resources */,
