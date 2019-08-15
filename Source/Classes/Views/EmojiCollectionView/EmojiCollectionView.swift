@@ -171,7 +171,7 @@ extension EmojiCollectionView: UICollectionViewDelegate {
         let emojiCategory = emojis[indexPath.section]
         let emoji = emojiCategory.emojis[indexPath.item]
         
-        delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji, selectedEmoji: emoji.emoji)
+        delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: emoji, selectedEmoji: emoji.selectedEmoji ?? emoji.emoji)
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
