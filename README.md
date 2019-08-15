@@ -11,7 +11,7 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 
 - Written in Swift
 - Custom emojis
-- Multiple skin tone support (🏻🏼🏽🏾🏿)
+- Multiple skin tone support (  🏻 🏼 🏽 🏾 🏿 )
 - Categories bottom bar (like iOS system emoji Keyboard)
 - Recently used emoji
 
