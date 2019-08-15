@@ -35,7 +35,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 # Swift
 pod 'ISEmojiView'
 
-# Objective-C
+# Objective-C (Deprecated)
 pod 'ISEmojiView', '0.0.1'
 ```
 
