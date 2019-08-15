@@ -52,6 +52,7 @@ internal class EmojiCollectionView: UIView {
     private lazy var emojiPopView: EmojiPopView = {
         let emojiPopView = EmojiPopView()
         emojiPopView.delegate = self
+        emojiPopView.isHidden = true
         return emojiPopView
     }()
     

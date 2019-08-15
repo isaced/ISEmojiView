@@ -152,7 +152,7 @@ final public class EmojiView: UIView {
             return super.point(inside: point, with: event)
         }
         
-        return point.y >= -TopPartSize.height
+        return emojiCollectionView?.point(inside: point, with: event) ?? true
     }
     
 }
