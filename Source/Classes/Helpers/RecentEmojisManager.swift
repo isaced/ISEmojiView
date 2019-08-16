@@ -16,11 +16,15 @@ final internal class RecentEmojisManager {
     
     static let sharedInstance = RecentEmojisManager()
     
-    internal var maxCountOfCenetEmojis: Int!
+    internal var maxCountOfCenetEmojis: Int = 0
     
     // MARK: - Public functions
     
     internal func add(emoji: Emoji, selectedEmoji: String) -> Bool {
+        guard maxCountOfCenetEmojis > 0 else {
+            return false
+        }
+        
         var emojis = recentEmojis()
         var freqData = recentEmojisFreqData()
         
@@ -43,7 +47,7 @@ final internal class RecentEmojisManager {
         if emojis.count > maxCountOfCenetEmojis {
             emojis.removeLast(emojis.count-maxCountOfCenetEmojis)
         }
-        if emojis.count == maxCountOfCenetEmojis {
+        if emojis.count > 0 && emojis.count == maxCountOfCenetEmojis {
             let toRemove = emojis.removeLast()
             let newIndex = maxCountOfCenetEmojis/3
             let oldOne = emojis[newIndex].selectedEmoji ?? ""
