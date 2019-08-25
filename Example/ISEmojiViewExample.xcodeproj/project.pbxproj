@@ -187,7 +187,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${SRCROOT}/Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh",
+				"${PODS_ROOT}/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/ISEmojiView/ISEmojiView.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
@@ -196,7 +196,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh\"\n";
+			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
