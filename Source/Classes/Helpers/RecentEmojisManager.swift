@@ -7,8 +7,8 @@
 
 import Foundation
 
-private let RecentEmojisKey = "ISEmojiView.recent"
-private let RecentEmojisFreqStorageKey = "ISEmojiView.recent-freq"
+private let recentEmojisKey = "ISEmojiView.recent"
+private let recentEmojisFreqStorageKey = "ISEmojiView.recent-freq"
 
 final internal class RecentEmojisManager {
     
@@ -37,16 +37,15 @@ final internal class RecentEmojisManager {
             
         }
         
-        guard emojis.firstIndex(of: emoji) == nil// 'contains' is slow
-            else {
-                UserDefaults.standard.set(freqData, forKey: RecentEmojisFreqStorageKey)
+        guard emojis.firstIndex(of: emoji) == nil else {
+                UserDefaults.standard.set(freqData, forKey: recentEmojisFreqStorageKey)
                 return true
-                
         }
 
         if emojis.count > maxCountOfCenetEmojis {
             emojis.removeLast(emojis.count-maxCountOfCenetEmojis)
         }
+        
         if emojis.count > 0 && emojis.count == maxCountOfCenetEmojis {
             let toRemove = emojis.removeLast()
             let newIndex = maxCountOfCenetEmojis/3
@@ -59,17 +58,21 @@ final internal class RecentEmojisManager {
         }
         
         if let data = try? JSONEncoder().encode(emojis) {
-            UserDefaults.standard.set(data, forKey: RecentEmojisKey)
+            UserDefaults.standard.set(data, forKey: recentEmojisKey)
         }
-        UserDefaults.standard.set(freqData, forKey: RecentEmojisFreqStorageKey)
+        
+        UserDefaults.standard.set(freqData, forKey: recentEmojisFreqStorageKey)
+        
         return true
     }
+    
     internal func recentEmojisFreqData() ->[String:Int] {
-        guard let data = UserDefaults.standard.dictionary(forKey: RecentEmojisFreqStorageKey) as? [String:Int] else {return [:]}
+        guard let data = UserDefaults.standard.dictionary(forKey: recentEmojisFreqStorageKey) as? [String:Int] else {return [:]}
         return data
     }
+    
     internal func recentEmojis() -> [Emoji] {
-        guard let data = UserDefaults.standard.data(forKey: RecentEmojisKey) else {
+        guard let data = UserDefaults.standard.data(forKey: recentEmojisKey) else {
             return []
         }
         

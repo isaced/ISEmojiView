@@ -48,6 +48,7 @@ internal class EmojiCollectionView: UIView {
     
     private var scrollViewWillBeginDragging = false
     private var scrollViewWillBeginDecelerating = false
+    private let emojiCellReuseIdentifier = "EmojiCell"
     
     private lazy var emojiPopView: EmojiPopView = {
         let emojiPopView = EmojiPopView()
@@ -60,7 +61,7 @@ internal class EmojiCollectionView: UIView {
     
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
-            collectionView.register(EmojiCollectionCell.self, forCellWithReuseIdentifier: "EmojiCollectionCell")
+            collectionView.register(EmojiCollectionCell.self, forCellWithReuseIdentifier: emojiCellReuseIdentifier)
         }
     }
     
@@ -144,7 +145,7 @@ extension EmojiCollectionView: UICollectionViewDataSource {
         let emojiCategory = emojis[indexPath.section]
         let emoji = emojiCategory.emojis[indexPath.item]
         
-        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "EmojiCollectionCell", for: indexPath) as! EmojiCollectionCell
+        let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emojiCellReuseIdentifier, for: indexPath) as! EmojiCollectionCell
         
         if let selectedEmoji = emoji.selectedEmoji {
             cell.setEmoji(selectedEmoji)

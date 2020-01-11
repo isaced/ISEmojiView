@@ -107,10 +107,9 @@ extension EmojiPopView {
     }
     
     private func setupUI() {
-        self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
+        isHidden = true
         
-        // path
-        let path = CGMutablePath()
+        self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         
         // adjust location of emoji bar if it is off the screen
         emojisWidth = TopPartSize.width + EmojiSize.width * CGFloat(emojiArray.count - 1)
@@ -120,30 +119,13 @@ extension EmojiPopView {
             emojisX = -CGFloat(emojisWidth + locationX - screenWidth + 8) // 8 for padding to border
         }
         // readjust in case someone is long-pressing right at the edge of the screen
-        if emojisX + emojisWidth < (TopPartSize.width / 2.0 - BottomPartSize.width / 2.0) + BottomPartSize.width {
-            emojisX = emojisX + ((TopPartSize.width / 2.0 - BottomPartSize.width / 2.0) + BottomPartSize.width) - (emojisX + emojisWidth)
+        let halfWidth = TopPartSize.width / 2.0 - BottomPartSize.width / 2.0
+        if emojisX + emojisWidth < halfWidth + BottomPartSize.width {
+            emojisX += (halfWidth + BottomPartSize.width) - (emojisX + emojisWidth)
         }
         
-        path.addRoundedRect(
-            in: CGRect(
-                x: emojisX,
-                y: 0.0,
-                width: emojisWidth,
-                height: TopPartSize.height
-            ),
-            cornerWidth: 10,
-            cornerHeight: 10
-        )
-        path.addRoundedRect(
-            in: CGRect(
-                x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
-                y: TopPartSize.height - 10,
-                width: BottomPartSize.width,
-                height: BottomPartSize.height + 10
-            ),
-            cornerWidth: 5,
-            cornerHeight: 5
-        )
+        // path
+        let path = maskPath()
         
         // border
         let borderLayer = CAShapeLayer()
@@ -176,8 +158,32 @@ extension EmojiPopView {
         }
         
         addSubview(emojisView)
-        
-        isHidden = true
     }
     
+    func maskPath() -> CGMutablePath {
+        let path = CGMutablePath()
+        
+        path.addRoundedRect(
+                 in: CGRect(
+                     x: emojisX,
+                     y: 0.0,
+                     width: emojisWidth,
+                     height: TopPartSize.height
+                 ),
+                 cornerWidth: 10,
+                 cornerHeight: 10
+             )
+             path.addRoundedRect(
+                 in: CGRect(
+                     x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
+                     y: TopPartSize.height - 10,
+                     width: BottomPartSize.width,
+                     height: BottomPartSize.height + 10
+                 ),
+                 cornerWidth: 5,
+                 cornerHeight: 5
+             )
+        
+        return path
+    }
 }
