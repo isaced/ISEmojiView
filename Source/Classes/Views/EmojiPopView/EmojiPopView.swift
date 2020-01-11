@@ -173,16 +173,17 @@ extension EmojiPopView {
                  cornerWidth: 10,
                  cornerHeight: 10
              )
-             path.addRoundedRect(
-                 in: CGRect(
-                     x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
-                     y: TopPartSize.height - 10,
-                     width: BottomPartSize.width,
-                     height: BottomPartSize.height + 10
-                 ),
-                 cornerWidth: 5,
-                 cornerHeight: 5
-             )
+
+        path.addRoundedRect(
+            in: CGRect(
+                x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
+                y: TopPartSize.height - 10,
+                width: BottomPartSize.width,
+                height: BottomPartSize.height + 10
+            ),
+            cornerWidth: 5,
+            cornerHeight: 5
+        )
         
         return path
     }
