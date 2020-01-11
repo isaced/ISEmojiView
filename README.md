@@ -16,6 +16,7 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 - Multiple skin tone support (  🏻 🏼 🏽 🏾 🏿 )
 - Categories bottom bar (like iOS system emoji Keyboard)
 - Recently used emoji
+- Dark Mode ([#58](https://github.com/isaced/ISEmojiView/issues/58))
 
 ## Example
 
