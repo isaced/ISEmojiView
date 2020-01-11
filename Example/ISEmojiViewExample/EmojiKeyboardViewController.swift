@@ -24,6 +24,11 @@ class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Support "Dark Mode"
+        if #available(iOS 13.0, *) {
+            textView!.textColor = .label
+        }
+        
         let keyboardSettings = KeyboardSettings(bottomType: bottomType)
         keyboardSettings.customEmojis = emojis
         keyboardSettings.countOfRecentsEmojis = 20
