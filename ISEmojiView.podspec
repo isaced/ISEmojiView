@@ -18,7 +18,7 @@ An easy to use Emoji keyboard for iOS.
   s.screenshots      = 'https://github.com/isaced/ISEmojiView/raw/master/screenshot1.png'
   s.license          = { type: 'MIT', file: 'LICENSE' }
   s.author           = { 'isaced' => 'isaced@163.com' }
-  s.source           = { git: 'https://github.com/isaced/ISEmojiView.git', tag: '0.2.5' }
+  s.source           = { git: 'https://github.com/isaced/ISEmojiView.git', tag: '0.2.6' }
   s.swift_version    = '5'
 
   s.ios.deployment_target = '8.0'
