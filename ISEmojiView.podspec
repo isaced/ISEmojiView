@@ -23,9 +23,9 @@ An easy to use Emoji keyboard for iOS.
 
   s.ios.deployment_target = '8.0'
 
-  s.source_files = 'Source/Classes/**/*'
+  s.source_files = 'Sources/ISEmojiView/Classes/**/*'
 
   s.resource_bundles = {
-    'ISEmojiView' => ['Source/Assets/**/*']
+    'ISEmojiView' => ['Sources/ISEmojiView/Assets/**/*']
   }
 end
