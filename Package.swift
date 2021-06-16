@@ -23,7 +23,10 @@ let package = Package(
             name: "ISEmojiView",
             dependencies: [],
             path: "Sources",
-            resources: [.process("ISEmojiView/Assets")]
+            resources: [
+                .process("ISEmojiView/Assets"),
+                .copy("ISEmojiView/Assets/Views/*.xib")
+            ]
             ),
     ]
 )
