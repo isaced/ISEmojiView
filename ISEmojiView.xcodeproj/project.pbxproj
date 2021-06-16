@@ -90,20 +90,19 @@
 		0B834BB91DD5CE12003F5D79 /* ISEmojiView */ = {
 			isa = PBXGroup;
 			children = (
-				0D3A9A4A2115E36100279297 /* Source */,
+				0D3A9A4A2115E36100279297 /* Sources */,
 				0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */,
 				0B834BBB1DD5CE12003F5D79 /* Info.plist */,
 			);
 			path = ISEmojiView;
 			sourceTree = "<group>";
 		};
-		0D3A9A4A2115E36100279297 /* Source */ = {
+		0D3A9A4A2115E36100279297 /* Sources */ = {
 			isa = PBXGroup;
 			children = (
-				0D3A9A4B2115E36100279297 /* Classes */,
-				0D3A9A652115E36100279297 /* Assets */,
+				90F3202E2679E8A100D5F22B /* ISEmojiView */,
 			);
-			path = Source;
+			path = Sources;
 			sourceTree = SOURCE_ROOT;
 		};
 		0D3A9A4B2115E36100279297 /* Classes */ = {
@@ -228,6 +227,15 @@
 				0D7B3265227544EF0040F427 /* CategoriesBottomView.xib */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		90F3202E2679E8A100D5F22B /* ISEmojiView */ = {
+			isa = PBXGroup;
+			children = (
+				0D3A9A4B2115E36100279297 /* Classes */,
+				0D3A9A652115E36100279297 /* Assets */,
+			);
+			path = ISEmojiView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

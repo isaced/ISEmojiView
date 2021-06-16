@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 /// emoji view action callback delegate
 internal protocol EmojiCollectionViewDelegate: class {

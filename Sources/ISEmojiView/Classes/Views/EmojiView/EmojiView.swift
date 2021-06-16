@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 public enum BottomType: Int {
     case pageControl, categories
