@@ -11,7 +11,9 @@ import UIKit
 extension Bundle {
     
     class var podBundle: Bundle {
+        #if SWIFT_PACKAGE
         return Bundle.module
+        #else
         var podBundle = Bundle(for: EmojiView.classForCoder())
         
         // CocoaPods -> ISEmojiView.framework/ISEmojiView.bundle
@@ -23,6 +25,7 @@ extension Bundle {
         }
         
         return podBundle
+        #endif
     }
     
 }
