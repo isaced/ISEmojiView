@@ -6,12 +6,13 @@
 //
 
 import Foundation
+import UIKit
 
 public enum BottomType: Int {
     case pageControl, categories
 }
 
-public protocol EmojiViewDelegate: class {
+public protocol EmojiViewDelegate: AnyObject {
     
     func emojiViewDidSelectEmoji(_ emoji: String, emojiView: EmojiView)
     func emojiViewDidPressChangeKeyboardButton(_ emojiView: EmojiView)
