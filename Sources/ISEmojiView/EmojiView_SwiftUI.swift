@@ -8,6 +8,7 @@
 import SwiftUI
 import UIKit
 
+@available(iOS 13.0, *)
 public struct EmojiView_SwiftUI: UIViewRepresentable {
     public typealias UIViewType = EmojiView
     
@@ -73,6 +74,7 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
     }
 }
 
+@available(iOS 13.0, *)
 struct EmojiView_SwiftUI_Previews: PreviewProvider {
     static var previews: some View {
         EmojiView_SwiftUI()
