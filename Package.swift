@@ -25,7 +25,6 @@ let package = Package(
             path: "Sources",
             resources: [
                 .process("ISEmojiView/Assets"),
-                .copy("ISEmojiView/Assets/Views/*.xib")
             ]
             ),
     ]
