@@ -11,8 +11,8 @@ public class EmojiCategory {
     
     // MARK: - Public variables
     
-    var category: Category!
-    var emojis: [Emoji]!
+    public var category: Category!
+    public var emojis: [Emoji]!
     
     // MARK: - Initial functions
     
