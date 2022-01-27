@@ -9,14 +9,14 @@ import Foundation
 
 final public class EmojiLoader {
     
-    static func recentEmojiCategory() -> EmojiCategory {
+    public static func recentEmojiCategory() -> EmojiCategory {
         return EmojiCategory(
             category: .recents,
             emojis: RecentEmojisManager.sharedInstance.recentEmojis()
         )
     }
     
-    static func emojiCategories() -> [EmojiCategory] {
+    public static func emojiCategories() -> [EmojiCategory] {
         var emojiPListFileName = "ISEmojiList_iOS10";
         if #available(iOS 11.0, *) { emojiPListFileName = "ISEmojiList_iOS11" }
         if #available(iOS 12.1, *) { emojiPListFileName = "ISEmojiList" }

@@ -11,9 +11,9 @@ public class Emoji: Codable {
     
     // MARK: - Public variables
     
-    var selectedEmoji: String?
-    var emojis: [String]!
-    var emoji: String {
+    public var selectedEmoji: String?
+    public var emojis: [String]!
+    public var emoji: String {
         return emojis[0]
     }
     
