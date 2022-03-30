@@ -1,4 +1,4 @@
-![logo](https://raw.github.com/isaced/ISEmojiView/master/logo@2x.jpg)
+![logo](/logo@2x.jpg)
 [![Version](https://img.shields.io/cocoapods/v/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)  ![Swift](https://img.shields.io/badge/%20in-swift%205-orange.svg)
 
 English | [中文](/README_zh.md)
@@ -7,7 +7,7 @@ An easy to use Emoji keyboard for iOS.
 
 Has been rewritten with swift, the old *Objective-C* version on branch [oc](https://github.com/isaced/ISEmojiView/tree/oc).
 
-<img src="https://github.com/isaced/ISEmojiView/blob/master/screenshot1.png" width="375" height="667"> <img src="https://github.com/isaced/ISEmojiView/blob/master/screenshot2.png" width="375" height="667">
+<img src="/screenshot1.png" width="375" height="667"> <img src="/screenshot2.png" width="375" height="667">
 
 ## Features
 
