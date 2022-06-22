@@ -16,12 +16,13 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 
 ## Features
 
-- Written in Swift
-- Custom emojis
-- Multiple skin tone support (  🏻 🏼 🏽 🏾 🏿 )
-- Categories bottom bar (like iOS system emoji Keyboard)
-- Recently used emoji
-- Dark Mode ([#58](https://github.com/isaced/ISEmojiView/issues/58))
+- [x] Written in Swift
+- [x] Custom emojis
+- [x] Multiple skin tone support (  🏻 🏼 🏽 🏾 🏿 )
+- [x] Categories bottom bar (like iOS system emoji Keyboard)
+- [x] Recently used emoji
+- [x] Dark Mode ([#58](https://github.com/isaced/ISEmojiView/issues/58))
+- [x] SwiftUI support.
 
 ## Example
 
