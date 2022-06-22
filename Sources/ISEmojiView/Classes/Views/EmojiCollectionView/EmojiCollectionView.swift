@@ -9,7 +9,7 @@ import Foundation
 import UIKit
 
 /// emoji view action callback delegate
-internal protocol EmojiCollectionViewDelegate: class {
+internal protocol EmojiCollectionViewDelegate: AnyObject {
     
     /// did press a emoji button
     ///

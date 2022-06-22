@@ -8,7 +8,7 @@
 import Foundation
 import UIKit
 
-internal protocol EmojiPopViewDelegate: class {
+internal protocol EmojiPopViewDelegate: AnyObject {
     
     /// called when the popView needs to dismiss itself
     func emojiPopViewShouldDismiss(emojiPopView: EmojiPopView)
