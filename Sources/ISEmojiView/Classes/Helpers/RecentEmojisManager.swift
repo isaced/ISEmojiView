@@ -10,7 +10,7 @@ import Foundation
 private let recentEmojisKey = "ISEmojiView.recent"
 private let recentEmojisFreqStorageKey = "ISEmojiView.recent-freq"
 
-final internal class RecentEmojisManager {
+final public class RecentEmojisManager {
     
     // MARK: - Public variables
     
@@ -71,7 +71,7 @@ final internal class RecentEmojisManager {
         return data
     }
     
-    internal func recentEmojis() -> [Emoji] {
+    public func recentEmojis() -> [Emoji] {
         guard let data = UserDefaults.standard.data(forKey: recentEmojisKey) else {
             return []
         }
