@@ -24,7 +24,9 @@ final internal class PageControlBottomView: UIView {
     // MARK: - IBOutlets
     
     @IBOutlet private weak var pageControl: UIPageControl!
-    
+
+    @IBOutlet private weak var deleteButton: UIButton!
+
     // MARK: - Init functions
     
     static func loadFromNib(categoriesCount: Int) -> PageControlBottomView {
@@ -39,6 +41,7 @@ final internal class PageControlBottomView: UIView {
         }
         
         bottomView.pageControl.numberOfPages = categoriesCount
+        bottomView.deleteButton.isHidden = true
         return bottomView
     }
     
