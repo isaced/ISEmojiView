@@ -63,6 +63,7 @@
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="deleteButton" destination="VNK-Po-ZiY" id="kSO-VG-tBZ"/>
                 <outlet property="pageControl" destination="p4b-NF-Peo" id="JB7-Ef-Hxa"/>
             </connections>
         </view>
