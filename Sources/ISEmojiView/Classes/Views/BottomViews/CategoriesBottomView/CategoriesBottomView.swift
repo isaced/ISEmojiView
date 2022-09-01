@@ -77,6 +77,7 @@ final internal class CategoriesBottomView: UIView {
         
         bottomView.categories = categories
         bottomView.changeKeyboardButton.isHidden = !needToShowAbcButton
+        bottomView.deleteButton.isHidden = true
         
         if needToShowAbcButton {
             bottomView.collectionViewToSuperViewLeadingConstraint.priority = .defaultHigh
