@@ -59,6 +59,7 @@
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" priority="250" constant="50" id="JuT-Ya-x8H"/>
                 <constraint firstItem="Tf8-um-STV" firstAttribute="top" secondItem="f88-xx-Pa0" secondAttribute="top" id="OzH-al-zxn"/>
                 <constraint firstItem="knY-pK-n7O" firstAttribute="leading" secondItem="f88-xx-Pa0" secondAttribute="leading" constant="13" id="Z7K-AQ-tSq"/>
+                <constraint firstAttribute="trailing" secondItem="Ymf-rC-qWc" secondAttribute="trailing" id="gu0-gY-qH8"/>
                 <constraint firstAttribute="bottom" secondItem="knY-pK-n7O" secondAttribute="bottom" id="h6r-BB-4dd"/>
                 <constraint firstAttribute="bottom" secondItem="Tf8-um-STV" secondAttribute="bottom" id="ly6-Ns-TaA"/>
                 <constraint firstItem="Ymf-rC-qWc" firstAttribute="bottom" secondItem="f88-xx-Pa0" secondAttribute="bottom" id="y1m-Q6-ecl"/>
@@ -67,6 +68,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="changeKeyboardButton" destination="knY-pK-n7O" id="mWZ-mL-hfS"/>
+                <outlet property="collecitonViewToSuperViewTrailingConstraint" destination="gu0-gY-qH8" id="S6o-NW-n5d"/>
                 <outlet property="collectionView" destination="Ymf-rC-qWc" id="yKv-xM-c7E"/>
                 <outlet property="collectionViewToSuperViewLeadingConstraint" destination="JuT-Ya-x8H" id="6Tp-mK-lpt"/>
                 <outlet property="deleteButton" destination="Tf8-um-STV" id="9VY-aM-FWJ"/>

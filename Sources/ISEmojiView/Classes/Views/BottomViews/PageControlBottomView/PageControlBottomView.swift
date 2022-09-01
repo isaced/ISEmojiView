@@ -29,7 +29,7 @@ final internal class PageControlBottomView: UIView {
 
     // MARK: - Init functions
     
-    static func loadFromNib(categoriesCount: Int) -> PageControlBottomView {
+    static func loadFromNib(categoriesCount: Int, needToShowDeleteButton: Bool) -> PageControlBottomView {
         let nibName = String(describing: PageControlBottomView.self)
         
         guard let nib = Bundle.podBundle.loadNibNamed(nibName, owner: nil, options: nil) as? [PageControlBottomView] else {
@@ -41,7 +41,7 @@ final internal class PageControlBottomView: UIView {
         }
         
         bottomView.pageControl.numberOfPages = categoriesCount
-        bottomView.deleteButton.isHidden = true
+        bottomView.deleteButton.isHidden = !needToShowDeleteButton
         return bottomView
     }
     

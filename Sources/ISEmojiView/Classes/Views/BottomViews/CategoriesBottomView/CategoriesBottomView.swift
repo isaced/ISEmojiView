@@ -62,9 +62,11 @@ final internal class CategoriesBottomView: UIView {
     
     @IBOutlet private var collectionViewToSuperViewLeadingConstraint: NSLayoutConstraint!
     
+    @IBOutlet private weak var collecitonViewToSuperViewTrailingConstraint: NSLayoutConstraint!
+
     // MARK: - Init functions
     
-    static internal func loadFromNib(with categories: [Category], needToShowAbcButton: Bool) -> CategoriesBottomView {
+    static internal func loadFromNib(with categories: [Category], needToShowAbcButton: Bool, needToShowDeleteButton: Bool) -> CategoriesBottomView {
         let nibName = String(describing: CategoriesBottomView.self)
         
         guard let nib = Bundle.podBundle.loadNibNamed(nibName, owner: nil, options: nil) as? [CategoriesBottomView] else {
@@ -77,12 +79,16 @@ final internal class CategoriesBottomView: UIView {
         
         bottomView.categories = categories
         bottomView.changeKeyboardButton.isHidden = !needToShowAbcButton
-        bottomView.deleteButton.isHidden = true
+        bottomView.deleteButton.isHidden = !needToShowDeleteButton
         
         if needToShowAbcButton {
             bottomView.collectionViewToSuperViewLeadingConstraint.priority = .defaultHigh
         }
-        
+
+        if !needToShowDeleteButton {
+          bottomView.collecitonViewToSuperViewTrailingConstraint.priority = .defaultHigh
+        }
+
         bottomView.selectFirstCell()
         
         return bottomView

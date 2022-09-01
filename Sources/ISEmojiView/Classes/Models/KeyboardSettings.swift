@@ -30,6 +30,8 @@ final public class KeyboardSettings {
     /// This button is located in `Categories` bottom view.
     /// Default is false.
     public var needToShowAbcButton: Bool = false
+
+    public var needToShowDeleteButton: Bool = true
     
     // MARK: - Init functions
     

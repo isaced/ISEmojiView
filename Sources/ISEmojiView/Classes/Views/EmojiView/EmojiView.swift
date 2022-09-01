@@ -259,16 +259,22 @@ extension EmojiView {
         var _bottomView: UIView?
         
         if bottomType == .pageControl {
-            let bottomView = PageControlBottomView.loadFromNib(categoriesCount: categories.count)
+          let needToShowDeleteButton = keyboardSettings?.needToShowDeleteButton ?? true
+          let bottomView = PageControlBottomView.loadFromNib(
+              categoriesCount: categories.count,
+              needToShowDeleteButton: needToShowDeleteButton
+            )
             bottomView.delegate = self
             self.pageControlBottomView = bottomView
             
             _bottomView = bottomView
         } else if bottomType == .categories {
             let needToShowAbcButton = keyboardSettings?.needToShowAbcButton ?? self.needToShowAbcButton
+            let needToShowDeleteButton = keyboardSettings?.needToShowDeleteButton ?? true
             let bottomView = CategoriesBottomView.loadFromNib(
                 with: categories,
-                needToShowAbcButton: needToShowAbcButton
+                needToShowAbcButton: needToShowAbcButton,
+                needToShowDeleteButton: needToShowDeleteButton
             )
             bottomView.delegate = self
             self.categoriesBottomView = bottomView
