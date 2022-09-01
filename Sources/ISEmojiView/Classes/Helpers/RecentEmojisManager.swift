@@ -14,7 +14,7 @@ final public class RecentEmojisManager {
     
     // MARK: - Public variables
     
-    static let sharedInstance = RecentEmojisManager()
+    public static let sharedInstance = RecentEmojisManager()
     
     internal var maxCountOfCenetEmojis: Int = 0
     
