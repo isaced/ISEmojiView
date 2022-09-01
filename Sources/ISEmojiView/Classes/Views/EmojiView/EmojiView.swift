@@ -52,8 +52,6 @@ final public class EmojiView: UIView {
     
     @IBInspectable private var countOfRecentsEmojis: Int = MaxCountOfRecentsEmojis {
         didSet {
-            RecentEmojisManager.sharedInstance.maxCountOfCenetEmojis = countOfRecentsEmojis
-            
             if countOfRecentsEmojis > 0 {
                 if !emojis.contains(where: { $0.category == .recents }) {
                     emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
@@ -115,8 +113,6 @@ final public class EmojiView: UIView {
         if keyboardSettings.countOfRecentsEmojis > 0 {
             emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
         }
-        
-        RecentEmojisManager.sharedInstance.maxCountOfCenetEmojis = keyboardSettings.countOfRecentsEmojis
         
         setupView()
         setupSubviews()
