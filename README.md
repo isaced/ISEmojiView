@@ -38,6 +38,20 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 
 ### Installation
 
+#### Swift Package Manager
+
+via [Swift Package Manager](https://swift.org/package-manager/) Install to your project，Add in Package.swift：
+
+```swift
+.package(name: "ISEmojiView", url: "https://github.com/isaced/ISEmojiView.git", .upToNextMinor(from: "0.3.0")),
+```
+
+In Xcode：
+
+- File > Swift Packages > Add Package Dependency
+- Add https://github.com/isaced/ISEmojiView.git
+- Select "Up to Next Major" with "1.0.0"
+
 #### Cocoapods
 
 ```Ruby
