@@ -18,7 +18,13 @@ final public class RecentEmojisManager {
     
     // MARK: - Public functions
     
-    public func add(emoji: Emoji, selectedEmoji: String) -> Bool {
+    public func add(emoji: Emoji, selectedEmoji: String, maxCount: Int) -> Bool {
+        if (maxCount == 0) {
+            UserDefaults.standard.removeObject(forKey: recentEmojisKey)
+            UserDefaults.standard.removeObject(forKey: recentEmojisFreqStorageKey)
+            return false
+        }
+        
         var emojis = recentEmojis()
         var freqData = recentEmojisFreqData()
         
@@ -36,13 +42,13 @@ final public class RecentEmojisManager {
                 return true
         }
 
-        if emojis.count > MaxCountOfRecentsEmojis {
-            emojis.removeLast(emojis.count-MaxCountOfRecentsEmojis)
+        if emojis.count > maxCount {
+            emojis.removeLast(emojis.count-maxCount)
         }
         
-        if emojis.count > 0 && emojis.count == MaxCountOfRecentsEmojis {
+        if emojis.count > 0 && emojis.count == maxCount {
             let toRemove = emojis.removeLast()
-            let newIndex = MaxCountOfRecentsEmojis/3
+            let newIndex = maxCount/3
             let oldOne = emojis[newIndex].selectedEmoji ?? ""
             emojis.insert(emoji, at: newIndex)
             freqData[selectedEmoji] = (freqData[oldOne] ?? 0) + 1

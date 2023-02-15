@@ -109,6 +109,7 @@ final public class EmojiView: UIView {
         
         bottomType = keyboardSettings.bottomType
         emojis = keyboardSettings.customEmojis ?? EmojiLoader.emojiCategories()
+        countOfRecentsEmojis = keyboardSettings.countOfRecentsEmojis
         
         if keyboardSettings.countOfRecentsEmojis > 0 {
             emojis.insert(EmojiLoader.recentEmojiCategory(), at: 0)
@@ -159,7 +160,7 @@ final public class EmojiView: UIView {
 extension EmojiView: EmojiCollectionViewDelegate {
     
     func emojiViewDidSelectEmoji(emojiView: EmojiCollectionView, emoji: Emoji, selectedEmoji: String) {
-        if RecentEmojisManager.sharedInstance.add(emoji: emoji, selectedEmoji: selectedEmoji),(keyboardSettings?.updateRecentEmojiImmediately) ?? true  {
+        if RecentEmojisManager.sharedInstance.add(emoji: emoji, selectedEmoji: selectedEmoji, maxCount: countOfRecentsEmojis),(keyboardSettings?.updateRecentEmojiImmediately) ?? true  {
             emojiCollectionView?.updateRecentsEmojis(RecentEmojisManager.sharedInstance.recentEmojis())
         }
         
