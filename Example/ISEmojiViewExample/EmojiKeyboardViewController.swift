@@ -5,11 +5,10 @@
 //  Created by Beniamin Sarkisyan on 03/08/2018.
 //
 
-import UIKit
 import ISEmojiView
+import UIKit
 
 class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
-    
     // MARK: - Public variables
     
     var bottomType: BottomType!
@@ -17,17 +16,12 @@ class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
     
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var textView: UITextView!
+    @IBOutlet private var textView: UITextView!
     
     // MARK: - Override functions
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        // Support "Dark Mode"
-        if #available(iOS 13.0, *) {
-            textView!.textColor = .label
-        }
         
         let keyboardSettings = KeyboardSettings(bottomType: bottomType)
         keyboardSettings.customEmojis = emojis
@@ -36,7 +30,9 @@ class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
         let emojiView = EmojiView(keyboardSettings: keyboardSettings)
         emojiView.translatesAutoresizingMaskIntoConstraints = false
         emojiView.delegate = self
+        
         textView.inputView = emojiView
+        textView.textColor = .label
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -64,5 +60,4 @@ class EmojiKeyboardViewController: UIViewController, EmojiViewDelegate {
     func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
         textView.resignFirstResponder()
     }
-    
 }

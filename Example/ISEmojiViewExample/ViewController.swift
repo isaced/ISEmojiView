@@ -6,16 +6,15 @@
 //
 //
 
-import UIKit
 import ISEmojiView
+import UIKit
 
 class ViewController: UITableViewController {
-    
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         guard let keyboardViewController = segue.destination as? EmojiKeyboardViewController else {
             return
         }
-        
+
         switch segue.identifier {
         case "EmojiKeyboardWithPageControl":
             keyboardViewController.bottomType = .pageControl
@@ -41,5 +40,4 @@ class ViewController: UITableViewController {
             break
         }
     }
-    
 }

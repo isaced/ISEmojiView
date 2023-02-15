@@ -9,11 +9,10 @@ import Foundation
 import ISEmojiView
 
 class EmojiKeyboardFromStoryboard: UIViewController, EmojiViewDelegate {
-    
     // MARK: - IBOutlets
     
-    @IBOutlet private weak var textView: UITextView!
-    @IBOutlet private weak var emojiView: EmojiView! {
+    @IBOutlet private var textView: UITextView!
+    @IBOutlet private var emojiView: EmojiView! {
         didSet {
             emojiView.delegate = self
         }
@@ -28,5 +27,4 @@ class EmojiKeyboardFromStoryboard: UIViewController, EmojiViewDelegate {
     func emojiViewDidPressDeleteBackwardButton(_ emojiView: EmojiView) {
         textView.deleteBackward()
     }
-    
 }
