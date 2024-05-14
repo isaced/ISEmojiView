@@ -124,6 +124,16 @@ This is a class to desribe keyboard settings. Available properties:
 - `countOfRecentsEmojis` - the max number of recent emojis, if set 0, nothing will be shown. Default is 50.
 - `needToShowAbcButton` - need to show change keyboard button. This button is located in `Categories` bottom view.
 
+### SwiftUI
+Doesn't work on macOS SwiftUI natively.
+
+```Swift
+import ISEmojiView
+
+EmojiView_SwiftUI()
+    .frame(width: 300, height: 500)
+    .padding()
+```
 
 ## Others
 
