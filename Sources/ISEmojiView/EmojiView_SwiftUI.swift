@@ -1,6 +1,6 @@
 //
 //  SwiftUIView.swift
-//  
+//
 //
 //  Created by Michał Śmiałko on 16/06/2021.
 //
@@ -16,16 +16,32 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
     var didPressChangeKeyboard: (() -> Void)?
     var didPressDeleteBackward: (() -> Void)?
     var dDidPressDismissKeyboard: (() -> Void)?
+    var needToShowAbcButton: (Bool)?
+    var needToShowDeleteButton: (Bool)?
+    var countOfRecentsEmojis: (Int)?
     
-    public init(didSelect: ((String) -> Void)? = nil, didPressChangeKeyboard: (() -> Void)? = nil, didPressDeleteBackward: (() -> Void)? = nil, dDidPressDismissKeyboard: (() -> Void)? = nil) {
-        self.didSelect = didSelect
-        self.didPressChangeKeyboard = didPressChangeKeyboard
-        self.didPressDeleteBackward = didPressDeleteBackward
-        self.dDidPressDismissKeyboard = dDidPressDismissKeyboard
-    }
-
+    public init(
+        needToShowAbcButton: (Bool) = false,
+        needToShowDeleteButton: (Bool) = false,
+        countOfRecentsEmojis: (Int) = MaxCountOfRecentsEmojis,
+        didSelect: ((String) -> Void)? = nil,
+        didPressChangeKeyboard: (() -> Void)? = nil,
+        didPressDeleteBackward: (() -> Void)? = nil,
+        dDidPressDismissKeyboard: (() -> Void)? = nil) {
+            self.needToShowAbcButton = needToShowAbcButton
+            self.needToShowDeleteButton = needToShowDeleteButton
+            self.countOfRecentsEmojis = countOfRecentsEmojis
+            self.didSelect = didSelect
+            self.didPressChangeKeyboard = didPressChangeKeyboard
+            self.didPressDeleteBackward = didPressDeleteBackward
+            self.dDidPressDismissKeyboard = dDidPressDismissKeyboard
+        }
+    
     public func makeUIView(context: Context) -> EmojiView {
         let keyboardSettings = KeyboardSettings(bottomType: .categories)
+        keyboardSettings.needToShowAbcButton = needToShowAbcButton!
+        keyboardSettings.needToShowDeleteButton = needToShowDeleteButton!
+        keyboardSettings.countOfRecentsEmojis = countOfRecentsEmojis!
         let emojiView = EmojiView(keyboardSettings: keyboardSettings)
         emojiView.translatesAutoresizingMaskIntoConstraints = false
         emojiView.delegate = context.coordinator
