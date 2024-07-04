@@ -18,12 +18,14 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
     var dDidPressDismissKeyboard: (() -> Void)?
     var needToShowAbcButton: (Bool)?
     var needToShowDeleteButton: (Bool)?
+    var updateRecentEmojiImmediately: (Bool)?
     var countOfRecentsEmojis: (Int)?
     
     public init(
-        needToShowAbcButton: (Bool) = false,
-        needToShowDeleteButton: (Bool) = false,
-        countOfRecentsEmojis: (Int) = MaxCountOfRecentsEmojis,
+        needToShowAbcButton: (Bool)? = false,
+        needToShowDeleteButton: (Bool)? = true,
+        updateRecentEmojiImmediately: (Bool)? = true,
+        countOfRecentsEmojis: (Int)? = MaxCountOfRecentsEmojis,
         didSelect: ((String) -> Void)? = nil,
         didPressChangeKeyboard: (() -> Void)? = nil,
         didPressDeleteBackward: (() -> Void)? = nil,
@@ -31,6 +33,7 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
             self.needToShowAbcButton = needToShowAbcButton
             self.needToShowDeleteButton = needToShowDeleteButton
             self.countOfRecentsEmojis = countOfRecentsEmojis
+            self.updateRecentEmojiImmediately = updateRecentEmojiImmediately
             self.didSelect = didSelect
             self.didPressChangeKeyboard = didPressChangeKeyboard
             self.didPressDeleteBackward = didPressDeleteBackward
@@ -40,9 +43,15 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
     public func makeUIView(context: Context) -> EmojiView {
         let keyboardSettings = KeyboardSettings(bottomType: .categories)
         keyboardSettings.needToShowAbcButton = needToShowAbcButton!
-        keyboardSettings.needToShowDeleteButton = needToShowDeleteButton!
+        keyboardSettings.needToShowDeleteButton = needToShowAbcButton!
         keyboardSettings.countOfRecentsEmojis = countOfRecentsEmojis!
+        keyboardSettings.updateRecentEmojiImmediately = updateRecentEmojiImmediately!
         let emojiView = EmojiView(keyboardSettings: keyboardSettings)
+        if (needToShowDeleteButton!){
+            let bottomView = emojiView.subviews.last?.subviews.last
+            let collecitonViewToSuperViewTrailingConstraint = bottomView?.value(forKey: "collecitonViewToSuperViewTrailingConstraint") as? NSLayoutConstraint
+            collecitonViewToSuperViewTrailingConstraint?.priority = .defaultLow
+        }
         emojiView.translatesAutoresizingMaskIntoConstraints = false
         emojiView.delegate = context.coordinator
         
