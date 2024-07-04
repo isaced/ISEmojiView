@@ -135,7 +135,7 @@ EmojiView_SwiftUI()
     .padding()
 ```
 
-`countOfRecentsEmojis`, `needToShowAbcButton`, `needToShowDeleteButton` can be passed to EmojiView_SwiftUI as parameters.
+`countOfRecentsEmojis`, `needToShowAbcButton`, `needToShowDeleteButton`, `updateRecentEmojiImmediately` can be passed to EmojiView_SwiftUI as parameters.
 
 ## Others
 
