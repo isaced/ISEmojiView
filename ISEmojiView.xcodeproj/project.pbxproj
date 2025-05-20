@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		0B834BBC1DD5CE12003F5D79 /* ISEmojiView.h in Headers */ = {isa = PBXBuildFile; fileRef = 0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		0BDBA7022DDCB87C00D6AA0C /* ISEmojiList_iOS12.1.plist in Resources */ = {isa = PBXBuildFile; fileRef = 0BDBA7012DDCB87C00D6AA0C /* ISEmojiList_iOS12.1.plist */; };
 		0D3A9A8B2115E36100279297 /* EmojiCategory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4D2115E36100279297 /* EmojiCategory.swift */; };
 		0D3A9A8C2115E36100279297 /* KeyboardSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4E2115E36100279297 /* KeyboardSettings.swift */; };
 		0D3A9A8D2115E36100279297 /* Category.swift in Sources */ = {isa = PBXBuildFile; fileRef = 0D3A9A4F2115E36100279297 /* Category.swift */; };
@@ -36,6 +37,7 @@
 		0B834BB71DD5CE12003F5D79 /* ISEmojiView.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = ISEmojiView.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		0B834BBA1DD5CE12003F5D79 /* ISEmojiView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ISEmojiView.h; sourceTree = "<group>"; };
 		0B834BBB1DD5CE12003F5D79 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		0BDBA7012DDCB87C00D6AA0C /* ISEmojiList_iOS12.1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = ISEmojiList_iOS12.1.plist; sourceTree = "<group>"; };
 		0D3A9A4D2115E36100279297 /* EmojiCategory.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiCategory.swift; sourceTree = "<group>"; };
 		0D3A9A4E2115E36100279297 /* KeyboardSettings.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KeyboardSettings.swift; sourceTree = "<group>"; };
 		0D3A9A4F2115E36100279297 /* Category.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Category.swift; sourceTree = "<group>"; };
@@ -213,6 +215,7 @@
 				0D7B3262227544EF0040F427 /* Views */,
 				0D3A9A892115E36100279297 /* ISEmojiList.plist */,
 				E9094FBE229297EE00634195 /* ISEmojiList_iOS11.plist */,
+				0BDBA7012DDCB87C00D6AA0C /* ISEmojiList_iOS12.1.plist */,
 				0D3A9A8A2115E36100279297 /* ISEmojiList_iOS10.plist */,
 				0D9FB68123125CB20076FFA8 /* Images.xcassets */,
 			);
@@ -310,6 +313,7 @@
 				0D3A9ABB2115E36200279297 /* ISEmojiList.plist in Resources */,
 				0D9FB68223125CB20076FFA8 /* Images.xcassets in Resources */,
 				0D3A9ABC2115E36200279297 /* ISEmojiList_iOS10.plist in Resources */,
+				0BDBA7022DDCB87C00D6AA0C /* ISEmojiList_iOS12.1.plist in Resources */,
 				0D7B3267227544EF0040F427 /* EmojiCollectionView.xib in Resources */,
 				0D7B3268227544EF0040F427 /* CategoriesBottomView.xib in Resources */,
 				E9094FBF229297EE00634195 /* ISEmojiList_iOS11.plist in Resources */,
