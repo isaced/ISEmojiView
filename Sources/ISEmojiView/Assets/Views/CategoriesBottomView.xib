@@ -68,7 +68,7 @@
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
                 <outlet property="changeKeyboardButton" destination="knY-pK-n7O" id="mWZ-mL-hfS"/>
-                <outlet property="collecitonViewToSuperViewTrailingConstraint" destination="gu0-gY-qH8" id="S6o-NW-n5d"/>
+                <outlet property="collectionViewToSuperViewTrailingConstraint" destination="gu0-gY-qH8" id="S6o-NW-n5d"/>
                 <outlet property="collectionView" destination="Ymf-rC-qWc" id="yKv-xM-c7E"/>
                 <outlet property="collectionViewToSuperViewLeadingConstraint" destination="JuT-Ya-x8H" id="6Tp-mK-lpt"/>
                 <outlet property="deleteButton" destination="Tf8-um-STV" id="9VY-aM-FWJ"/>

@@ -62,7 +62,7 @@ final internal class CategoriesBottomView: UIView {
     
     @IBOutlet private var collectionViewToSuperViewLeadingConstraint: NSLayoutConstraint!
     
-    @IBOutlet private weak var collecitonViewToSuperViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet private weak var collectionViewToSuperViewTrailingConstraint: NSLayoutConstraint!
 
     // MARK: - Init functions
     
@@ -86,7 +86,7 @@ final internal class CategoriesBottomView: UIView {
         }
 
         if !needToShowDeleteButton {
-          bottomView.collecitonViewToSuperViewTrailingConstraint.priority = .defaultHigh
+          bottomView.collectionViewToSuperViewTrailingConstraint.priority = .defaultHigh
         }
 
         bottomView.selectFirstCell()
