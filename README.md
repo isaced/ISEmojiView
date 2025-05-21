@@ -34,7 +34,7 @@ To run the example project, clone the repo, and run `pod install` from the Examp
 - iOS8+
 - Xcode 10
 
-## Useage
+## Usage
 
 ### Installation
 
