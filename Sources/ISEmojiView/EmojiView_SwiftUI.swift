@@ -49,8 +49,8 @@ public struct EmojiView_SwiftUI: UIViewRepresentable {
         let emojiView = EmojiView(keyboardSettings: keyboardSettings)
         if (needToShowDeleteButton!){
             let bottomView = emojiView.subviews.last?.subviews.last
-            let collecitonViewToSuperViewTrailingConstraint = bottomView?.value(forKey: "collectionViewToSuperViewTrailingConstraint") as? NSLayoutConstraint
-            collecitonViewToSuperViewTrailingConstraint?.priority = .defaultLow
+            let collectionViewToSuperViewTrailingConstraint = bottomView?.value(forKey: "collectionViewToSuperViewTrailingConstraint") as? NSLayoutConstraint
+            collectionViewToSuperViewTrailingConstraint?.priority = .defaultLow
         }
         emojiView.translatesAutoresizingMaskIntoConstraints = false
         emojiView.delegate = context.coordinator
