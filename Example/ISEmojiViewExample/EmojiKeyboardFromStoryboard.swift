@@ -5,7 +5,7 @@
 //  Created by Beniamin Sarkisyan on 04/08/2018.
 //
 
-import Foundation
+import UIKit
 import ISEmojiView
 
 class EmojiKeyboardFromStoryboard: UIViewController, EmojiViewDelegate {
