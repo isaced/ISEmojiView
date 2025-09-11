@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 46;
+	objectVersion = 60;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -14,7 +14,7 @@
 		0DEA0E641DD20B3B00B1B151 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 0DEA0E621DD20B3B00B1B151 /* LaunchScreen.storyboard */; };
 		1142DD302115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1142DD2F2115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift */; };
 		114829E9211483FC004B6425 /* EmojiKeyboardViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */; };
-		406F94F35242F87182F7ECD3 /* Pods_ISEmojiViewExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */; };
+		A9E626D02E72ECD200539FA7 /* ISEmojiView in Frameworks */ = {isa = PBXBuildFile; productRef = A9E626CF2E72ECD200539FA7 /* ISEmojiView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,8 +28,6 @@
 		0E32A230C1B938491B901852 /* Pods_ISEmojiViewExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_ISEmojiViewExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		1142DD2F2115840700A4E9AE /* EmojiKeyboardFromStoryboard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardFromStoryboard.swift; sourceTree = "<group>"; };
 		114829E8211483FC004B6425 /* EmojiKeyboardViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EmojiKeyboardViewController.swift; sourceTree = "<group>"; };
-		1D00724B50C530DEF863196D /* Pods-ISEmojiViewExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.debug.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.debug.xcconfig"; sourceTree = "<group>"; };
-		495F7A3EAEDE9F8D1CE4806D /* Pods-ISEmojiViewExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-ISEmojiViewExample.release.xcconfig"; path = "Pods/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample.release.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,7 +35,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				406F94F35242F87182F7ECD3 /* Pods_ISEmojiViewExample.framework in Frameworks */,
+				A9E626D02E72ECD200539FA7 /* ISEmojiView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -49,7 +47,6 @@
 			children = (
 				0DEA0E581DD20B3B00B1B151 /* ISEmojiViewExample */,
 				0DEA0E571DD20B3B00B1B151 /* Products */,
-				BFF5B161EBE3705B4D93099A /* Pods */,
 				BBBD543C46F0B63FBB772FDA /* Frameworks */,
 			);
 			sourceTree = "<group>";
@@ -85,15 +82,6 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
-		BFF5B161EBE3705B4D93099A /* Pods */ = {
-			isa = PBXGroup;
-			children = (
-				1D00724B50C530DEF863196D /* Pods-ISEmojiViewExample.debug.xcconfig */,
-				495F7A3EAEDE9F8D1CE4806D /* Pods-ISEmojiViewExample.release.xcconfig */,
-			);
-			name = Pods;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -101,11 +89,9 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = 0DEA0E681DD20B3B00B1B151 /* Build configuration list for PBXNativeTarget "ISEmojiViewExample" */;
 			buildPhases = (
-				1FB6330B2C690EE7F9F3E6E6 /* [CP] Check Pods Manifest.lock */,
 				0DEA0E521DD20B3B00B1B151 /* Sources */,
 				0DEA0E531DD20B3B00B1B151 /* Frameworks */,
 				0DEA0E541DD20B3B00B1B151 /* Resources */,
-				374B14ED04AC84B4D6A8BAB1 /* [CP] Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -127,7 +113,6 @@
 				TargetAttributes = {
 					0DEA0E551DD20B3B00B1B151 = {
 						CreatedOnToolsVersion = 8.1;
-						ProvisioningStyle = Manual;
 					};
 				};
 			};
@@ -140,6 +125,9 @@
 				Base,
 			);
 			mainGroup = 0DEA0E4D1DD20B3B00B1B151;
+			packageReferences = (
+				A9E626CE2E72ECD200539FA7 /* XCLocalSwiftPackageReference "../../ISEmojiView" */,
+			);
 			productRefGroup = 0DEA0E571DD20B3B00B1B151 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -161,45 +149,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		1FB6330B2C690EE7F9F3E6E6 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
-				"${PODS_ROOT}/Manifest.lock",
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-				"$(DERIVED_FILE_DIR)/Pods-ISEmojiViewExample-checkManifestLockResult.txt",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
-			showEnvVarsInLog = 0;
-		};
-		374B14ED04AC84B4D6A8BAB1 /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh",
-				"${BUILT_PRODUCTS_DIR}/ISEmojiView/ISEmojiView.framework",
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/ISEmojiView.framework",
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-ISEmojiViewExample/Pods-ISEmojiViewExample-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		0DEA0E521DD20B3B00B1B151 /* Sources */ = {
@@ -288,6 +237,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
 				SDKROOT = iphoneos;
 				SWIFT_ACTIVE_COMPILATION_CONDITIONS = DEBUG;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
@@ -341,8 +291,10 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 10.1;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
 				SDKROOT = iphoneos;
-				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
+				SWIFT_COMPILATION_MODE = wholemodule;
+				SWIFT_OPTIMIZATION_LEVEL = "-O";
 				SWIFT_VERSION = 5.0;
 				VALIDATE_PRODUCT = YES;
 			};
@@ -350,30 +302,38 @@
 		};
 		0DEA0E691DD20B3B00B1B151 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 1D00724B50C530DEF863196D /* Pods-ISEmojiViewExample.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ISEmojiViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
 		0DEA0E6A1DD20B3B00B1B151 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = 495F7A3EAEDE9F8D1CE4806D /* Pods-ISEmojiViewExample.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "Apple Development";
+				CODE_SIGN_STYLE = Manual;
 				DEVELOPMENT_TEAM = "";
 				INFOPLIST_FILE = ISEmojiViewExample/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
-				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.isaced.ISEmojiViewExample;
+				LD_RUNPATH_SEARCH_PATHS = (
+					"$(inherited)",
+					"@executable_path/Frameworks",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
@@ -400,6 +360,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		A9E626CE2E72ECD200539FA7 /* XCLocalSwiftPackageReference "../../ISEmojiView" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = ../../ISEmojiView;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		A9E626CF2E72ECD200539FA7 /* ISEmojiView */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = ISEmojiView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 0DEA0E4E1DD20B3B00B1B151 /* Project object */;
 }
