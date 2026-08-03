@@ -62,7 +62,8 @@
 			<string>😞</string>
 			<string>😟</string>
 			<string>😤</string>
-			<string>😢</string>
+            <string>😢</string>
+			<string>🥲</string>
 			<string>😭</string>
 			<string>😦</string>
 			<string>😧</string>
@@ -1438,6 +1439,10 @@
 			<string>🌂</string>
 			<string>🧵</string>
 			<string>🧶</string>
+			<string>↔️</string>
+			<string>↕️</string>
+			<string>🫩</string>
+			<string>🥴</string>
 		</array>
 	</dict>
 	<dict>
@@ -1626,6 +1631,9 @@
 			<string>☂️</string>
 			<string>🌊</string>
 			<string>🌫</string>
+			<string>🌳</string>
+			<string>🐋</string>
+			<string>🐾</string>
 		</array>
 	</dict>
 	<dict>
@@ -1738,6 +1746,8 @@
 			<string>🥣</string>
 			<string>🥡</string>
 			<string>🥢</string>
+			<string>🍋‍🟩</string>
+			<string>🥕</string>
 		</array>
 	</dict>
 	<dict>
@@ -2041,6 +2051,7 @@
 			<string>🎳</string>
 			<string>🎮</string>
 			<string>🎰</string>
+			<string>🩰</string>
 		</array>
 	</dict>
 	<dict>
@@ -2168,6 +2179,7 @@
 			<string>🌌</string>
 			<string>🌉</string>
 			<string>🌁</string>
+			<string>🗻</string>
 		</array>
 	</dict>
 	<dict>
@@ -2382,6 +2394,12 @@
 			<string>🔐</string>
 			<string>🔒</string>
 			<string>🔓</string>
+			<string>🪪</string>
+			<string>🪇</string>
+			<string>🪏</string>
+			<string>💥</string>
+			<string>🎺</string>
+			<string>📦</string>
 		</array>
 	</dict>
 	<dict>
@@ -2663,6 +2681,7 @@
 			<string>🕥</string>
 			<string>🕦</string>
 			<string>🕧</string>
+			<string>💨</string>
 		</array>
 	</dict>
 	<dict>
