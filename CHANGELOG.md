@@ -21,6 +21,7 @@
 
 **Changed**
 
+- Minimum deployment target is now iOS 15 for both CocoaPods and SPM: current Xcode cannot compile targets below 15, so the previous iOS 8/12 declarations were no longer usable in practice
 - **Breaking (SwiftUI)**: `dDidPressDismissKeyboard:` renamed to `didPressDismissKeyboard:` (the old parameter was unusable due to a force-unwrap bug) ([#97](https://github.com/isaced/ISEmojiView/pull/97))
 - SwiftUI components are distributed via Swift Package Manager only; the CocoaPods pod continues to ship the UIKit sources ([#97](https://github.com/isaced/ISEmojiView/pull/97))
 - READMEs refreshed: rewritten SwiftUI section, removed dead links, corrected requirements ([#97](https://github.com/isaced/ISEmojiView/pull/97), [#99](https://github.com/isaced/ISEmojiView/pull/99))

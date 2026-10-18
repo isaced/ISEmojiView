@@ -34,8 +34,7 @@ To run the example projects, clone the repo and open `Example/ISEmojiViewExample
 ## Requirements
 
 - Swift 5
-- iOS 8+ (CocoaPods / Carthage), iOS 12+ (Swift Package Manager)
-- iOS 13+ for the SwiftUI components
+- iOS 15+
 
 ## Usage
 

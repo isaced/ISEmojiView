@@ -27,8 +27,7 @@ clone 项目后直接打开 `Example/ISEmojiViewExample.xcodeproj`（UIKit）或
 ## 环境
 
 - Swift 5
-- iOS 8+（CocoaPods / Carthage）、iOS 12+（Swift Package Manager）
-- SwiftUI 组件需要 iOS 13+
+- iOS 15+
 
 ## 使用
 
