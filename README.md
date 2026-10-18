@@ -26,7 +26,7 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 
 ## Example
 
-To run the example project, clone the repo, and run `pod install` from the Example directory first.
+To run the example projects, clone the repo and open `Example/ISEmojiViewExample.xcodeproj` (UIKit) or `SwiftUIExample/SwiftUIExample.xcodeproj` (SwiftUI). Both resolve the library through a local Swift Package reference, no extra install step is needed.
 
 ## Requirements
 
@@ -125,17 +125,48 @@ This is a class to describe keyboard settings. Available properties:
 - `needToShowAbcButton` - need to show change keyboard button. This button is located in `Categories` bottom view.
 
 ### SwiftUI
+
+SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources).
+
 Doesn't work on macOS SwiftUI natively.
+
+#### EmojiTextField (recommended)
+
+Replaces the system keyboard of a text field with the emoji keyboard. The `Binding` stays the single source of truth: emoji taps, the delete key and grapheme-cluster deletion (skin tones, ZWJ sequences) all keep it in sync.
 
 ```Swift
 import ISEmojiView
 
-EmojiView_SwiftUI()
-    .frame(width: 300, height: 500)
-    .padding()
+@State private var text = ""
+
+EmojiTextField(
+    text: $text,
+    placeholder: "Tap to type",
+    bottomType: .categories,
+    needToShowAbcButton: true
+)
+.frame(height: 44)
 ```
 
-`countOfRecentsEmojis`, `needToShowAbcButton`, `needToShowDeleteButton`, `updateRecentEmojiImmediately` can be passed to EmojiView_SwiftUI as parameters.
+#### EmojiView_SwiftUI (inline panel)
+
+Embeds the keyboard directly in a view. `EmojiView` has no intrinsic content size, so give it an explicit frame.
+
+```Swift
+import ISEmojiView
+
+EmojiView_SwiftUI(
+    bottomType: .categories,
+    didSelect: { emoji in
+        print(emoji)
+    }
+)
+.frame(width: 300, height: 300)
+```
+
+All keyboard settings are applied when the underlying view is created. To change them later, recreate the view, for example with `.id(...)`.
+
+See [`SwiftUIExample/`](SwiftUIExample) for a runnable demo project.
 
 ## Others
 

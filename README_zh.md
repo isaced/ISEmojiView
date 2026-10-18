@@ -17,7 +17,7 @@
 
 ## Example
 
-clone 项目，在项目根目录执行 `pod install` 命令来运行
+clone 项目后直接打开 `Example/ISEmojiViewExample.xcodeproj`（UIKit）或 `SwiftUIExample/SwiftUIExample.xcodeproj`（SwiftUI）即可运行，两者均通过本地 Swift Package 引用库源码，无需额外安装步骤。
 
 ## 环境
 
@@ -116,6 +116,49 @@ func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
 - `countOfRecentsEmojis` - 最近 Emoji 最大数量，如果设置为 0 则不开启 “最近” 功能。默认为 50。
 - `needToShowAbcButton` - 是否展示切换键盘按钮。这个按钮在 `Categories` 底部视图。
 
+### SwiftUI
+
+SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码）。
+
+暂不支持 macOS SwiftUI 原生使用。
+
+#### EmojiTextField（推荐）
+
+用 Emoji 键盘替换输入框的系统键盘。`Binding` 是唯一数据源：点击 Emoji、删除键、字素整体回删（肤色变体、ZWJ 组合 emoji）都会自动同步。
+
+```Swift
+import ISEmojiView
+
+@State private var text = ""
+
+EmojiTextField(
+    text: $text,
+    placeholder: "轻触输入",
+    bottomType: .categories,
+    needToShowAbcButton: true
+)
+.frame(height: 44)
+```
+
+#### EmojiView_SwiftUI（内嵌面板）
+
+将键盘直接嵌入页面。`EmojiView` 没有固有尺寸（intrinsic content size），需要显式指定 frame。
+
+```Swift
+import ISEmojiView
+
+EmojiView_SwiftUI(
+    bottomType: .categories,
+    didSelect: { emoji in
+        print(emoji)
+    }
+)
+.frame(width: 300, height: 300)
+```
+
+所有键盘配置只在视图创建时生效一次；如需修改配置，请重建视图，例如使用 `.id(...)`。
+
+完整可运行示例见 [`SwiftUIExample/`](SwiftUIExample)。
 
 ## 其他
 

@@ -2,6 +2,15 @@
 
 ## [Unreleased](https://github.com/isaced/ISEmojiView/tree/HEAD)
 
+### SwiftUI
+
+- Added `EmojiTextField`, a SwiftUI text field that uses the emoji keyboard as its `inputView`, with `Binding<String>` kept in sync across emoji taps, delete key and typing.
+- Refactored `EmojiView_SwiftUI`: fixed `needToShowDeleteButton` being assigned from `needToShowAbcButton`; removed the private-API workaround (obsolete since the delete-button constraint fix); settings parameters no longer force-unwrap; layout constraints are activated once instead of on every update.
+- Added `bottomType`, `customEmojis` and `isShowPopPreview` parameters to the SwiftUI wrapper.
+- **Breaking rename**: `dDidPressDismissKeyboard:` → `didPressDismissKeyboard:` (the old parameter was unusable due to a force-unwrap bug).
+- SwiftUI components are SPM-only; the CocoaPods pod continues to ship UIKit sources only.
+- Added `SwiftUIExample/` demo project.
+
 [Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.0.4...HEAD)
 
 **Implemented enhancements:**
