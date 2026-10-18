@@ -108,13 +108,16 @@ final internal class CategoriesBottomView: UIView {
         
         if let layout = collectionView.collectionViewLayout as? UICollectionViewFlowLayout {
             var size = collectionView.bounds.size
+            let builtInCategoryCount = Category.count - 1
+            let shouldScroll = categories.count > builtInCategoryCount
             
             if categories.count < Category.count - 2 {
                 size.width = MinCellSize
             } else {
-                size.width = collectionView.bounds.width/CGFloat(categories.count)
+                size.width = collectionView.bounds.width / CGFloat(min(categories.count, builtInCategoryCount))
             }
             
+            collectionView.isScrollEnabled = shouldScroll
             layout.itemSize = size
             collectionView.collectionViewLayout.invalidateLayout()
         }
