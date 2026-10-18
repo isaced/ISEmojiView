@@ -81,7 +81,7 @@ internal class EmojiPopView: UIView {
     
     internal func setEmoji(_ emoji: Emoji) {
         self.currentEmoji = emoji.emoji
-        self.emojiArray = emoji.emojis
+        self.emojiArray = emoji.variants
     }
     
 }

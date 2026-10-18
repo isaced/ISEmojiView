@@ -12,7 +12,7 @@ final public class EmojiLoader {
     public static func recentEmojiCategory() -> EmojiCategory {
         return EmojiCategory(
             category: .recents,
-            emojis: RecentEmojisManager.sharedInstance.recentEmojis()
+            emojis: RecentEmojisManager.shared.recentEmojis()
         )
     }
     
@@ -58,9 +58,9 @@ final public class EmojiLoader {
             
             for value in rawEmojis {
                 if let string = value as? String {
-                    emojis.append(Emoji(emojis: [string]))
+                    emojis.append(Emoji(variants: [string]))
                 } else if let array = value as? [String] {
-                    emojis.append(Emoji(emojis: array))
+                    emojis.append(Emoji(variants: array))
                 }
             }
             

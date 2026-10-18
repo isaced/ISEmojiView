@@ -1,5 +1,17 @@
 # Change Log
 
+## [Unreleased](https://github.com/isaced/ISEmojiView/tree/HEAD)
+
+Planned for 1.0.0. **Breaking changes** (renames are not aliased; migrate as follows):
+
+- `EmojiView_SwiftUI` renamed to `EmojiKeyboardView` (file also renamed; `EmojiTextField` unchanged)
+- `MaxCountOfRecentsEmojis` (public global) replaced by `KeyboardSettings.defaultCountOfRecentsEmojis`
+- `RecentEmojisManager.sharedInstance` renamed to `RecentEmojisManager.shared`
+- `Category.custom(String, String)` now uses labels: `Category.custom(title:imageName:)`
+- `Emoji.emojis` (variant list) renamed to `Emoji.variants`; initializer is now `Emoji(variants:)`. Persisted data and plist keys are unchanged (mapped via `CodingKeys`)
+- `Emoji.emoji` no longer traps on an empty variant list (returns `""`); `Emoji` equality now compares variants in addition to `selectedEmoji`
+- `KeyboardSettings.bottomType` and `EmojiCategory` properties are no longer implicitly-unwrapped optionals
+
 ## [0.4.0](https://github.com/isaced/ISEmojiView/releases/tag/0.4.0) (2026-10-19)
 [Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.3.5...0.4.0)
 

@@ -122,9 +122,27 @@ func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
 - `needToShowDeleteButton` - 是否在底部视图展示删除按钮。默认为 true。
 - `updateRecentEmojiImmediately` - 选择 Emoji 后立即更新最近使用列表。默认为 true。
 
+#### 自定义 Emoji
+
+```Swift
+let keyboardSettings = KeyboardSettings(bottomType: .categories)
+keyboardSettings.customEmojis = [
+    EmojiCategory(
+        category: .custom(title: "我的分类", imageName: "ic_customCategory"),
+        emojis: [
+            Emoji(variants: ["😂"]),
+            // 多个变体时，长按可切换，效果同肤色选择
+            Emoji(variants: ["🤝", "🤝🏽", "🤝🏿"])
+        ]
+    )
+]
+```
+
+`imageName` 会在宿主 App 的 bundle 中查找，用作类目栏图标。
+
 ### SwiftUI
 
-SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码），需要 iOS 13+。
+SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码）。
 
 暂不支持 macOS SwiftUI 原生使用。
 
@@ -146,14 +164,14 @@ EmojiTextField(
 .frame(height: 44)
 ```
 
-#### EmojiView_SwiftUI（内嵌面板）
+#### EmojiKeyboardView（内嵌面板）
 
 将键盘直接嵌入页面。`EmojiView` 没有固有尺寸（intrinsic content size），需要显式指定 frame。
 
 ```Swift
 import ISEmojiView
 
-EmojiView_SwiftUI(
+EmojiKeyboardView(
     bottomType: .categories,
     didSelect: { emoji in
         print(emoji)

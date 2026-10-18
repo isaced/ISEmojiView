@@ -17,7 +17,7 @@ public enum Category: Equatable {
     case objects
     case symbols
     case flags
-    case custom(String, String)
+    case custom(title: String, imageName: String)
     
     static var count = 10
     

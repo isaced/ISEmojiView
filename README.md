@@ -128,9 +128,27 @@ This is a class to describe keyboard settings. Available properties:
 - `needToShowDeleteButton` - need to show delete button in the bottom view. Default is true.
 - `updateRecentEmojiImmediately` - update the recent emoji list immediately when an emoji is selected. Default is true.
 
+#### Custom emojis
+
+```Swift
+let keyboardSettings = KeyboardSettings(bottomType: .categories)
+keyboardSettings.customEmojis = [
+    EmojiCategory(
+        category: .custom(title: "My Title", imageName: "ic_customCategory"),
+        emojis: [
+            Emoji(variants: ["😂"]),
+            // more than one variant: long-press to pick, like skin tones
+            Emoji(variants: ["🤝", "🤝🏽", "🤝🏿"])
+        ]
+    )
+]
+```
+
+`imageName` is looked up in your app bundle for the category bar icon.
+
 ### SwiftUI
 
-SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources). Requires iOS 13+.
+SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources).
 
 Doesn't work on macOS SwiftUI natively.
 
@@ -152,14 +170,14 @@ EmojiTextField(
 .frame(height: 44)
 ```
 
-#### EmojiView_SwiftUI (inline panel)
+#### EmojiKeyboardView (inline panel)
 
 Embeds the keyboard directly in a view. `EmojiView` has no intrinsic content size, so give it an explicit frame.
 
 ```Swift
 import ISEmojiView
 
-EmojiView_SwiftUI(
+EmojiKeyboardView(
     bottomType: .categories,
     didSelect: { emoji in
         print(emoji)

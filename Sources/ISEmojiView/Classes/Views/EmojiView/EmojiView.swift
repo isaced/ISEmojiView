@@ -33,6 +33,12 @@ final public class EmojiView: UIView {
     
     // MARK: - IBInspectable variables
     
+    // These are the Interface Builder configuration surface of EmojiView:
+    // they can be set on an EmojiView placed in a storyboard or XIB (see the
+    // "Load keyboard from storyboard" example). Programmatic users should
+    // prefer KeyboardSettings. Existing storyboards reference these names via
+    // KVC keyPaths (including `_bottomType`); do not rename them.
+    
     @IBInspectable private var _bottomType: Int = BottomType.pageControl.rawValue {
         didSet {
             guard let type = BottomType(rawValue: _bottomType) else {
@@ -84,7 +90,7 @@ final public class EmojiView: UIView {
     private var bottomConstraint: NSLayoutConstraint?
     
     private var bottomType: BottomType!
-    private var emojis: [EmojiCategory]!
+    private var emojis: [EmojiCategory] = []
     private var keyboardSettings: KeyboardSettings?
     
     // MARK: - Init functions
@@ -160,8 +166,8 @@ final public class EmojiView: UIView {
 extension EmojiView: EmojiCollectionViewDelegate {
     
     func emojiViewDidSelectEmoji(emojiView: EmojiCollectionView, emoji: Emoji, selectedEmoji: String) {
-        if RecentEmojisManager.sharedInstance.add(emoji: emoji, selectedEmoji: selectedEmoji, maxCount: countOfRecentsEmojis),(keyboardSettings?.updateRecentEmojiImmediately) ?? true  {
-            emojiCollectionView?.updateRecentsEmojis(RecentEmojisManager.sharedInstance.recentEmojis())
+        if RecentEmojisManager.shared.add(emoji: emoji, selectedEmoji: selectedEmoji, maxCount: countOfRecentsEmojis),(keyboardSettings?.updateRecentEmojiImmediately) ?? true  {
+            emojiCollectionView?.updateRecentsEmojis(RecentEmojisManager.shared.recentEmojis())
         }
         
         delegate?.emojiViewDidSelectEmoji(selectedEmoji, emojiView: self)

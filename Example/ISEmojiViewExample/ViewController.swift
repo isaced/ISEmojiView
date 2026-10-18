@@ -24,16 +24,16 @@ class ViewController: UITableViewController {
             keyboardViewController.bottomType = .pageControl
             keyboardViewController.emojis = [
                 EmojiCategory(
-                    category: Category.custom("My Title", "ic_customCategory"),
-                    emojis: [Emoji(emojis: ["😂"]), Emoji(emojis: ["🤣"])]
+                    category: Category.custom(title: "My Title", imageName: "ic_customCategory"),
+                    emojis: [Emoji(variants: ["😂"]), Emoji(variants: ["🤣"])]
                 )
             ]
         case "EmojiKeyboardWithCategoriesAndCustomEmojis":
             keyboardViewController.bottomType = .categories
             keyboardViewController.emojis = [
                 EmojiCategory(
-                    category: Category.custom("My Title", "ic_customCategory"),
-                    emojis: [Emoji(emojis: ["😂"]), Emoji(emojis: ["🤣"])]
+                    category: Category.custom(title: "My Title", imageName: "ic_customCategory"),
+                    emojis: [Emoji(variants: ["😂"]), Emoji(variants: ["🤣"])]
                 )
             ]
         default:
