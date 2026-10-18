@@ -46,14 +46,14 @@ To run the example projects, clone the repo and open `Example/ISEmojiViewExample
 via [Swift Package Manager](https://swift.org/package-manager/) Install to your project，Add in Package.swift：
 
 ```swift
-.package(name: "ISEmojiView", url: "https://github.com/isaced/ISEmojiView.git", .upToNextMinor(from: "0.3.0")),
+.package(name: "ISEmojiView", url: "https://github.com/isaced/ISEmojiView.git", .upToNextMinor(from: "0.4.0")),
 ```
 
 In Xcode：
 
 - File > Swift Packages > Add Package Dependency
 - Add https://github.com/isaced/ISEmojiView.git
-- Select "Up to Next Major" with "0.3.0"
+- Select "Up to Next Major" with "0.4.0"
 
 #### Cocoapods
 

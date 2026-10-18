@@ -39,14 +39,14 @@ clone 项目后直接打开 `Example/ISEmojiViewExample.xcodeproj`（UIKit）或
 通过 [Swift Package Manager](https://swift.org/package-manager/) 安装 ISEmojiView 到你的项目，在 Package.swift 中添加：
 
 ```swift
-.package(name: "ISEmojiView", url: "https://github.com/isaced/ISEmojiView.git", .upToNextMinor(from: "0.3.0")),
+.package(name: "ISEmojiView", url: "https://github.com/isaced/ISEmojiView.git", .upToNextMinor(from: "0.4.0")),
 ```
 
 在 Xcode 中：
 
 - 菜单 File > Swift Packages > Add Package Dependency
 - 搜索 https://github.com/isaced/ISEmojiView.git
-- 选择 "Up to Next Major" 版本 "0.3.0"
+- 选择 "Up to Next Major" 版本 "0.4.0"
 
 
 #### CocoaPods

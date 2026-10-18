@@ -1,25 +1,29 @@
 # Change Log
 
-## [Unreleased](https://github.com/isaced/ISEmojiView/tree/HEAD)
+## [0.4.0](https://github.com/isaced/ISEmojiView/releases/tag/0.4.0) (2026-10-19)
+[Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.3.5...0.4.0)
 
-### SwiftUI
+**Added**
 
-- Added `EmojiTextField`, a SwiftUI text field that uses the emoji keyboard as its `inputView`, with `Binding<String>` kept in sync across emoji taps, delete key and typing.
-- Refactored `EmojiView_SwiftUI`: fixed `needToShowDeleteButton` being assigned from `needToShowAbcButton`; removed the private-API workaround (obsolete since the delete-button constraint fix); settings parameters no longer force-unwrap; layout constraints are activated once instead of on every update.
-- Added `bottomType`, `customEmojis` and `isShowPopPreview` parameters to the SwiftUI wrapper.
-- **Breaking rename**: `dDidPressDismissKeyboard:` → `didPressDismissKeyboard:` (the old parameter was unusable due to a force-unwrap bug).
-- SwiftUI components are SPM-only; the CocoaPods pod continues to ship UIKit sources only.
-- Added `SwiftUIExample/` demo project.
+- Latest emoji data (Unicode 17.0) with per-iOS-version lists selected at runtime (iOS 15.4 / 16.4 / 17.4 / 18.4 / 26.4+), generated from `emoji-test.txt` by the new `Tools/emoji-generator` toolchain ([#94](https://github.com/isaced/ISEmojiView/pull/94), [#70](https://github.com/isaced/ISEmojiView/issues/70))
+- Slide across the category bar to switch categories live, matching the system emoji keyboard ([#96](https://github.com/isaced/ISEmojiView/pull/96))
+- `EmojiTextField`: a SwiftUI text field that uses the emoji keyboard as its `inputView`, with `Binding<String>` kept in sync across emoji taps, delete key and typing ([#97](https://github.com/isaced/ISEmojiView/pull/97))
+- `EmojiView_SwiftUI` now accepts `bottomType`, `customEmojis` and `isShowPopPreview` ([#97](https://github.com/isaced/ISEmojiView/pull/97))
+- `SwiftUIExample/` demo project ([#97](https://github.com/isaced/ISEmojiView/pull/97))
+- Category bar becomes scrollable when there are more categories than fit on screen ([#93](https://github.com/isaced/ISEmojiView/pull/93), [#61](https://github.com/isaced/ISEmojiView/issues/61))
+- Grid density adapts to the device: columns/rows are derived from a target cell size (8 columns on phones, up to 12 on iPad) instead of fixed 45x35 cells ([#98](https://github.com/isaced/ISEmojiView/pull/98))
 
-[Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.0.4...HEAD)
+**Fixed**
 
-**Implemented enhancements:**
+- Delete button not showing in the categories bottom bar, and `NSUnknownKeyException` crash for SPM users of the page-control bottom view ([#92](https://github.com/isaced/ISEmojiView/pull/92), [#73](https://github.com/isaced/ISEmojiView/issues/73), [#83](https://github.com/isaced/ISEmojiView/issues/83))
+- Long-press emoji popup: no more flicker on slight finger movement, content is centered above the tail, the bubble/tail border seam is gone, multi-variant bubbles stay centered on the pressed emoji, and sliding across cell gaps is smooth ([#95](https://github.com/isaced/ISEmojiView/pull/95))
+- SwiftUI wrapper: `needToShowDeleteButton` was assigned from `needToShowAbcButton`; settings parameters no longer force-unwrap; layout constraints are activated once instead of leaking on every update ([#97](https://github.com/isaced/ISEmojiView/pull/97))
 
-- Disable list of emoji  [\#3](https://github.com/isaced/ISEmojiView/issues/3)
+**Changed**
 
-**Merged pull requests:**
-
-- Replaced delete button image with emoji. [\#4](https://github.com/isaced/ISEmojiView/pull/4) ([richy486](https://github.com/richy486))
+- **Breaking (SwiftUI)**: `dDidPressDismissKeyboard:` renamed to `didPressDismissKeyboard:` (the old parameter was unusable due to a force-unwrap bug) ([#97](https://github.com/isaced/ISEmojiView/pull/97))
+- SwiftUI components are distributed via Swift Package Manager only; the CocoaPods pod continues to ship the UIKit sources ([#97](https://github.com/isaced/ISEmojiView/pull/97))
+- READMEs refreshed: rewritten SwiftUI section, removed dead links, corrected requirements ([#97](https://github.com/isaced/ISEmojiView/pull/97), [#99](https://github.com/isaced/ISEmojiView/pull/99))
 
 ## [0.0.4](https://github.com/isaced/ISEmojiView/tree/0.0.4) (2017-01-27)
 [Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.0.3...0.0.4)
