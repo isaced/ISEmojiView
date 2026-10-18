@@ -108,8 +108,6 @@ extension EmojiPopView {
     }
     
     private func setupUI() {
-        isHidden = true
-        
         self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         
         // Center the wider bubble around the tail, then keep it on screen.

@@ -283,7 +283,7 @@ extension EmojiCollectionView {
             collectionView.isScrollEnabled = true
             lastLongPressIndexPath = nil
 
-            guard let indexPath = collectionView.indexPathForItem(at: location) else {
+            guard let indexPath = indexPathForItem(near: location) else {
                 return
             }
 
@@ -311,7 +311,7 @@ extension EmojiCollectionView {
             return
         }
 
-        guard let indexPath = collectionView.indexPathForItem(at: location),
+        guard let indexPath = indexPathForItem(near: location),
               let attributes = collectionView.layoutAttributesForItem(at: indexPath) else {
             return
         }
@@ -331,6 +331,36 @@ extension EmojiCollectionView {
             y: cellFrame.origin.y - TopPartSize.height - 10
         )
         emojiPopView.move(location: emojiPopLocation, animation: animated)
+    }
+
+    private func indexPathForItem(near location: CGPoint) -> IndexPath? {
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            return indexPath
+        }
+
+        let maxDistance: CGFloat = 22
+        var nearest: (indexPath: IndexPath, distance: CGFloat)?
+
+        for indexPath in collectionView.indexPathsForVisibleItems {
+            guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else {
+                continue
+            }
+
+            let frame = attributes.frame
+            let dx = max(0, max(frame.minX - location.x, location.x - frame.maxX))
+            let dy = max(0, max(frame.minY - location.y, location.y - frame.maxY))
+            let distance = dx * dx + dy * dy
+
+            guard distance <= maxDistance * maxDistance else {
+                continue
+            }
+
+            if distance < (nearest?.distance ?? .greatestFiniteMagnitude) {
+                nearest = (indexPath, distance)
+            }
+        }
+
+        return nearest?.indexPath
     }
     
     private func dismissPopView(_ usePopViewEmoji: Bool) {
