@@ -44,6 +44,10 @@ final internal class CategoriesBottomView: UIView {
         }
     }
     
+    // MARK: - Private variables
+    
+    private var lastSwipedIndexPath: IndexPath?
+    
     // MARK: - IBOutlets
     
     @IBOutlet private weak var changeKeyboardButton: UIButton!
@@ -57,6 +61,10 @@ final internal class CategoriesBottomView: UIView {
     @IBOutlet private weak var collectionView: UICollectionView! {
         didSet {
             collectionView.register(CategoryCell.self, forCellWithReuseIdentifier: "CategoryCell")
+            
+            let panGesture = UIPanGestureRecognizer(target: self, action: #selector(categoryBarPan(_:)))
+            panGesture.delegate = self
+            collectionView.addGestureRecognizer(panGesture)
         }
     }
     
@@ -185,10 +193,48 @@ extension CategoriesBottomView: UICollectionViewDelegate {
     
 }
 
+// MARK: - UIGestureRecognizerDelegate
+
+extension CategoriesBottomView: UIGestureRecognizerDelegate {
+    
+    func gestureRecognizer(_ gestureRecognizer: UIGestureRecognizer, shouldRecognizeSimultaneouslyWith otherGestureRecognizer: UIGestureRecognizer) -> Bool {
+        return otherGestureRecognizer === collectionView.panGestureRecognizer
+    }
+    
+}
+
 // MARK: - Private functions
 
 extension CategoriesBottomView {
- 
+    
+    @objc private func categoryBarPan(_ gesture: UIPanGestureRecognizer) {
+        switch gesture.state {
+        case .began, .changed:
+            let location = gesture.location(in: collectionView)
+            
+            guard let indexPath = collectionView.indexPathForItem(at: location),
+                  indexPath != lastSwipedIndexPath else {
+                return
+            }
+            
+            lastSwipedIndexPath = indexPath
+            selectCategory(at: indexPath)
+        case .ended, .cancelled, .failed:
+            lastSwipedIndexPath = nil
+        default:
+            break
+        }
+    }
+    
+    private func selectCategory(at indexPath: IndexPath) {
+        (0..<categories.count).forEach {
+            collectionView.deselectItem(at: IndexPath(item: $0, section: 0), animated: false)
+        }
+        
+        collectionView.selectItem(at: indexPath, animated: false, scrollPosition: .centeredHorizontally)
+        delegate?.categoriesBottomViewDidSelectCategory(categories[indexPath.item], bottomView: self)
+    }
+    
     private func selectFirstCell() {
         let indexPath = IndexPath(item: 0, section: 0)
         collectionView.selectItem(at: indexPath, animated: true, scrollPosition: .centeredHorizontally)
