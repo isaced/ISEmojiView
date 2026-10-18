@@ -1,8 +1,11 @@
 # Change Log
 
-## [Unreleased](https://github.com/isaced/ISEmojiView/tree/HEAD)
+## [1.0.0](https://github.com/isaced/ISEmojiView/releases/tag/1.0.0) (2026-10-19)
+[Full Changelog](https://github.com/isaced/ISEmojiView/compare/0.4.0...1.0.0)
 
-Planned for 1.0.0. **Breaking changes** (renames are not aliased; migrate as follows):
+First stable release. The public API is considered stable from this version on; breaking changes will require a major bump.
+
+**Breaking changes** (renames are not aliased; migrate as follows):
 
 - `EmojiView_SwiftUI` renamed to `EmojiKeyboardView` (file also renamed; `EmojiTextField` unchanged)
 - `MaxCountOfRecentsEmojis` (public global) replaced by `KeyboardSettings.defaultCountOfRecentsEmojis`

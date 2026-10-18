@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ISEmojiView'
-  s.version          = '0.4.0'
+  s.version          = '1.0.0'
   s.summary          = 'Emoji Keyboard for iOS.'
   s.description      = <<-DESC
 An easy to use Emoji keyboard for iOS.
