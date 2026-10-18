@@ -62,7 +62,11 @@ final internal class CategoriesBottomView: UIView {
     
     @IBOutlet private var collectionViewToSuperViewLeadingConstraint: NSLayoutConstraint!
     
-    @IBOutlet private weak var collectionViewToSuperViewTrailingConstraint: NSLayoutConstraint!
+    @IBOutlet private var collectionViewToSuperViewTrailingConstraint: NSLayoutConstraint!
+
+    @IBOutlet private var deleteButtonToCollectionViewLeadingConstraint: NSLayoutConstraint!
+
+    @IBOutlet private var deleteButtonToSuperViewTrailingConstraint: NSLayoutConstraint!
 
     // MARK: - Init functions
     
@@ -79,19 +83,22 @@ final internal class CategoriesBottomView: UIView {
         
         bottomView.categories = categories
         bottomView.changeKeyboardButton.isHidden = !needToShowAbcButton
-        bottomView.deleteButton.isHidden = !needToShowDeleteButton
+        bottomView.updateDeleteButtonVisibility(needToShowDeleteButton)
         
         if needToShowAbcButton {
             bottomView.collectionViewToSuperViewLeadingConstraint.priority = .defaultHigh
         }
 
-        if !needToShowDeleteButton {
-          bottomView.collectionViewToSuperViewTrailingConstraint.priority = .defaultHigh
-        }
-
         bottomView.selectFirstCell()
         
         return bottomView
+    }
+
+    private func updateDeleteButtonVisibility(_ isVisible: Bool) {
+        deleteButton.isHidden = !isVisible
+        deleteButtonToCollectionViewLeadingConstraint.isActive = isVisible
+        deleteButtonToSuperViewTrailingConstraint.isActive = isVisible
+        collectionViewToSuperViewTrailingConstraint.priority = isVisible ? .defaultLow : .required
     }
     
     // MARK: - Override functions
