@@ -8,7 +8,7 @@
 
 Pod::Spec.new do |s|
   s.name             = 'ISEmojiView'
-  s.version          = '0.3.5'
+  s.version          = '0.4.0'
   s.summary          = 'Emoji Keyboard for iOS.'
   s.description      = <<-DESC
 An easy to use Emoji keyboard for iOS.
@@ -21,7 +21,7 @@ An easy to use Emoji keyboard for iOS.
   s.source           = { git: 'https://github.com/isaced/ISEmojiView.git', tag: s.version.to_s }
   s.swift_version    = '5'
 
-  s.ios.deployment_target = '8.0'
+  s.ios.deployment_target = '15.0'
 
   s.source_files = 'Sources/ISEmojiView/Classes/**/*'
 

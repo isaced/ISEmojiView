@@ -1,4 +1,4 @@
-# Automated publish to Cocoapods spec
+# Automated publish to CocoaPods trunk on tag push
 
 name: deploy_to_cocoapods
 
@@ -8,16 +8,16 @@ on:
       - '*'
 
 jobs:
-  build:
+  deploy:
 
-    runs-on: macOS-latest
+    runs-on: macos-latest
 
     steps:
-    - uses: actions/checkout@v1
-    - name: Install Cocoapods
-      run: |
-        gem install cocoapods
-        pod install --project-directory=Example
-    - uses: michaelhenry/deploy-to-cocoapods-github-action@1.0.9
+    - uses: actions/checkout@v4
+
+    - name: Publish to CocoaPods trunk
       env:
         COCOAPODS_TRUNK_TOKEN: ${{ secrets.COCOAPODS_TRUNK_TOKEN }}
+      run: |
+        gem install cocoapods --no-document
+        pod trunk push ISEmojiView.podspec --allow-warnings
