@@ -72,6 +72,8 @@
                 <outlet property="collectionView" destination="Ymf-rC-qWc" id="yKv-xM-c7E"/>
                 <outlet property="collectionViewToSuperViewLeadingConstraint" destination="JuT-Ya-x8H" id="6Tp-mK-lpt"/>
                 <outlet property="deleteButton" destination="Tf8-um-STV" id="9VY-aM-FWJ"/>
+                <outlet property="deleteButtonToCollectionViewLeadingConstraint" destination="Ake-Tw-r7d" id="dLe-Ad-c01"/>
+                <outlet property="deleteButtonToSuperViewTrailingConstraint" destination="FhW-qU-1Dg" id="dTr-Su-p02"/>
             </connections>
             <point key="canvasLocation" x="33.5" y="54"/>
         </view>
