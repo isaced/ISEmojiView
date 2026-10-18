@@ -39,7 +39,7 @@ internal class EmojiCollectionView: UIView {
     /// long press to pop preview effect like iOS10 system emoji keyboard, Default is true
     internal var isShowPopPreview = true
     
-    internal var emojis: [EmojiCategory]! {
+    internal var emojis: [EmojiCategory] = [] {
         didSet {
             collectionView.reloadData()
         }
@@ -90,7 +90,7 @@ internal class EmojiCollectionView: UIView {
     
     // MARK: - Public
     
-    public func popPreviewShowing() -> Bool {
+    internal func popPreviewShowing() -> Bool {
         return !self.emojiPopView.isHidden;
     }
     
@@ -298,7 +298,7 @@ extension EmojiCollectionView {
             }
 
             let emoji = emojis[indexPath.section].emojis[indexPath.item]
-            if emoji.emojis.count == 1 {
+            if emoji.variants.count == 1 {
                 dismissPopView(true)
             }
         case .cancelled, .failed:
@@ -378,7 +378,7 @@ extension EmojiCollectionView {
         
         let currentEmoji = emojiPopView.currentEmoji
         if !currentEmoji.isEmpty && usePopViewEmoji {
-            self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: Emoji(emojis: emojiPopView.emojiArray), selectedEmoji: currentEmoji)
+            self.delegate?.emojiViewDidSelectEmoji(emojiView: self, emoji: Emoji(variants: emojiPopView.emojiArray), selectedEmoji: currentEmoji)
         }
         
         emojiPopView.currentEmoji = ""

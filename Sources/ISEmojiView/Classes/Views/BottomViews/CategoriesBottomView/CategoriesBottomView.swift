@@ -34,7 +34,7 @@ final internal class CategoriesBottomView: UIView {
         }
     }
     
-    internal var categories: [Category]! {
+    internal var categories: [Category] = [] {
         didSet {
             collectionView.reloadData()
             

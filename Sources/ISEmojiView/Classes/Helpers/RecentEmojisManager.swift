@@ -14,7 +14,7 @@ final public class RecentEmojisManager {
     
     // MARK: - Public variables
     
-    public static let sharedInstance = RecentEmojisManager()
+    public static let shared = RecentEmojisManager()
     
     // MARK: - Public functions
     
