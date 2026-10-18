@@ -124,7 +124,7 @@ func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
 
 ### SwiftUI
 
-SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码），需要 iOS 13+。
+SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码）。
 
 暂不支持 macOS SwiftUI 原生使用。
 

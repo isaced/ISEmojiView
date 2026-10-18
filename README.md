@@ -130,7 +130,7 @@ This is a class to describe keyboard settings. Available properties:
 
 ### SwiftUI
 
-SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources). Requires iOS 13+.
+SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources).
 
 Doesn't work on macOS SwiftUI natively.
 
