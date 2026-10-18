@@ -50,6 +50,7 @@ internal class EmojiCollectionView: UIView {
     private var scrollViewWillBeginDragging = false
     private var scrollViewWillBeginDecelerating = false
     private var lastLongPressIndexPath: IndexPath?
+    private var lastLayoutSize: CGSize = .zero
     private let emojiCellReuseIdentifier = "EmojiCell"
     
     private lazy var emojiPopView: EmojiPopView = {
@@ -71,6 +72,19 @@ internal class EmojiCollectionView: UIView {
     
     internal override var intrinsicContentSize: CGSize {
         return CGSize(width: UIView.noIntrinsicMetric, height: frame.size.height)
+    }
+    
+    // MARK: - Override functions
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        
+        // Cell size depends on the collection view bounds, so recompute the
+        // layout after rotation or container resizes.
+        if collectionView.bounds.size != lastLayoutSize {
+            lastLayoutSize = collectionView.bounds.size
+            collectionView.collectionViewLayout.invalidateLayout()
+        }
     }
 
     
@@ -194,24 +208,20 @@ extension EmojiCollectionView: UICollectionViewDelegate {
 
 extension EmojiCollectionView: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
-        var inset = UIEdgeInsets.zero
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        let bounds = collectionView.bounds
         
-        if let recentsEmojis = emojis.first(where: { $0.category == Category.recents }) {
-            if (!recentsEmojis.emojis.isEmpty && section != 0) || (recentsEmojis.emojis.isEmpty && section > 1) {
-                inset.left = 15
-            }
-        }
+        // Keep the grid density close to the system emoji keyboard on every
+        // device: derive columns/rows from a target cell size instead of a
+        // fixed cell, so large phones and iPad get bigger cells rather than
+        // an ever denser grid.
+        let columns = max(8, min(12, (bounds.width / 50).rounded()))
+        let rows = max(4, min(6, (bounds.height / 56).rounded()))
         
-        if section == 0 {
-            inset.left = 3
-        }
-        
-        if section == emojis.count - 1 {
-            inset.right = 4
-        }
-        
-        return inset
+        return CGSize(
+            width: (bounds.width / columns).rounded(.down),
+            height: (bounds.height / rows).rounded(.down)
+        )
     }
     
 }
