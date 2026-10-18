@@ -123,10 +123,12 @@ This is a class to describe keyboard settings. Available properties:
 - `isShowPopPreview` - long press to pop preview effect like iOS10 system emoji keyboard. Default is true.
 - `countOfRecentsEmojis` - the max number of recent emojis, if set 0, nothing will be shown. Default is 50.
 - `needToShowAbcButton` - need to show change keyboard button. This button is located in `Categories` bottom view.
+- `needToShowDeleteButton` - need to show delete button in the bottom view. Default is true.
+- `updateRecentEmojiImmediately` - update the recent emoji list immediately when an emoji is selected. Default is true.
 
 ### SwiftUI
 
-SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources).
+SwiftUI components are distributed via Swift Package Manager only (the CocoaPods pod ships the UIKit sources). Requires iOS 13+.
 
 Doesn't work on macOS SwiftUI natively.
 

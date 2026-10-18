@@ -14,6 +14,8 @@
 - 多种肤色支持（ 🏻 🏼 🏽 🏾 🏿 ）
 - 分类 Bottom Bar（类似 iOS 系统的 Emoji 键盘）
 - 最近使用的 Emoji
+- 深色模式（Dark Mode）
+- SwiftUI 支持
 
 ## Example
 
@@ -115,10 +117,12 @@ func emojiViewDidPressDismissKeyboardButton(_ emojiView: EmojiView) {
 - `isShowPopPreview` - 长按 Emoji 弹出浮层（可供选择肤色），效果类似 iOS10 系统键盘的。默认为 true。
 - `countOfRecentsEmojis` - 最近 Emoji 最大数量，如果设置为 0 则不开启 “最近” 功能。默认为 50。
 - `needToShowAbcButton` - 是否展示切换键盘按钮。这个按钮在 `Categories` 底部视图。
+- `needToShowDeleteButton` - 是否在底部视图展示删除按钮。默认为 true。
+- `updateRecentEmojiImmediately` - 选择 Emoji 后立即更新最近使用列表。默认为 true。
 
 ### SwiftUI
 
-SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码）。
+SwiftUI 组件仅通过 Swift Package Manager 提供（CocoaPods 只包含 UIKit 源码），需要 iOS 13+。
 
 暂不支持 macOS SwiftUI 原生使用。
 
