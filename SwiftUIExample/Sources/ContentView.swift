@@ -26,8 +26,7 @@ struct ContentView: View {
                     EmojiTextField(
                         text: $pageControlText,
                         placeholder: "Tap to type",
-                        bottomType: .pageControl,
-                        didPressDismissKeyboard: {}
+                        bottomType: .pageControl
                     )
                     .frame(height: 44)
                     
