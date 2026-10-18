@@ -1,5 +1,5 @@
 ![logo](/logo@2x.jpg)
-[![Version](https://img.shields.io/cocoapods/v/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![License](https://img.shields.io/cocoapods/l/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)  ![Swift](https://img.shields.io/badge/%20in-swift%205-orange.svg)
+[![Version](https://img.shields.io/cocoapods/v/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage) [![SPM supported](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat)](https://swift.org/package-manager/) [![License](https://img.shields.io/cocoapods/l/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView) [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)  ![Swift](https://img.shields.io/badge/%20in-swift%205-orange.svg)
 
 一个简单易用的 iOS Emoji 键盘
 
@@ -16,6 +16,9 @@
 - 最近使用的 Emoji
 - 深色模式（Dark Mode）
 - SwiftUI 支持
+- 最新 Emoji 数据（Unicode 17）
+- 网格密度随设备自适应（与系统键盘一致）
+- 类目栏支持按住滑动切换
 
 ## Example
 
@@ -24,8 +27,8 @@ clone 项目后直接打开 `Example/ISEmojiViewExample.xcodeproj`（UIKit）或
 ## 环境
 
 - Swift 5
-- iOS8+
-- Xcode 10
+- iOS 8+（CocoaPods / Carthage）、iOS 12+（Swift Package Manager）
+- SwiftUI 组件需要 iOS 13+
 
 ## 使用
 
@@ -80,7 +83,7 @@ textView.inputView = emojiView
 
 ### 代理
 
-实现 `<EmojiViewDelegate>`
+遵循 `EmojiViewDelegate` 协议
 
 ```Swift
 // 回调：点击某个 Emoji 表情的
@@ -163,10 +166,6 @@ EmojiView_SwiftUI(
 所有键盘配置只在视图创建时生效一次；如需修改配置，请重建视图，例如使用 `.id(...)`。
 
 完整可运行示例见 [`SwiftUIExample/`](SwiftUIExample)。
-
-## 其他
-
-如果你在找一个关于 React Native 的实现，可以参考 [brendan-rius/react-native-emoji-keyboard](https://github.com/brendan-rius/react-native-emoji-keyboard)，也是基于本项目开发。
 
 ## License
 

@@ -3,7 +3,7 @@
 [![License](https://img.shields.io/cocoapods/l/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)
 [![Platform](https://img.shields.io/cocoapods/p/ISEmojiView.svg?style=flat)](http://cocoapods.org/pods/ISEmojiView)
 [![Carthage Compatible](https://img.shields.io/badge/Carthage-compatible-4BC51D.svg?style=flat)](https://github.com/Carthage/Carthage)
-[![SPM supported](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat")](https://swift.org/package-manager/)
+[![SPM supported](https://img.shields.io/badge/SPM-supported-DE5C43.svg?style=flat)](https://swift.org/package-manager/)
 
 
 English | [中文](/README_zh.md)
@@ -23,6 +23,9 @@ Has been rewritten with swift, the old *Objective-C* version on branch [oc](http
 - [x] Recently used emoji
 - [x] Dark Mode ([#58](https://github.com/isaced/ISEmojiView/issues/58))
 - [x] SwiftUI support.
+- [x] Latest emoji data (Unicode 17)
+- [x] Grid density adapts to the device, like the system keyboard
+- [x] Slide across the category bar to switch categories
 
 ## Example
 
@@ -31,8 +34,8 @@ To run the example projects, clone the repo and open `Example/ISEmojiViewExample
 ## Requirements
 
 - Swift 5
-- iOS8+
-- Xcode 10
+- iOS 8+ (CocoaPods / Carthage), iOS 12+ (Swift Package Manager)
+- iOS 13+ for the SwiftUI components
 
 ## Usage
 
@@ -86,7 +89,7 @@ textView.inputView = emojiView
 
 ### Delegate
 
-Implement `<EmojiViewDelegate>`
+Conform to `EmojiViewDelegate`
 
 ```Swift
 // callback when tap a emoji on keyboard
@@ -169,10 +172,6 @@ EmojiView_SwiftUI(
 All keyboard settings are applied when the underlying view is created. To change them later, recreate the view, for example with `.id(...)`.
 
 See [`SwiftUIExample/`](SwiftUIExample) for a runnable demo project.
-
-## Others
-
-If you are looking for a React Native solution, take a look at this [brendan-rius/react-native-emoji-keyboard](https://github.com/brendan-rius/react-native-emoji-keyboard)
 
 ## License
 
