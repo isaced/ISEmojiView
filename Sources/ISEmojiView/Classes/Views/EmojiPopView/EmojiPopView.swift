@@ -147,8 +147,16 @@ extension EmojiPopView {
         contentLayer.mask = maskLayer
         layer.addSublayer(contentLayer)
         
+        let emojisContentWidth = CGFloat(emojiArray.count) * EmojiSize.width
         emojisView.removeFromSuperview()
-        emojisView = UIView(frame: CGRect(x: emojisX + 8, y: 10, width: CGFloat(emojiArray.count) * EmojiSize.width, height: EmojiSize.height))
+        emojisView = UIView(
+            frame: CGRect(
+                x: emojisX + (emojisWidth - emojisContentWidth) / 2.0,
+                y: (TopPartSize.height - EmojiSize.height) / 2.0,
+                width: emojisContentWidth,
+                height: EmojiSize.height
+            )
+        )
         
         // add buttons
         emojiButtons = []
@@ -177,7 +185,7 @@ extension EmojiPopView {
 
         path.addRoundedRect(
             in: CGRect(
-                x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
+                x: emojisX + TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
                 y: TopPartSize.height - 10,
                 width: BottomPartSize.width,
                 height: BottomPartSize.height + 10
