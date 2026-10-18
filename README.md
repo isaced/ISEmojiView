@@ -152,14 +152,14 @@ EmojiTextField(
 .frame(height: 44)
 ```
 
-#### EmojiView_SwiftUI (inline panel)
+#### EmojiKeyboardView (inline panel)
 
 Embeds the keyboard directly in a view. `EmojiView` has no intrinsic content size, so give it an explicit frame.
 
 ```Swift
 import ISEmojiView
 
-EmojiView_SwiftUI(
+EmojiKeyboardView(
     bottomType: .categories,
     didSelect: { emoji in
         print(emoji)

@@ -146,14 +146,14 @@ EmojiTextField(
 .frame(height: 44)
 ```
 
-#### EmojiView_SwiftUI（内嵌面板）
+#### EmojiKeyboardView（内嵌面板）
 
 将键盘直接嵌入页面。`EmojiView` 没有固有尺寸（intrinsic content size），需要显式指定 frame。
 
 ```Swift
 import ISEmojiView
 
-EmojiView_SwiftUI(
+EmojiKeyboardView(
     bottomType: .categories,
     didSelect: { emoji in
         print(emoji)
