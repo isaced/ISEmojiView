@@ -49,6 +49,7 @@ internal class EmojiCollectionView: UIView {
     
     private var scrollViewWillBeginDragging = false
     private var scrollViewWillBeginDecelerating = false
+    private var lastLongPressIndexPath: IndexPath?
     private let emojiCellReuseIdentifier = "EmojiCell"
     
     private lazy var emojiPopView: EmojiPopView = {
@@ -228,6 +229,10 @@ extension EmojiCollectionView {
     }
     
     internal func scrollViewDidScroll(_ scrollView: UIScrollView) {
+        guard lastLongPressIndexPath == nil else {
+            return
+        }
+
         dismissPopView(false)
     }
     
@@ -263,45 +268,99 @@ extension EmojiCollectionView {
     }
     
     @objc private func emojiLongPressHandle(sender: UILongPressGestureRecognizer) {
-        func longPressLocationInEdge(_ location: CGPoint) -> Bool {
-            let edgeRect = collectionView.bounds.inset(by: collectionView.contentInset)
-            return edgeRect.contains(location)
-        }
-        
         guard isShowPopPreview else { return }
-        
+
         let location = sender.location(in: collectionView)
-        
-        guard longPressLocationInEdge(location) else {
+
+        switch sender.state {
+        case .began:
+            lastLongPressIndexPath = nil
+            collectionView.isScrollEnabled = false
+            updatePopPreview(at: location, animated: false)
+        case .changed:
+            updatePopPreview(at: location, animated: true)
+        case .ended:
+            collectionView.isScrollEnabled = true
+            lastLongPressIndexPath = nil
+
+            guard let indexPath = indexPathForItem(near: location) else {
+                return
+            }
+
+            let emoji = emojis[indexPath.section].emojis[indexPath.item]
+            if emoji.emojis.count == 1 {
+                dismissPopView(true)
+            }
+        case .cancelled, .failed:
+            collectionView.isScrollEnabled = true
+            lastLongPressIndexPath = nil
+            dismissPopView(false)
+        case .possible:
+            break
+        @unknown default:
+            break
+        }
+    }
+
+    private func updatePopPreview(at location: CGPoint, animated: Bool) {
+        let edgeRect = collectionView.bounds.inset(by: collectionView.contentInset)
+
+        guard edgeRect.contains(location) else {
             dismissPopView(true)
+            lastLongPressIndexPath = nil
             return
         }
-        
-        guard let indexPath = collectionView.indexPathForItem(at: location) else {
+
+        guard let indexPath = indexPathForItem(near: location),
+              let attributes = collectionView.layoutAttributesForItem(at: indexPath) else {
             return
         }
-        
-        guard let attr = collectionView.layoutAttributesForItem(at: indexPath) else {
+
+        guard indexPath != lastLongPressIndexPath else {
             return
         }
-    
-        let emojiCategory = emojis[indexPath.section]
-        let emoji = emojiCategory.emojis[indexPath.item]
-        
-        if sender.state == .ended && emoji.emojis.count == 1 {
-            dismissPopView(true)
-            return
-        }
-        
+
+        lastLongPressIndexPath = indexPath
+
+        let emoji = emojis[indexPath.section].emojis[indexPath.item]
         emojiPopView.setEmoji(emoji)
-        
-        let cellRect = attr.frame
-        let cellFrameInSuperView = collectionView.convert(cellRect, to: self)
+
+        let cellFrame = collectionView.convert(attributes.frame, to: self)
         let emojiPopLocation = CGPoint(
-            x: cellFrameInSuperView.origin.x - ((TopPartSize.width - BottomPartSize.width) / 2.0) + 5,
-            y: cellFrameInSuperView.origin.y - TopPartSize.height - 10
+            x: cellFrame.origin.x - ((TopPartSize.width - BottomPartSize.width) / 2.0) + 5,
+            y: cellFrame.origin.y - TopPartSize.height - 10
         )
-        emojiPopView.move(location: emojiPopLocation, animation: sender.state != .began)
+        emojiPopView.move(location: emojiPopLocation, animation: animated)
+    }
+
+    private func indexPathForItem(near location: CGPoint) -> IndexPath? {
+        if let indexPath = collectionView.indexPathForItem(at: location) {
+            return indexPath
+        }
+
+        let maxDistance: CGFloat = 22
+        var nearest: (indexPath: IndexPath, distance: CGFloat)?
+
+        for indexPath in collectionView.indexPathsForVisibleItems {
+            guard let attributes = collectionView.layoutAttributesForItem(at: indexPath) else {
+                continue
+            }
+
+            let frame = attributes.frame
+            let dx = max(0, max(frame.minX - location.x, location.x - frame.maxX))
+            let dy = max(0, max(frame.minY - location.y, location.y - frame.maxY))
+            let distance = dx * dx + dy * dy
+
+            guard distance <= maxDistance * maxDistance else {
+                continue
+            }
+
+            if distance < (nearest?.distance ?? .greatestFiniteMagnitude) {
+                nearest = (indexPath, distance)
+            }
+        }
+
+        return nearest?.indexPath
     }
     
     private func dismissPopView(_ usePopViewEmoji: Bool) {

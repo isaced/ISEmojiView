@@ -108,22 +108,17 @@ extension EmojiPopView {
     }
     
     private func setupUI() {
-        isHidden = true
-        
         self.layer.sublayers?.forEach { $0.removeFromSuperlayer() }
         
-        // adjust location of emoji bar if it is off the screen
-        emojisWidth = TopPartSize.width + EmojiSize.width * CGFloat(emojiArray.count - 1)
-        emojisX = 0.0 // the x adjustment within the popView to account for the shift in location
+        // Center the wider bubble around the tail, then keep it on screen.
+        let itemCount = max(emojiArray.count, 1)
+        emojisWidth = TopPartSize.width + EmojiSize.width * CGFloat(itemCount - 1)
+        let centeredX = -(emojisWidth - TopPartSize.width) / 2.0
+        let screenPadding: CGFloat = 8
         let screenWidth = UIScreen.main.bounds.width
-        if emojisWidth + locationX > screenWidth {
-            emojisX = -CGFloat(emojisWidth + locationX - screenWidth + 8) // 8 for padding to border
-        }
-        // readjust in case someone is long-pressing right at the edge of the screen
-        let halfWidth = TopPartSize.width / 2.0 - BottomPartSize.width / 2.0
-        if emojisX + emojisWidth < halfWidth + BottomPartSize.width {
-            emojisX += (halfWidth + BottomPartSize.width) - (emojisX + emojisWidth)
-        }
+        let minX = screenPadding - locationX
+        let maxX = screenWidth - screenPadding - emojisWidth - locationX
+        emojisX = maxX >= minX ? min(max(centeredX, minX), maxX) : centeredX
         
         // path
         let path = maskPath()
@@ -147,8 +142,16 @@ extension EmojiPopView {
         contentLayer.mask = maskLayer
         layer.addSublayer(contentLayer)
         
+        let emojisContentWidth = CGFloat(emojiArray.count) * EmojiSize.width
         emojisView.removeFromSuperview()
-        emojisView = UIView(frame: CGRect(x: emojisX + 8, y: 10, width: CGFloat(emojiArray.count) * EmojiSize.width, height: EmojiSize.height))
+        emojisView = UIView(
+            frame: CGRect(
+                x: emojisX + (emojisWidth - emojisContentWidth) / 2.0,
+                y: (TopPartSize.height - EmojiSize.height) / 2.0,
+                width: emojisContentWidth,
+                height: EmojiSize.height
+            )
+        )
         
         // add buttons
         emojiButtons = []
@@ -161,31 +164,59 @@ extension EmojiPopView {
         addSubview(emojisView)
     }
     
-    func maskPath() -> CGMutablePath {
+    func maskPath() -> CGPath {
         let path = CGMutablePath()
-        
-        path.addRoundedRect(
-                 in: CGRect(
-                     x: emojisX,
-                     y: 0.0,
-                     width: emojisWidth,
-                     height: TopPartSize.height
-                 ),
-                 cornerWidth: 10,
-                 cornerHeight: 10
-             )
+        let topRadius: CGFloat = 10
+        let tailRadius: CGFloat = 5
+        let topMinX = emojisX
+        let topMaxX = emojisX + emojisWidth
+        let topMinY: CGFloat = 0
+        let topMaxY = TopPartSize.height
+        let tailX = TopPartSize.width / 2.0 - BottomPartSize.width / 2.0
+        let tailMaxX = tailX + BottomPartSize.width
+        let tailBottom = topMaxY + BottomPartSize.height
 
-        path.addRoundedRect(
-            in: CGRect(
-                x: TopPartSize.width / 2.0 - BottomPartSize.width / 2.0,
-                y: TopPartSize.height - 10,
-                width: BottomPartSize.width,
-                height: BottomPartSize.height + 10
-            ),
-            cornerWidth: 5,
-            cornerHeight: 5
+        path.move(to: CGPoint(x: topMinX + topRadius, y: topMinY))
+        path.addLine(to: CGPoint(x: topMaxX - topRadius, y: topMinY))
+        path.addArc(
+            tangent1End: CGPoint(x: topMaxX, y: topMinY),
+            tangent2End: CGPoint(x: topMaxX, y: topMinY + topRadius),
+            radius: topRadius
         )
-        
+        path.addLine(to: CGPoint(x: topMaxX, y: topMaxY - topRadius))
+        path.addArc(
+            tangent1End: CGPoint(x: topMaxX, y: topMaxY),
+            tangent2End: CGPoint(x: topMaxX - topRadius, y: topMaxY),
+            radius: topRadius
+        )
+        path.addLine(to: CGPoint(x: tailMaxX, y: topMaxY))
+        path.addLine(to: CGPoint(x: tailMaxX, y: tailBottom - tailRadius))
+        path.addArc(
+            tangent1End: CGPoint(x: tailMaxX, y: tailBottom),
+            tangent2End: CGPoint(x: tailMaxX - tailRadius, y: tailBottom),
+            radius: tailRadius
+        )
+        path.addLine(to: CGPoint(x: tailX + tailRadius, y: tailBottom))
+        path.addArc(
+            tangent1End: CGPoint(x: tailX, y: tailBottom),
+            tangent2End: CGPoint(x: tailX, y: tailBottom - tailRadius),
+            radius: tailRadius
+        )
+        path.addLine(to: CGPoint(x: tailX, y: topMaxY))
+        path.addLine(to: CGPoint(x: topMinX + topRadius, y: topMaxY))
+        path.addArc(
+            tangent1End: CGPoint(x: topMinX, y: topMaxY),
+            tangent2End: CGPoint(x: topMinX, y: topMaxY - topRadius),
+            radius: topRadius
+        )
+        path.addLine(to: CGPoint(x: topMinX, y: topMinY + topRadius))
+        path.addArc(
+            tangent1End: CGPoint(x: topMinX, y: topMinY),
+            tangent2End: CGPoint(x: topMinX + topRadius, y: topMinY),
+            radius: topRadius
+        )
+        path.closeSubpath()
+
         return path
     }
 }
