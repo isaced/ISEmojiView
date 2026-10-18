@@ -20,7 +20,11 @@ final public class EmojiLoader {
         var emojiPListFileName = "ISEmojiList_iOS10";
         if #available(iOS 11.0, *) { emojiPListFileName = "ISEmojiList_iOS11" }
         if #available(iOS 12.1, *) { emojiPListFileName = "ISEmojiList_iOS12.1" }
-        if #available(iOS 18.0, *) { emojiPListFileName = "ISEmojiList" }
+        if #available(iOS 15.4, *) { emojiPListFileName = "ISEmojiList_iOS15.4" }
+        if #available(iOS 16.4, *) { emojiPListFileName = "ISEmojiList_iOS16.4" }
+        if #available(iOS 17.4, *) { emojiPListFileName = "ISEmojiList_iOS17.4" }
+        if #available(iOS 18.4, *) { emojiPListFileName = "ISEmojiList_iOS18.4" }
+        if #available(iOS 26.4, *) { emojiPListFileName = "ISEmojiList" }
         
         guard let filePath = Bundle.podBundle.path(forResource: emojiPListFileName, ofType: "plist") else {
             return []

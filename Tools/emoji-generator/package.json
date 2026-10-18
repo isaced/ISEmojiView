@@ -1,0 +1,16 @@
+{
+  "name": "isemoji-emoji-generator",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "bun run src/generate.ts",
+    "check": "bun run src/generate.ts --check",
+    "test": "bun test",
+    "typecheck": "tsc --noEmit",
+    "validate": "bun run typecheck && bun test && plutil -lint ../../Sources/ISEmojiView/Assets/ISEmojiList*.plist"
+  },
+  "devDependencies": {
+    "@types/bun": "latest",
+    "typescript": "latest"
+  }
+}
