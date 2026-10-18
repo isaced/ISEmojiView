@@ -2,6 +2,7 @@ import {
   generateModels,
   parseEmojiTest,
   UNICODE_DATA_FILE,
+  UNICODE_DATA_SOURCE,
   UNICODE_DATA_VERSION,
   validateModels,
 } from "./emoji.ts";
@@ -29,7 +30,7 @@ for (const model of models) {
 
   const xml = serializePlist(
     value,
-    `Generated from Unicode emoji-test.txt ${UNICODE_DATA_VERSION}. Do not edit.`,
+    `Generated from ${UNICODE_DATA_SOURCE} (Unicode ${UNICODE_DATA_VERSION}). Do not edit.`,
   );
   const outputURL = new URL(model.target.file, assetsURL);
 

@@ -27,6 +27,7 @@ export interface EmojiModel {
 
 export const UNICODE_DATA_VERSION = "17.0";
 export const UNICODE_DATA_FILE = "emoji-test-17.0.txt";
+export const UNICODE_DATA_SOURCE = "https://unicode.org/Public/17.0.0/emoji/emoji-test.txt";
 
 export const SKIN_TONES = ["🏻", "🏼", "🏽", "🏾", "🏿"] as const;
 
@@ -301,6 +302,10 @@ export function validateModels(entries: ParsedEmoji[], models: EmojiModel[]): vo
 
         if (variants.length === 0) {
           throw new Error(`${model.target.file} contains an empty emoji entry`);
+        }
+
+        if (variants.length > SKIN_TONES.length + 1) {
+          throw new Error(`${model.target.file} contains too many variants for one entry`);
         }
 
         for (const sequence of variants) {

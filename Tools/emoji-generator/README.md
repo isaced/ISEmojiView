@@ -9,7 +9,8 @@ Generates the `ISEmojiList*.plist` resources in `Sources/ISEmojiView/Assets` fro
 - Version: Unicode 17.0
 - SHA-256: `1d8a944f88d7952f7ef7c5167fef3c67995bcae24543949710231b03a201acda`
 
-The Unicode data is subject to the Unicode Terms of Use included in the file header.
+See [`data/README.md`](data/README.md) for update instructions. The Unicode data is subject to the
+Unicode Terms of Use included in the file header.
 
 ## Targets
 
@@ -26,9 +27,9 @@ The Unicode data is subject to the Unicode Terms of Use included in the file hea
 Only fully-qualified sequences are used. Entries are grouped by their sequence with variation
 selectors and skin-tone modifiers removed, so a base emoji and its skin-tone variants stay together.
 
-Each group contains the default sequence plus same-tone variants (`🏻🏼🏽🏾🏿`). Combinations with
-different tones for different people are intentionally omitted for now to keep the existing popover
-layout usable.
+Each group contains the default sequence plus same-tone variants (`🏻🏼🏽🏾🏿`). Cross-tone
+combinations are not expanded into separate popover variants. If a base emoji only exists as
+cross-tone sequences, one representative is kept so the emoji is not dropped.
 
 ## Commands
 
